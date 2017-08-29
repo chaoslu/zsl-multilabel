@@ -446,10 +446,10 @@ if __name__ == "__main__":
 			logger.info("TEST ERROR: %.4f", test_acc) # [model.Config.top_k-1])
 
 			# make description of the configuration and test result
-			with open(model.Config.output_path + "description.txt" ,"w") as f:
+			with open(model.Config.output_path + "results_only/description.txt" ,"w") as f:
 				cfg = model.Config
 				f.write("feature_maps: %d\nfilters: [%d,%d,%d]\nlearn_rate: %f\nbatch_size: %d\nresult: %f" %(cfg.feature_maps,cfg.filters[0],cfg.filters[1],cfg.filters[2],cfg.learn_rate,cfg.batch_size,test_acc)) # [cfg.top_k-1]))
 			f.close()
 
 			# save all the results
-			cPickle.dump([pred_acc,test_acc,precision_recall_cls],open(model.Config.output_path + 'results' + str(n_classes) + '.p','wb'))
+			cPickle.dump([pred_acc,test_acc,precision_recall_cls],open(model.Config.output_path + 'results_only/results' + str(n_classes) + '.p','wb'))
