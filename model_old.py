@@ -100,6 +100,7 @@ class Model(object):
         _, loss = sess.run([self.train_op, self.loss], feed_dict=feed)
         return loss
 
+
     def predict_on_batch(self, sess, inputs_batch, seman_batch):
         """Make predictions for the provided batch of data
 
@@ -111,6 +112,7 @@ class Model(object):
         """
         feed = self.create_feed_dict(inputs_batch,seman_batch)
         predictions = sess.run(self.pred, feed_dict=feed)
+
         return predictions
 
     def build(self):
@@ -122,3 +124,4 @@ class Model(object):
         # self.loss = self.add_loss_op(self.map,self.seman,self.pred_train)
         self.train_op = self.add_training_op(self.loss)
         # self.pred_test = self.add_prediction(False)
+

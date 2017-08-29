@@ -339,6 +339,7 @@ class ResCNNModel(Model):
 
 		# return k_accuracy,(precision_cls,recall_cls,f1_cls,pr_rcl_cls)
 		return pr,pr_rcl_cls
+	
 
 	def run_epoch(self,sess,train_examples,dev_set):
 		iterator = get_minibatches_idx(len(train_examples[0]),self.Config.batch_size,False)
@@ -369,7 +370,6 @@ class ResCNNModel(Model):
 		logger.info("new updated AUC scores %.4f", acc) # [self.Config.top_k-1])
 
 		return acc
-
 
 	def __init__(self,Config,pretrained_embedding):
 		super(ResCNNModel, self).__init__()
@@ -402,7 +402,6 @@ if __name__ == "__main__":
 
 	n_classes = len(i2w_lb)
 	config = Config(ConfigInfo,n_classes)
-
 	# for debug
 	train_debug = (train[0][:5000], train[1][:5000], train[2][:5000])
 
@@ -454,4 +453,3 @@ if __name__ == "__main__":
 
 			# save all the results
 			cPickle.dump([pred_acc,test_acc,precision_recall_cls],open(model.Config.output_path + 'results' + str(n_classes) + '.p','wb'))
-

@@ -48,7 +48,7 @@ class Model(object):
         """
         raise NotImplementedError("Each Model must re-implement this method.")
 
-    
+
     def add_prediction_train(self):
         """Implements the core of the model that transforms a batch of semantic representaion into predictions.
 
@@ -56,7 +56,7 @@ class Model(object):
             pred: A tensor of shape (batch_size, n_classes)
         """
         raise NotImplementedError("Each Model must re-implement this method.")
-    
+
 
     def add_prediction_test(self):
         """Implements the core of the model that transforms a batch of semantic representaion into predictions.
@@ -130,6 +130,7 @@ class Model(object):
         Returns:
             predictions: np.ndarray of shape (n_samples, n_classes)
         """
+
         feed = self.create_feed_dict(inputs_batch,seman_batch=seman_batch)
         predictions = sess.run(self.pred_test, feed_dict=feed)
         return predictions
@@ -138,11 +139,8 @@ class Model(object):
         self.add_placeholders()
         self.seman = self.cnn_enc(True)
         self.map,self.regularizer = self.add_mapping_op()
-
         self.pred_train = self.add_prediction_train(True)
         # self.loss = self.add_loss_op(self.pred_train)  
         self.loss = self.add_loss_op(self.pred_train) #self.map,self.seman)
         self.train_op = self.add_training_op(self.loss)
         self.pred_test = self.add_prediction_test(True) #self.map,self.seman)
-
-	# train without the cross-entropy loss

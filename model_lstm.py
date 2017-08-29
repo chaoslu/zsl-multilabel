@@ -129,6 +129,7 @@ class Model(object):
         self.pred_cnn = self.add_prediction_cnn()
         self.pred_rnn,self.pred_rnn_oh,self.encoded_R = self.add_prediction_rnn()
         # self.pred_rnn,self.pred_rnn_oh = self.add_prediction_rnn()
+        self.pred_rnn,self.pred_rnn_oh = self.add_prediction_rnn()
         self.loss = self.add_loss_op(self.pred_cnn, self.pred_rnn)
         self.train_op = self.add_training_op(self.loss)
         # self.pred_test = self.add_prediction(False)

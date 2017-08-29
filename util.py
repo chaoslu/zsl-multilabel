@@ -22,6 +22,7 @@ def get_minibatches_idx(n, batch_size, shuffle):
 def _p(pre,post):
 	return "%s_%s" % (pre,post)
 
+
 def my_softmax(x,axis = 0):
 	def my_softmax_1d(y):
 		diff = y - max(y)
@@ -36,3 +37,4 @@ def my_softmax(x,axis = 0):
 		else:
 			new_x = [my_soft_max(x[i]) for i in range(x.shape[2])]
 	return new_x
+

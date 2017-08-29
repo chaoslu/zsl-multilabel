@@ -27,7 +27,6 @@ logging.basicConfig(format='%(levelname)s:%(message)s',level=logging.DEBUG)
 #####################################################
 
 
-
 class Config:
 	embedding_size = 300
 	feature_maps = 100
@@ -221,7 +220,6 @@ class ResCNNModel(Model):
 
 		# with mapping structure
 
-		
 		if is_seman:
 			encoded = self.cnn_enc(is_seman)
 		else:
@@ -255,6 +253,7 @@ class ResCNNModel(Model):
 		assert pred.get_shape().as_list() == [None, self.Config.nlabels]
 
 		return pred
+
 
 
 	def add_loss_op(self,pred):  # mapping,seman,
@@ -305,7 +304,6 @@ class ResCNNModel(Model):
                         prediction = tf.matmul(encoded,W_pred)
                         prediction_dropout = tf.sigmoid(tf.nn.bias_add(prediction,b_pred))
 		
-
 		# Residual Network
 
 		'''
@@ -323,6 +321,7 @@ class ResCNNModel(Model):
 
 
 	def predict_on_batch(self, sess, inputs_batch,seman_batch):
+
 		feed = self.create_feed_dict(inputs_batch=inputs_batch,seman_batch=seman_batch,labels_batch=None,dropout_rate=1)
 		predictions = sess.run(self.pred_test, feed_dict=feed)
 
@@ -395,7 +394,9 @@ class ResCNNModel(Model):
 			padded_nts_batch = np.array(padded_nts_batch)
 			padded_sm_batch = prepare_data(sm_batch,self.Config,True)
 			padded_sm_batch = np.array(padded_sm_batch)
+
 			# import pdb; pdb.set_trace()
+
 			lb_batch = np.array(lb_batch)
 
 			loss = self.train_on_batch(sess,padded_nts_batch,padded_sm_batch,lb_batch)
@@ -407,6 +408,7 @@ class ResCNNModel(Model):
 		logger.info("Evaluating on devlopment data")
 		# import pdb; pdb.set_trace()
 		auc_score,_ = self.evaluate(sess,dev_set)
+
 		logger.info("new updated AUC scores %.4f", auc_score)
 
 		return auc_score
@@ -435,12 +437,15 @@ if __name__ == "__main__":
 
 
 	logger.info('loading data...')
+
 	x = cPickle.load(open("./data/everything1000.p","rb"))
+
 	train, dev, test, W, idx2word, word2idx, w2i_lb, i2w_lb, nl_cls, ConfigInfo = x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9]
 	del x
 
 	n_classes = len(w2i_lb)
 	config = Config(ConfigInfo,n_classes,nl_cls)
+
 	# for debug
 	train_debug = (train[0][:5000], train[1][:5000], train[2][:5000])
 
