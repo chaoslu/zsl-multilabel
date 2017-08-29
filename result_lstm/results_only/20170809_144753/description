@@ -1,0 +1,3 @@
+model:LSTM
+classes:500
+result:0.6874

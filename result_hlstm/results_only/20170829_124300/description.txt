@@ -1,0 +1,7 @@
+feature_maps: 100
+filters: [3,4,5]
+rnncel: GRU
+learn_rate: 0.000200
+batch_size: 20
+beta: 1.000000
+result: 0.115865
