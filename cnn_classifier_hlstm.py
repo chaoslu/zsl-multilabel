@@ -324,7 +324,7 @@ class ResCNNModel(Model):
 				curr_state = h_0
 
 				for time_step in range(mx_len):
-						
+
 					# import pdb; pdb.set_trace()
 					if isinstance(cell.state_size,tuple):
 						c_0 = tf.zeros([cell.state_size[0]])
@@ -336,7 +336,7 @@ class ResCNNModel(Model):
 					pred_rnn = tf.matmul(output,O_h) + b_2
 					pred_rnn_oh = tf.arg_max(pred_rnn,dimension=1)
 					pred_rnn_oh = tf.nn.embedding_lookup(dict_emb,pred_rnn_oh)  # change the indice to indice of the whole vocabulary
-					
+
 					# import pdb;pdb.set_trace()
 					# do smoe reshaping
 					preds_rnn.append(pred_rnn)
@@ -349,7 +349,7 @@ class ResCNNModel(Model):
 
 				preds_rnn = tf.concat(preds_rnn,axis=1)
 				preds_rnn_oh = tf.concat(preds_rnn_oh,axis=1)
-			
+
 			preds.append(preds_rnn)
 			preds_oh.append(preds_rnn_oh)
 
@@ -358,7 +358,7 @@ class ResCNNModel(Model):
 		return preds,preds_oh
 
 
-	def add_loss_op(self,pred_cnn,pred_rnn): # mapping, seman
+	def add_loss_op(self,pred_cnn,pred_rnn):  # mapping, seman
 		loss_cnn = -tf.reduce_mean(self.labelsC_placeholder * tf.log(pred_cnn + 1e-6) + (1. - self.labelsC_placeholder) * tf.log(1 - pred_cnn + 1e-6))
 		loss_rnn_unmasked = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=self.labelsR_placeholder, logits=pred_rnn)
 		loss_rnn = tf.reduce_mean(tf.boolean_mask(loss_rnn_unmasked,self.mask_placeholder))
@@ -474,8 +474,8 @@ class ResCNNModel(Model):
 		# transform preds_cnn into densely representation (top k)
 		preds_cnn = np.concatenate(preds_cnn,axis=0)  
 		labels = np.concatenate(labels,axis=0)
-		preds_cnn_flat = preds_cnn.flatten()
-		labels_flatten = labels.flatten()		
+		# preds_cnn_flat = preds_cnn.flatten()
+		# labels_flatten = labels.flatten()		
 		
 		# precicion and recall for all the classes		
 		pr_rcl_cls = [average_precision_score(labels[:,i],preds_cnn[:,i]) for i in range(labels.shape[1])]

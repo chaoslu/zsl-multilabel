@@ -154,26 +154,28 @@ def idxs_to_sentences(classified,i2w,i2w_sm,cfg):
 	idx_nts = [itm[2] for itm in classified]
 	sen_original = []
 	sen_decoded = []
-	lb_freq = []
+	# lb_freq = []
 	nts = []
 
-	import pdb; pdb.set_trace()
+	# import pdb; pdb.set_trace()
 	for sm in idx_original:
 		sen_o = [i2w_sm[i] for i in sm if i < n_sm - 2]
 		sen_o = " ".join(sen_o)
 		sen_original.append(sen_o)
-	import pdb; pdb.set_trace()
+	# import pdb; pdb.set_trace()
 	for sm_d in idx_decoded:
 		sen_d = [i2w[i] for i in sm_d if i < n - 2]
 		sen_d = " ".join(sen_d)
 		sen_decoded.append(sen_d)
-	import pfb; pdb.set_trace()
+	# import pfb; pdb.set_trace()
 	for note in idx_nts:
 		sen_n = [i2w[i] for i in note]
 		sen_n = " ".join(sen_n)
 		nts.append(sen_n)
 	# import pdb; pdb.set_trace()
 	return (sen_original,sen_decoded,nts)
+
+
 '''
 def scores_summary(scores,num_buckets,w2i_lb,lb_lst):
 	precision = scores[0]
@@ -290,7 +292,7 @@ class ResCNNModel(Model):
 		mx_len = self.Config.max_len_sm
 		h_size = self.Config.rnn_hsize
 		scope = scope or type(self).__name__
-		
+
 		if self.Config.rnncell == "GRU":
 			cell = tf.contrib.rnn.GRUCell(h_size)
 		elif self.Config.rnncell == "LSTM":
@@ -324,7 +326,7 @@ class ResCNNModel(Model):
 				pred_rnn = tf.matmul(output,O_h) + b_2
 				pred_rnn_oh = tf.arg_max(pred_rnn,dimension=1)
 				pred_rnn_oh = tf.nn.embedding_lookup(dict_emb,pred_rnn_oh)  # change the indice to indice of the whole vocabulary
-								
+
 
 				# do smoe reshaping
 				preds_rnn.append(pred_rnn)
@@ -335,14 +337,14 @@ class ResCNNModel(Model):
 				x = self.add_embedding(pred_rnn_oh)  # should be batch_size * embedding_size
 				x = tf.reshape(x,[-1,self.Config.embedding_size])
 				curr_state = next_state
-		
+
 			preds_rnn = tf.reshape(tf.concat(preds_rnn,axis=1),shape=[-1,mx_len,dec_num])
 			preds_rnn_oh = tf.concat(preds_rnn_oh,axis=1)
-			
+
 			return preds_rnn,preds_rnn_oh,states[-1]
 
 
-	def add_loss_op(self,pred_cnn,pred_rnn): # mapping, seman
+	def add_loss_op(self,pred_cnn,pred_rnn):  # mapping, seman
 		loss_cnn = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=self.labelsC_placeholder, logits=pred_cnn))
 		loss_rnn_unmasked = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=self.labelsR_placeholder, logits=pred_rnn)
 		loss_rnn = tf.reduce_mean(tf.boolean_mask(loss_rnn_unmasked,self.mask_placeholder))
@@ -456,8 +458,8 @@ class ResCNNModel(Model):
 		preds_cnn_dense = np.argmax(preds_cnn, axis=1)
 		preds_cnn_dense_k = preds_cnn_topk[self.Config.top_k - 1][:,-self.Config.top_k - 1:]
 		labels_dense = np.argmax(labels,axis=1)
-		
-		
+
+
 		# import pdb; pdb.set_trace()
 		# transform preds_cnn to one_hot form
 		label_binarizer = sklearn.preprocessing.LabelBinarizer()
@@ -472,7 +474,7 @@ class ResCNNModel(Model):
 
 		# precision recall and f1 score
 		precision_cls = [tp / gd if gd != 0 else 0 for (tp,gd) in zip(true_positive_cls,gold_cls)] 
-		recall_cls = [tp / prd if prd != 0 else 0 for (tp,prd) in  zip(true_positive_cls,preds_cnn_cls)]
+		recall_cls = [tp / prd if prd != 0 else 0 for (tp,prd) in zip(true_positive_cls,preds_cnn_cls)]
 		f1_cls = [2 * p * r / (p+r) if p * r != 0 else 0 for (p,r) in zip(precision_cls,recall_cls)]
 		
 		
@@ -486,11 +488,11 @@ class ResCNNModel(Model):
 		for k in range(self.Config.top_k):
 			true_positive = [labels_dense[i] for i in range(labels_dense.shape[0]) if labels_dense[i] in preds_cnn_topk[k][i][-k-1:]]
 			acc_list.append(float(len(true_positive))/labels_dense.shape[0])
-			
+
 			# for k, get the boolean mask of the classification result
 			if k == self.Config.top_k - 1:
-				classified_result_k =  [labels_dense[i] in preds_cnn_topk[k][i][-k-1:] for i in range(labels_dense.shape[0])]
- 
+				classified_result_k = [labels_dense[i] in preds_cnn_topk[k][i][-k-1:] for i in range(labels_dense.shape[0])]
+
 		# auc = roc_auc_score(labels,preds)
 		# error = 1. - auc
 
@@ -504,7 +506,7 @@ class ResCNNModel(Model):
 			masked_decoded.append(rnn_decoded)
 		# import pdb; pdb.set_trace()
 		# is_correctly_predicted = [np.array_equal(preds_cnn_peak[i],labels[i]) for i in range(preds_cnn_peak.shape[0])]  # check if predcition is correct
-		
+
 		incorrect_cls_decoded = [(masked_sm_target[i],masked_decoded[i],nts[i]) for i,c_p in enumerate(classified_result_k) if not c_p]  # if not correctly classified
 		all_decoded = [(masked_sm_target[i],masked_decoded[i],nts[i]) for i in range(len(classified_result_k))]
 		# import pdb; pdb.set_trace()
@@ -575,6 +577,7 @@ if __name__ == "__main__":
 			logger.info("TEST ERROR: %.4f",test_score[model.Config.top_k-1])
 
 			# make description of the configuration and test result
+
 			with open(model.Config.output_path + "results_only/description.txt" ,"w") as f:
 				cfg = model.Config
 				f.write("feature_maps: %d\nfilters: [%d,%d,%d]\nrnncel: %s\nlearn_rate: %f\nbatch_size: %d\nbeta: %f\nresult: %f" %(cfg.feature_maps,cfg.filters[0],cfg.filters[1],cfg.filters[2],cfg.rnncell,cfg.learn_rate,cfg.batch_size,cfg.beta,test_score[cfg.top_k-1]))
