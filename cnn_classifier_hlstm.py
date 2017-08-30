@@ -56,6 +56,7 @@ class Config:
 		self.max_len_sm = ConfigInfo['max_len_sm']
 		self.n_diags = ConfigInfo['n_diagnosis']	 
 		self.output_path = "./result_hlstm/{:%Y%m%d_%H%M%S}/".format(datetime.now())
+		self.output_path_results = "./result_hlstm/results_only/{:%Y%m%d_%H%M%S}/".format(datetime.now())
 		self.model_path = self.output_path + "model.weights"
 
 	"""
@@ -415,11 +416,11 @@ class ResCNNModel(Model):
 			loss = self.train_on_batch(sess, padded_nts_batch, lb_batch, padded_sm_target, padded_sm_inputs, mask)
 
 			# print something about the loss
-				
+
 			if i % dispFreq == 0:
 				logger.info("loss until batch_%d, : %f", i,loss)
-				
-			
+
+
 		# import pdb; pdb.set_trace()
 		logger.info("Evaluating on devlopment data")
 		score,_,_ = self.evaluate(sess,dev_set)
@@ -568,10 +569,10 @@ if __name__ == "__main__":
 			logger.info("TEST ERROR: %.4f",test_score)
 
 			# make description of the configuration and test result
-			with open(model.Config.output_path + "results_only/description.txt" ,"w") as f:
+			with open(model.Config.output_path_results + "description.txt","w") as f:
 				cfg = model.Config
-				f.write("feature_maps: %d\nfilters: [%d,%d,%d]\nrnncel: %s\nlearn_rate: %f\nbatch_size: %d\nbeta: %f\nresult: %f" %(cfg.feature_maps,cfg.filters[0],cfg.filters[1],cfg.filters[2],cfg.rnncell,cfg.learn_rate,cfg.batch_size,cfg.beta,test_score))
+				f.write("feature_maps: %d\nfilters: [%d,%d,%d]\nrnncel: %s\nlearn_rate: %f\nbatch_size: %d\nbeta: %f\nresult: %f" % (cfg.feature_maps,cfg.filters[0],cfg.filters[1],cfg.filters[2],cfg.rnncell,cfg.learn_rate,cfg.batch_size,cfg.beta,test_score))
 			f.close()
 
 			# save all the results
-			cPickle.dump([pred_acc ,test_score ,precision_recall_cls,all_decoded,lb_freq,i2w_lb],open(model.Config.output_path + 'results_only/results' + str(n_classes) + ".p","wb"))
+			cPickle.dump([pred_acc ,test_score ,precision_recall_cls,all_decoded,lb_freq,i2w_lb],open(model.Config.output_path_results + 'results' + str(n_classes) + ".p","wb"))

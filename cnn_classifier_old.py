@@ -51,6 +51,7 @@ class Config:
 		self.max_len = ConfigInfo['max_len']	 # 580 for clean data_64, 575 for rpl
 		self.max_len_sm = ConfigInfo['max_len_sm']	 # 10 for clean data_64, 9 for rpl
 		self.output_path = "./result_old/{:%Y%m%d_%H%M%S}/".format(datetime.now())
+		self.output_path_results = "./result_old/results_only/{:%Y%m%d_%H%M%S}/".format(datetime.now())
 		self.model_path = self.output_path + "model.weights"
 
 	"""
@@ -238,7 +239,7 @@ class ResCNNModel(Model):
 		# for evaluation of auc
 		# loss_data_seman = tf.nn.l2_loss(mapping - seman)/self.Config.batch_size * 2 + self.regularizer * self.Config.beta1
 		loss_seman_label = - tf.reduce_mean(self.labels_placeholder * tf.log(pred + 1e-6) + (1 - self.labels_placeholder) * tf.log(1 - pred + 1e-6))
-		loss = loss_seman_label # + loss_data_seman * self.Config.beta2
+		loss = loss_seman_label  # + loss_data_seman * self.Config.beta2
 		
 		# loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels = self.labels_placeholder, logits= pred))
 
@@ -252,7 +253,7 @@ class ResCNNModel(Model):
 
 
 
-	def train_on_batch(self,sess,inputs_batch,seman_batch,labels_batch): #
+	def train_on_batch(self,sess,inputs_batch,seman_batch,labels_batch):
 		feed_dict = self.create_feed_dict(inputs_batch=inputs_batch,seman_batch=seman_batch,labels_batch=labels_batch,dropout_rate=self.Config.dropout_rate)
 		_,loss = sess.run([self.train_op,self.loss],feed_dict=feed_dict)
 
@@ -362,12 +363,12 @@ class ResCNNModel(Model):
 			loss = self.train_on_batch(sess,padded_nts_batch,padded_sm_batch,lb_batch)
 
 			# print something about the loss
-			if i%dispFreq == 0:
+			if i % dispFreq == 0:
 				logger.info("loss until batch_%d, : %f", i,loss)
 
 		logger.info("Evaluating on devlopment data")
 		acc,_ = self.evaluate(sess,dev_set)
-		logger.info("new updated AUC scores %.4f", acc) # [self.Config.top_k-1])
+		logger.info("new updated AUC scores %.4f",acc)  # [self.Config.top_k-1])
 
 		return acc
 
@@ -396,7 +397,7 @@ if __name__ == "__main__":
 	x = cPickle.load(open("./data/everything1000.p","rb"))
 	# train, dev, test, W, idx2word, word2idx, i2w_lb, i2w_sm, dicts_mapping, ConfigInfo, lb_freq_list = x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[10]
 	
-	train, dev, test, W, idx2word, word2idx, w2i_lb, i2w_lb, nl_clss, ConfigInfo= x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9]
+	train, dev, test, W, idx2word, word2idx, w2i_lb, i2w_lb, nl_clss, ConfigInfo = x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9]
 
 	del x
 
@@ -438,18 +439,18 @@ if __name__ == "__main__":
 				# if pred_acc[-1][model.Config.top_k-1] > acc_max:
 				if pred_acc[-1] > acc_max:
 					logger.info("new best AUC score: %.4f", pred_acc[-1])  # [model.Config.top_k-1])
-					acc_max  = pred_acc[-1] # [model.Config.top_k-1]
+					acc_max = pred_acc[-1]  # [model.Config.top_k-1]
 					saver.save(session, model.Config.model_path)
 				logger.info("BEST AUC SCORE: %.4f", acc_max)
 			saver.restore(session, model.Config.model_path)	
 			test_acc,precision_recall_cls = model.evaluate(session,test)
-			logger.info("TEST ERROR: %.4f", test_acc) # [model.Config.top_k-1])
+			logger.info("TEST ERROR: %.4f", test_acc)  # [model.Config.top_k-1])
 
 			# make description of the configuration and test result
-			with open(model.Config.output_path + "results_only/description.txt" ,"w") as f:
+			with open(model.Config.output_path_results + "description.txt","w") as f:
 				cfg = model.Config
-				f.write("feature_maps: %d\nfilters: [%d,%d,%d]\nlearn_rate: %f\nbatch_size: %d\nresult: %f" %(cfg.feature_maps,cfg.filters[0],cfg.filters[1],cfg.filters[2],cfg.learn_rate,cfg.batch_size,test_acc)) # [cfg.top_k-1]))
+				f.write("feature_maps: %d\nfilters: [%d,%d,%d]\nlearn_rate: %f\nbatch_size: %d\nresult: %f" % (cfg.feature_maps,cfg.filters[0],cfg.filters[1],cfg.filters[2],cfg.learn_rate,cfg.batch_size,test_acc))  # [cfg.top_k-1]))
 			f.close()
 
 			# save all the results
-			cPickle.dump([pred_acc,test_acc,precision_recall_cls],open(model.Config.output_path + 'results_only/results' + str(n_classes) + '.p','wb'))
+			cPickle.dump([pred_acc,test_acc,precision_recall_cls],open(model.Config.output_path_results + 'results' + str(n_classes) + '.p','wb'))
