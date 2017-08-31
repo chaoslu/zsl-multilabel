@@ -2,6 +2,7 @@ import numpy as np
 import tensorflow as tf
 import logging
 import time
+import os
 import cPickle
 from datetime import datetime
 from collections import OrderedDict
@@ -447,6 +448,8 @@ if __name__ == "__main__":
 			logger.info("TEST ERROR: %.4f", test_acc)  # [model.Config.top_k-1])
 
 			# make description of the configuration and test result
+			if not os.path.exists(model.Config.output_path_results):
+				os.makedirs(model.Config.output_path_results)
 			with open(model.Config.output_path_results + "description.txt","w") as f:
 				cfg = model.Config
 				f.write("feature_maps: %d\nfilters: [%d,%d,%d]\nlearn_rate: %f\nbatch_size: %d\nresult: %f" % (cfg.feature_maps,cfg.filters[0],cfg.filters[1],cfg.filters[2],cfg.learn_rate,cfg.batch_size,test_acc))  # [cfg.top_k-1]))
