@@ -547,10 +547,6 @@ if __name__ == "__main__":
 	train, dev, test, W, idx2word, word2idx, i2w_lb, i2w_sm, dicts_mapping, ConfigInfo, lb_freq = x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[10]
 	del x
 
-	if not os.path.exists(model.Config.output_path):
-		os.makedirs(model.Config.output_path)	
-	if not os.path.exists(model.Config.output_path_results):
-		os.makedirs(model.Config.output_path_results)	
 	# whether use the glove data
 	is_glove = ''
 	if args.using_glove:
@@ -574,7 +570,12 @@ if __name__ == "__main__":
 
 		init = tf.global_variables_initializer()
 		saver = tf.train.Saver()
-
+	
+		if not os.path.exists(model.Config.output_path):
+			os.makedirs(model.Config.output_path)	
+		if not os.path.exists(model.Config.output_path_results):
+			os.makedirs(model.Config.output_path_results)	
+		
 		with tf.Session(config=GPU_config) as session:
 			session.run(init)
 			for epoch in range(Config.max_epochs):

@@ -432,12 +432,6 @@ if __name__ == "__main__":
 	acc_max = 0
 
 
-	if not os.path.exists(model.Config.output_path):
-		os.makedirs(model.Config.output_path)
-
-	if not os.path.exists(model.Config.output_path_results):
-		os.makedirs(model.Config.output_path_results)
-
 	GPU_config = tf.ConfigProto()
 	GPU_config.gpu_options.per_process_gpu_memory_fraction = 0.2
 	with tf.Graph().as_default():
@@ -449,6 +443,12 @@ if __name__ == "__main__":
 
 		init = tf.global_variables_initializer()
 		saver = tf.train.Saver()
+		
+		if not os.path.exists(model.Config.output_path):
+			os.makedirs(model.Config.output_path)
+
+		if not os.path.exists(model.Config.output_path_results):
+			os.makedirs(model.Config.output_path_results)
 
 		with tf.Session(config=GPU_config) as session:
 			session.run(init)
