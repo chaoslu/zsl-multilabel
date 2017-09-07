@@ -400,18 +400,18 @@ if __name__ == "__main__":
 	ch.setFormatter(formatter)
 	logger.addHandler(fh)
 
+	# whether use the glove data
+	is_glove = ''
+	if args.using_glove:
+		is_glove = 'glove_'
+
 	logger.info('loading data...')
-	x = cPickle.load(open("./data/everything" + args.label_freq + ".p","rb"))
+	x = cPickle.load(open("./data/" + is_glove  + "everything" + args.label_freq + ".p","rb"))
 	# train, dev, test, W, idx2word, word2idx, i2w_lb, i2w_sm, dicts_mapping, ConfigInfo, lb_freq_list = x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[10]
 	
 	train, dev, test, W, idx2word, word2idx, w2i_lb, i2w_lb, nl_clss, ConfigInfo = x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9]
 
 	del x
-
-	# whether use the glove data
-	is_glove = ''
-	if args.using_glove:
-		is_glove = 'glove_'
 
 	n_classes = len(i2w_lb)
 	config = Config(ConfigInfo,n_classes)
