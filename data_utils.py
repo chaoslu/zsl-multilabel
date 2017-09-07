@@ -7,8 +7,10 @@ from nltk.tokenize import word_tokenize
 from collections import defaultdict
 from collections import OrderedDict
 
-
-
+notes_path = 'tok_hpi_clean_glove'
+dx_path = 'tok_dx_clean_glove'
+vector_path = 'vectors_my.txt'
+using_glove = True
 
 
 def load_data(loc='./data/'):
@@ -16,11 +18,11 @@ def load_data(loc='./data/'):
     notes = []
     diagonosis = []
 
-    with open(loc + 'tok_hpi_rpl', 'rb') as f:
+    with open(loc + notes_path, 'rb') as f:
         for line in f:
             notes.append(line.strip())
 
-    with open(loc + 'tok_dx_rpl', 'rb') as f:
+    with open(loc + dx_path, 'rb') as f:
         for line in f:
             diagonosis.append(line.strip())
 
@@ -94,56 +96,6 @@ def diag_narrow(train,train_labels,vocab_freq,freq_lbd):
     train_labels = list(tp[1])
 
     return train,train_labels
-
-
-'''
-def label_vocab(text,valid_ngram):
-    vocab = []
-    vocab_dict = {}
-    for labels in text:
-        for label in labels:
-            if label not in valid_ngram:
-                splitted = label.split('_')
-
-                for lb in splitted:
-                    if lb not in vocab:
-                        vocab.append(lb)
-                        vocab_dict[lb] = 0
-                    else:
-                        vocab_dict[lb] += 1
-    for uni in vocab:
-        if '-' in uni:
-            uni_k = np.str(uni)
-            uni_k.replace('-','_')
-            if uni not in valid_ngram:
-                vocab_dict.pop(uni)
-                vocab.remove(uni)
-
-                splitted = label.split('_')
-
-                for lb in splitted:
-                    if lb not in vocab:
-                        vocab.append(lb)
-                        vocab_dict[lb] = 0
-                    else:
-                        vocab_dict[lb] += 1
-    w2i = OrderedDict(sorted(vocab_dict.items(), key= lambda t:t[1], reverse=True))
-    return vocab,w2i
-'''
-
-
-'''
-def make_labels_idx(labels):
-    d = {}
-    setlabels = set(labels)
-    count = 0
-    for l in setlabels:
-        d[l] = count
-        count += 1
-    idx_lables = [d[l] for l in labels]
-
-    return idx_lables,d
-'''
 
 
 def make_idx_sentences(text,word2idx):
@@ -220,6 +172,16 @@ def load_bin_vec(fname,  vocab):
     return word_vecs
 
 
+def load_text_vec(fname,  vocab):
+
+    vectors = {}
+    for line in fname:
+        vals = line.rstrip().split(' ')
+        if vals[0] in vocab:
+            vectors[vals[0]] = [float(x) for x in vals[1:]]
+    return vectors
+
+
 def add_unknown_words(word_vecs,word2idx,k=300):
     for word in word2idx:
         if word not in word_vecs:
@@ -242,6 +204,11 @@ if __name__ == "__main__":
     freq_lbd_idx = 500
     w2v_file = 'GoogleNews-vectors-negative300.bin'
     # valid_ngram = cPickle.load(open('./valid_gram.p','rb'))
+
+    use_glove = ''
+    if using_glove:
+        use_glove = 'glove_'
+        w2v_file = vector_path
 
     print "preparing data...",  
     notestext, labeltext = load_data()
@@ -269,12 +236,12 @@ if __name__ == "__main__":
     tp = zip(*train_set)
     train_notes = list(tp[0])
     train_labels = list(tp[1])
-    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/pre_clipped.p',"wb"))
+    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/' + use_glove + 'pre_clipped.p',"wb"))
 
     # only use the notes and diagnoses more than certain amount
     freq_lbd = lb_lst[freq_lbd_idx - 1][1]
     train_notes,train_labels = diag_narrow(train_notes,train_labels,lb_freq,freq_lbd)
-    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/clipped_data_' + str(freq_lbd_idx) + '.p',"wb"))
+    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/' + use_glove + 'clipped_data_' + str(freq_lbd_idx) + '.p',"wb"))
 
     # make labels natural language
     train_seman = []
@@ -313,12 +280,10 @@ if __name__ == "__main__":
 
     # build the word embedding for dataset
     print "loading word2vec vectors...",
-    w2v = load_bin_vec(loc + w2v_file, word2idx)
-
-    # w2v_sm = load_bin_vec(w2v_file, w2i_sm)
-
-    # w2v_sm = load_bin_vec(w2v_file, lb_vocab)
-    # word2idx,
+    if using_glove:
+        w2v = load_text_vec(loc + w2v_file, word2idx)
+    else:
+        w2v = load_bin_vec(loc + w2v_file, word2idx)
 
 
     add_unknown_words(w2v, word2idx)
@@ -328,5 +293,5 @@ if __name__ == "__main__":
     # W_sm = get_vocab_emb(w2v_sm,i2w_sm)
 
     everything = [train, dev, test, W, idx2word, word2idx, w2i_lb, i2w_lb,nl_clss,ConfigInfo]
-    cPickle.dump(everything, open('./data/everything' + str(freq_lbd_idx) + '.p', "wb"))
+    cPickle.dump(everything, open('./data/' + use_glove + 'everything' + str(freq_lbd_idx) + '.p', "wb"))
 #    print "dataset created!"

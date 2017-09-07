@@ -7,8 +7,10 @@ from nltk.tokenize import word_tokenize
 from collections import defaultdict
 from collections import OrderedDict
 
-
-
+notes_path = 'tok_hpi_clean_glove'
+dx_path = 'tok_dx_clean_glove'
+vector_path = 'vectors_my.txt'
+using_glove = True
 
 
 def load_data(loc='./data/'):
@@ -16,11 +18,11 @@ def load_data(loc='./data/'):
     notes = []
     diagonosis = []
 
-    with open(loc + 'tok_hpi_rpl', 'rb') as f:
+    with open(loc + notes_path, 'rb') as f:
         for line in f:
             notes.append(line.strip())
 
-    with open(loc + 'tok_dx_rpl', 'rb') as f:
+    with open(loc + dx_path, 'rb') as f:
         for line in f:
             diagonosis.append(line.strip())
 
@@ -209,15 +211,17 @@ def split_train(train,dev_portion=0.1):
 
     return (train_sent,train_label,train_seman), (dev_sent,dev_label,dev_seman)
 
+
 def label_frequency(data,i2w):
     lb_freq_list = {}
     for lb_oh in data:
-	lb = np.argmax(lb_oh)
-	if i2w[lb] in lb_freq_list:
-		lb_freq_list[i2w[lb]] += 1
-	else:
-		lb_freq_list[i2w[lb]] = 1
+        lb = np.argmax(lb_oh)
+        if i2w[lb] in lb_freq_list:
+            lb_freq_list[i2w[lb]] += 1
+        else:
+            lb_freq_list[i2w[lb]] = 1
     return lb_freq_list
+
 
 def load_bin_vec(fname,  vocab):
     """
@@ -247,6 +251,16 @@ def load_bin_vec(fname,  vocab):
     return word_vecs
 
 
+def load_text_vec(fname,  vocab):
+
+    vectors = {}
+    for line in fname:
+        vals = line.rstrip().split(' ')
+        if vals[0] in vocab:
+            vectors[vals[0]] = [float(x) for x in vals[1:]]
+    return vectors
+
+
 def add_unknown_words(word_vecs,word2idx,k=300):
     for word in word2idx:
         if word not in word_vecs:
@@ -266,9 +280,14 @@ def get_vocab_emb(word_vecs,idx2word,k=300):
 if __name__ == "__main__":   
 
     loc = './data/'
-    freq_lbd_idx = 1000
+    freq_lbd_idx = 500
     w2v_file = 'GoogleNews-vectors-negative300.bin'
     # valid_ngram = cPickle.load(open('./valid_gram.p','rb'))
+
+    use_glove = ''
+    if using_glove:
+        use_glove = 'glove_'
+        w2v_file = vector_path
 
     print "preparing data...",  
     notestext, labeltext = load_data()
@@ -297,7 +316,7 @@ if __name__ == "__main__":
 
     train_notes = list(tp[0])
     train_labels = list(tp[1])
-    import pdb;pdb.set_trace()
+    # import pdb;pdb.set_trace()
     
     # only remian the first diagnosis for each patient
     train_labels = [[labels[0]] for labels in train_labels]  
@@ -307,12 +326,12 @@ if __name__ == "__main__":
     lb_vb = OrderedDict(sorted(lb_freq.items(), key = lambda t:t[1], reverse = True))
     lb_lst = [(wd,lb_vb[wd]) for wd in lb_vb]
 
-    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/pre_clipped_lstm.p',"wb"))
+    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/' + use_glove + 'pre_clipped_lstm.p',"wb"))
 
     # only use the notes and diagnoses more than certain amount
     freq_lbd = lb_lst[freq_lbd_idx - 1][1]
     train_notes,train_labels = diag_narrow(train_notes,train_labels,lb_freq,freq_lbd)
-    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/clipped_data_lstm_' + str(freq_lbd_idx) + '.p',"wb"))
+    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/' + use_glove + 'clipped_data_lstm_' + str(freq_lbd_idx) + '.p',"wb"))
 
     # make labels natural language
     train_seman = []
@@ -339,7 +358,11 @@ if __name__ == "__main__":
 
     # build the word embedding for dataset
     print "loading word2vec vectors...",
-    w2v = load_bin_vec(loc + w2v_file, word2idx)
+
+    if using_glove:
+        w2v = load_text_vec(loc + w2v_file, word2idx)
+    else:
+        w2v = load_bin_vec(loc + w2v_file, word2idx)
 
     # w2v_sm = load_bin_vec(w2v_file, w2i_sm)
 
@@ -380,5 +403,5 @@ if __name__ == "__main__":
     
     lb_lst = dict(lb_lst)
     everything = [train, dev, test, Wemb, idx2word, word2idx, i2w_lb, i2w_sm,dict_s2n,ConfigInfo,(lb_lst,lb_freq_train,lb_freq_test)]
-    cPickle.dump(everything, open('./data/lstm_everything' + str(freq_lbd_idx) + '.p', "wb"))
+    cPickle.dump(everything, open('./data/' + use_glove + 'lstm_everything' + str(freq_lbd_idx) + '.p', "wb"))
 #    print "dataset created!"
