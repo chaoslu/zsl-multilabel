@@ -516,7 +516,7 @@ class ResCNNModel(Model):
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
-	parser.add_argument('-lf','--label_freq', default=500, type=str)
+	parser.add_argument('-lf','--label_freq', default='500', type=str)
 	parser.add_argument('-ug','--using_glove', default=False, type=bool)
 	args = parser.parse_args()
 	
