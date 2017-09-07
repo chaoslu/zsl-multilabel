@@ -267,10 +267,10 @@ class ResCNNModel(Model):
 		params = self.params
 
 		# CNN encoding for classification
-		# encoded = self.encoded
+		encoded = self.encoded
 		
 		# RNN encoding for classification
-		encoded = self.encodoed_R
+		# encoded = self.encodoed_R
 
 		# without mapping structure
 		prediction = tf.nn.bias_add(tf.matmul(encoded,params['ResNet_0_W']),params['ResNet_0_b'])
