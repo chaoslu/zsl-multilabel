@@ -4,6 +4,7 @@ import logging
 import time
 import cPickle
 import os
+import argparse
 from datetime import datetime
 from collections import OrderedDict
 
@@ -56,8 +57,8 @@ class Config:
 		self.max_len = ConfigInfo['max_len']	
 		self.max_len_sm = ConfigInfo['max_len_sm']
 		self.n_diags = ConfigInfo['n_diagnosis']	 
-		self.output_path = "./result_hlstm/{:%Y%m%d_%H%M%S}/".format(datetime.now())
-		self.output_path_results = "./result_hlstm/results_only/{:%Y%m%d_%H%M%S}/".format(datetime.now())
+		self.output_path = "./" + is_glove + "result_hlstm/{:%Y%m%d_%H%M%S}/".format(datetime.now())
+		self.output_path_results = "./" + is_glove + "result_hlstm/results_only/{:%Y%m%d_%H%M%S}/".format(datetime.now())
 		self.model_path = self.output_path + "model.weights"
 
 	"""
@@ -514,6 +515,11 @@ class ResCNNModel(Model):
 
 
 if __name__ == "__main__":
+	parser = argparse.ArgumentParser()
+	parser.add_argument('-lf','--label_freq', default=500, type=str)
+	parser.add_argument('-ug','--using_glove', default=False, type=bool)
+	args = parser.parse_args()
+	
 	# https://docs.python.org/2/howto/logging-cookbook.html
 	logger = logging.getLogger('eval_tok64_cnn_res4')
 	logger.setLevel(logging.INFO)
@@ -531,6 +537,11 @@ if __name__ == "__main__":
 	train, dev, test, W, idx2word, word2idx, i2w_lb, i2w_sm, dicts_mapping, ConfigInfo, lb_freq = x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[10]
 	del x
 	train_debug = (train[0][:70],train[1][:70],train[2][:70])
+
+	# whether use the glove data
+	is_glove = ''
+	if args.using_glove:
+		is_glove = 'glove_'
 
 	# import pdb;pdb.set_trace()
 	n_classes = len(i2w_lb)
