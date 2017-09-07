@@ -550,7 +550,13 @@ if __name__ == "__main__":
 
 	pred_acc = []
 	acc_max = 0
-		
+	
+	if not os.path.exists(model.Config.output_path):
+		os.makedirs(model.Config.output_path)
+
+	if not os.path.exists(model.Config.output_path_results):
+		os.makedirs(model.Config.output_path_results)
+	
 	GPU_config = tf.ConfigProto()
 	GPU_config.gpu_options.per_process_gpu_memory_fraction = 0.2
 	with tf.Graph().as_default():
@@ -581,8 +587,6 @@ if __name__ == "__main__":
 			logger.info("TEST ERROR: %.4f",test_score)
 
 			# make description of the configuration and test result
-			if not os.path.exists(model.Config.output_path_results):
-				os.makedirs(model.Config.output_path_results)
 			with open(model.Config.output_path_results + "description.txt","w") as f:
 				cfg = model.Config
 				f.write("feature_maps: %d\nfilters: [%d,%d,%d]\nrnncel: %s\nlearn_rate: %f\nbatch_size: %d\nbeta: %f\nresult: %f" % (cfg.feature_maps,cfg.filters[0],cfg.filters[1],cfg.filters[2],cfg.rnncell,cfg.learn_rate,cfg.batch_size,cfg.beta,test_score))
