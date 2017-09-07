@@ -256,12 +256,13 @@ def load_bin_vec(fname,  vocab):
 
 
 def load_text_vec(fname,  vocab):
-
     vectors = {}
-    for line in fname:
-        vals = line.rstrip().split(' ')
-        if vals[0] in vocab:
-            vectors[vals[0]] = [float(x) for x in vals[1:]]
+    with open(fname, "r") as f:
+        for line in f:
+            vals = line.rstrip().split(' ')
+            if vals[0] in vocab:
+                vectors[vals[0]] = [float(x) for x in vals[1:]]
+
     return vectors
 
 
