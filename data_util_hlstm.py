@@ -2,27 +2,25 @@ import numpy as np
 import tensorflow as tf
 import cPickle
 import nltk
+import argparse
 from nltk.tokenize import word_tokenize
 
 from collections import defaultdict
 from collections import OrderedDict
 
-notes_path = 'tok_hpi_clean_glove'
-dx_path = 'tok_dx_clean_glove'
-vector_path = 'vectors_my.txt'
-using_glove = True
 
 
-def load_data(loc='./data/'):
+
+def load_data(loc,locs):
 
     notes = []
     diagonosis = []
 
-    with open(loc + notes_path, 'rb') as f:
+    with open(loc + locs[0], 'rb') as f:
         for line in f:
             notes.append(line.strip())
 
-    with open(loc + dx_path, 'rb') as f:
+    with open(loc + locs[1], 'rb') as f:
         for line in f:
             diagonosis.append(line.strip())
 
@@ -284,18 +282,28 @@ def get_vocab_emb(word_vecs,idx2word,k=300):
 
 if __name__ == "__main__":   
 
-    loc = './data/'
-    freq_lbd_idx = 1000
-    w2v_file = 'GoogleNews-vectors-negative300.bin'
-    # valid_ngram = cPickle.load(open('./valid_gram.p','rb'))
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--label_freq', default=500, type=int)
+    parser.add_argument('--using_glove', default=False, type=bool)
+    args = parser.parse_args()
 
+    loc = './data/'
+    
+    w2v_file = 'GoogleNews-vectors-negative300.bin'
+    notes_path = 'tok_hpi_rpl'
+    dx_path = 'tok_dx_rpl'
     use_glove = ''
-    if using_glove:
+    
+    if args.using_glove:
+        notes_path = 'tok_hpi_clean_glove'
+        dx_path = 'tok_dx_clean_glove'
         use_glove = 'glove_'
-        w2v_file = vector_path
+        w2v_file = 'vectors_my.txt'
+
+    freq_lbd_idx = args.label_freq
 
     print "preparing data...",  
-    notestext, labeltext = load_data()
+    notestext, labeltext = load_data(loc,(notes_path,dx_path))
     notestext = preprocess(notestext)
 
     train_notes, train_labels = prepare_data(notestext,labeltext)
@@ -366,7 +374,7 @@ if __name__ == "__main__":
     # build the word embedding for dataset
     print "loading word2vec vectors...",
 
-    if using_glove:
+    if args.using_glove:
         w2v = load_text_vec(loc + w2v_file, word2idx)
     else:
         w2v = load_bin_vec(loc + w2v_file, word2idx)
