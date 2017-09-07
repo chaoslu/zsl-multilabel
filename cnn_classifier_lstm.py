@@ -327,7 +327,7 @@ class ResCNNModel(Model):
 				O_h = tf.get_variable(name="O")
 				b_2 = tf.get_variable(name="b_2")
 				pred_rnn = tf.matmul(output,O_h) + b_2
-				pred_rnn_oh = tf.arg_max(pred_rnn,dimension=1)
+				pred_rnn_oh = tf.argmax(pred_rnn,axis=1)
 				pred_rnn_oh = tf.nn.embedding_lookup(dict_emb,pred_rnn_oh)  # change the indice to indice of the whole vocabulary
 
 
@@ -344,7 +344,7 @@ class ResCNNModel(Model):
 			preds_rnn = tf.reshape(tf.concat(preds_rnn,axis=1),shape=[-1,mx_len,dec_num])
 			preds_rnn_oh = tf.concat(preds_rnn_oh,axis=1)
 
-			return preds_rnn,preds_rnn_oh,states[-1]
+			return preds_rnn,preds_rnn_oh
 
 
 	def add_loss_op(self,pred_cnn,pred_rnn):  # mapping, seman
@@ -526,7 +526,7 @@ class ResCNNModel(Model):
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
-	parser.add_argument('-lf','--label_freq', default=500, type=str)
+	parser.add_argument('-lf','--label_freq', default='500', type=str)
 	parser.add_argument('-ug','--using_glove', default=False, type=bool)
 	args = parser.parse_args()
 

@@ -337,7 +337,7 @@ class ResCNNModel(Model):
 					O_h = tf.get_variable(name="O"+diag_mark)
 					b_2 = tf.get_variable(name="b_2"+diag_mark)
 					pred_rnn = tf.matmul(output,O_h) + b_2
-					pred_rnn_oh = tf.arg_max(pred_rnn,dimension=1)
+					pred_rnn_oh = tf.argmax(pred_rnn,axis=1)
 					pred_rnn_oh = tf.nn.embedding_lookup(dict_emb,pred_rnn_oh)  # change the indice to indice of the whole vocabulary
 
 					# import pdb;pdb.set_trace()
@@ -533,10 +533,10 @@ if __name__ == "__main__":
 	logger.addHandler(fh)
 
 	logger.info('loading data...')
-	x = cPickle.load(open("./data/hlstm_everything500.p","rb"))
+	x = cPickle.load(open("./data/hlstm_everything" + args.label_freq + ".p","rb"))
 	train, dev, test, W, idx2word, word2idx, i2w_lb, i2w_sm, dicts_mapping, ConfigInfo, lb_freq = x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[10]
 	del x
-	train_debug = (train[0][:70],train[1][:70],train[2][:70])
+	# train_debug = (train[0][:70],train[1][:70],train[2][:70])
 
 	# whether use the glove data
 	is_glove = ''
