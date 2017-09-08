@@ -47,13 +47,14 @@ class Config:
 
 	# valid_batch_size = 10
 
-	def __init__(self,ConfigInfo,n_label,n_words_sm,is_glove):
+	def __init__(self,ConfigInfo,n_label,n_words_sm,dicts_mapping,is_glove):
 		self.nlabels = n_label
 		self.n_words_sm = n_words_sm
 		self.nhidden = np.round(n_label * 3000 / (3000+n_label))
 		self.n_words = ConfigInfo['vocab_size']
 		self.max_len = ConfigInfo['max_len']	
 		self.max_len_sm = ConfigInfo['max_len_sm']
+		self.dicts_mapping = dicts_mapping
 		self.n_diags = ConfigInfo['n_diagnosis']	 
 		self.output_path = "./" + is_glove + "result_hlstm/{:%Y%m%d_%H%M%S}/".format(datetime.now())
 		self.output_path_results = "./" + is_glove + "result_hlstm/results_only/{:%Y%m%d_%H%M%S}/".format(datetime.now())
@@ -531,7 +532,7 @@ if __name__ == "__main__":
 	logger.addHandler(fh)
 	logger.info('loading data...')
 	x = cPickle.load(open("./data/hlstm_everything_new" + args.label_freq + ".p","rb"))
-	train, dev, test, W_g, W_m, idx2word, word2idx, i2w_lb, i2w_sm, ConfigInfo, lb_freq = x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[10]
+	train, dev, test, W_g, W_m, idx2word, word2idx, i2w_lb, i2w_sm, ConfigInfo, dicts_mapping, lb_freq = x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[10], x[11]
 	del x
 
 	# whether use the glove data
@@ -545,7 +546,7 @@ if __name__ == "__main__":
 
 	n_classes = len(i2w_lb)
 	n_words_sm = len(i2w_sm)
-	config = Config(ConfigInfo,n_classes,n_words_sm, data_type)
+	config = Config(ConfigInfo,n_classes,n_words_sm,dicts_mapping, data_type)
 
 	pred_acc = []
 	acc_max = 0

@@ -386,6 +386,10 @@ if __name__ == "__main__":
     Wemb_g[:vocab_size-3] = W_g
     Wemb_m[:vocab_size-3] = W_m
 
+    dicts_mapping = np.zeros((len(i2w_sm),1),dtype=np.int)
+    for i in range(len(i2w_sm)):
+       dicts_mapping[i,:] = word2idx[i2w_sm[i]]
+
 
     ConfigInfo = {}
     ConfigInfo['n_diagnosis'] = max_diags
@@ -394,6 +398,6 @@ if __name__ == "__main__":
     ConfigInfo['vocab_size'] = vocab_size
 
     lb_lst = dict(lb_lst)
-    everything = [train, dev, test, Wemb_g, Wemb_m, idx2word, word2idx, i2w_lb, i2w_sm, ConfigInfo,(lb_lst,lb_freq_train,lb_freq_test)]
+    everything = [train, dev, test, Wemb_g, Wemb_m, idx2word, word2idx, i2w_lb, i2w_sm, dicts_mapping, ConfigInfo,(lb_lst,lb_freq_train,lb_freq_test)]
     cPickle.dump(everything, open('./data/hlstm_everything_new' + str(freq_lbd_idx) + '.p', "wb"))
 #    print "dataset created!"
