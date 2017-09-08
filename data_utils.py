@@ -201,21 +201,14 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--label_freq', default=500, type=int)
-    parser.add_argument('--using_glove', default=False, type=bool)
     args = parser.parse_args()
 
     loc = './data/'
     
-    w2v_file = 'GoogleNews-vectors-negative300.bin'
-    notes_path = 'tok_hpi_rpl'
-    dx_path = 'tok_dx_rpl'
-    use_glove = ''
-    
-    if args.using_glove:
-        notes_path = 'tok_hpi_clean_glove'
-        dx_path = 'tok_dx_clean_glove'
-        use_glove = 'glove_'
-        w2v_file = 'vectors_my.txt'
+    w2v_file_m = 'GoogleNews-vectors-negative300.bin'
+    w2v_file_g = 'vectors_my.txt'
+    notes_path = 'tok_hpi_clean'
+    dx_path = 'tok_dx_clean'
 
     freq_lbd_idx = args.label_freq
 
@@ -245,12 +238,12 @@ if __name__ == "__main__":
     tp = zip(*train_set)
     train_notes = list(tp[0])
     train_labels = list(tp[1])
-    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/' + use_glove + 'pre_clipped.p',"wb"))
+    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/' + 'mixed_' + 'pre_clipped.p',"wb"))
 
     # only use the notes and diagnoses more than certain amount
     freq_lbd = lb_lst[freq_lbd_idx - 1][1]
     train_notes,train_labels = diag_narrow(train_notes,train_labels,lb_freq,freq_lbd)
-    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/' + use_glove + 'clipped_data_' + str(freq_lbd_idx) + '.p',"wb"))
+    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/' + 'mixed_' + 'clipped_data_' + str(freq_lbd_idx) + '.p',"wb"))
 
     # make labels natural language
     train_seman = []
@@ -289,18 +282,16 @@ if __name__ == "__main__":
 
     # build the word embedding for dataset
     print "loading word2vec vectors...",
-    if args.using_glove:
-        w2v = load_text_vec(loc + w2v_file, word2idx)
-    else:
-        w2v = load_bin_vec(loc + w2v_file, word2idx)
+    w2v_g = load_text_vec(loc + w2v_file_g, word2idx)
+    w2v_m= load_bin_vec(loc + w2v_file_m, word2idx)
 
+    add_unknown_words(w2v_g, word2idx)
+    add_unknown_words(w2v_m, word2idx)
 
-    add_unknown_words(w2v, word2idx)
-    # add_unknown_words(w2v_sm, w2i_sm)
-
-    W = get_vocab_emb(w2v,idx2word)
+    W_g = get_vocab_emb(w2v_g,idx2word)
+    W_m = get_vocab_emb(w2v_m,idx2word)
     # W_sm = get_vocab_emb(w2v_sm,i2w_sm)
 
-    everything = [train, dev, test, W, idx2word, word2idx, w2i_lb, i2w_lb,nl_clss,ConfigInfo]
-    cPickle.dump(everything, open('./data/' + use_glove + 'everything' + str(freq_lbd_idx) + '.p', "wb"))
+    everything = [train, dev, test, W_g, W_m, idx2word, word2idx, w2i_lb, i2w_lb,nl_clss,ConfigInfo]
+    cPickle.dump(everything, open('./data/everything_new' + str(freq_lbd_idx) + '.p', "wb"))
 #    print "dataset created!"

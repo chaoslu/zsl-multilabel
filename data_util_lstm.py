@@ -286,8 +286,10 @@ if __name__ == "__main__":
     loc = './data/'
     
     w2v_file = 'GoogleNews-vectors-negative300.bin'
-    notes_path = 'tok_hpi_rpl'
-    dx_path = 'tok_dx_rpl'
+    # notes_path = 'tok_hpi_rpl'
+    # dx_path = 'tok_dx_rpl'
+    notes_path = 'tok_hpi_clean_glove'
+    dx_path = 'tok_dx_clean_glove'
     use_glove = ''
     
     if args.using_glove:
@@ -335,12 +337,12 @@ if __name__ == "__main__":
     lb_vb = OrderedDict(sorted(lb_freq.items(), key = lambda t:t[1], reverse = True))
     lb_lst = [(wd,lb_vb[wd]) for wd in lb_vb]
 
-    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/' + use_glove + 'pre_clipped_lstm.p',"wb"))
+    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/' + 'mixed_' + 'pre_clipped_lstm.p',"wb"))
 
     # only use the notes and diagnoses more than certain amount
     freq_lbd = lb_lst[freq_lbd_idx - 1][1]
     train_notes,train_labels = diag_narrow(train_notes,train_labels,lb_freq,freq_lbd)
-    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/' + use_glove + 'clipped_data_lstm_' + str(freq_lbd_idx) + '.p',"wb"))
+    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/' + 'mixed_' + 'clipped_data_lstm_' + str(freq_lbd_idx) + '.p',"wb"))
 
     # make labels natural language
     train_seman = []
@@ -412,5 +414,5 @@ if __name__ == "__main__":
     
     lb_lst = dict(lb_lst)
     everything = [train, dev, test, Wemb, idx2word, word2idx, i2w_lb, i2w_sm,dict_s2n,ConfigInfo,(lb_lst,lb_freq_train,lb_freq_test)]
-    cPickle.dump(everything, open('./data/' + use_glove + 'lstm_everything' + str(freq_lbd_idx) + '.p', "wb"))
+    cPickle.dump(everything, open('./data/' + 'mixed_' + 'lstm_everything' + str(freq_lbd_idx) + '.p', "wb"))
 #    print "dataset created!"
