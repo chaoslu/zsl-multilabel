@@ -544,7 +544,6 @@ if __name__ == "__main__":
 	logger.info('loading data...')
 	x = cPickle.load(open("./data/lstm_everything_new" + args.label_freq + ".p","rb"))
 
-	import pdb; pdb.set_trace()
 	train, dev, test, W_g, W_m, idx2word, word2idx, i2w_lb, i2w_sm, ConfigInfo, dicts_mapping, lb_freq = x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[10], x[11]
 	del x
 

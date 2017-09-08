@@ -380,9 +380,9 @@ if __name__ == "__main__":
     Wemb_g[:vocab_size-3] = W_g
     Wemb_m[:vocab_size-3] = W_m
 
-    dicts_mapping = np.zeros((len(i2w_lb),1),dtype=np.int)
-    for i in range(len(i2w_lb)):
-	dicts_mapping[i,:] = word2idx[i2w_lb[i]]
+    dicts_mapping = np.zeros((len(i2w_sm),1),dtype=np.int)
+    for i in range(len(i2w_sm)):
+	dicts_mapping[i,:] = word2idx[i2w_sm[i]]
     
     # get the hyperparameters
     max_len = max([len(nts) for nts in train[0] + test[0] + dev[0]])
