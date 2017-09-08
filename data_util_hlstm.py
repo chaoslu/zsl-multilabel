@@ -322,12 +322,12 @@ if __name__ == "__main__":
 
     train_notes = list(tp[0])
     train_labels = list(tp[1])
-    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/' + use_glove + 'pre_clipped_hlstm.p',"wb"))
+    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/pre_clipped_hlstm.p',"wb"))
 
     # only use the notes and diagnoses more than certain amount
     freq_lbd = lb_lst[freq_lbd_idx - 1][1]
     train_notes,train_labels = diag_narrow(train_notes,train_labels,lb_freq,freq_lbd)
-    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/' + use_glove + 'clipped_data_hlstm_' + str(freq_lbd_idx) + '.p',"wb"))
+    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/clipped_data_hlstm_' + str(freq_lbd_idx) + '.p',"wb"))
 
 
     label_lexon = []
@@ -395,5 +395,5 @@ if __name__ == "__main__":
 
     lb_lst = dict(lb_lst)
     everything = [train, dev, test, Wemb_g, Wemb_m, idx2word, word2idx, i2w_lb, i2w_sm, ConfigInfo,(lb_lst,lb_freq_train,lb_freq_test)]
-    cPickle.dump(everything, open('./data/' + use_glove + 'hlstm_everything' + str(freq_lbd_idx) + '.p', "wb"))
+    cPickle.dump(everything, open('./data/hlstm_everything_new' + str(freq_lbd_idx) + '.p', "wb"))
 #    print "dataset created!"
