@@ -386,7 +386,6 @@ if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
 	parser.add_argument('-lf','--label_freq', default='500', type=str)
 	parser.add_argument('-ug','--using_glove', default=False, type=bool)
-	parser.add_argument('-um','--using_mixed', default=False, type=bool)
 	args = parser.parse_args()
 	
 	# https://docs.python.org/2/howto/logging-cookbook.html
@@ -400,27 +399,23 @@ if __name__ == "__main__":
 	fh.setFormatter(formatter)
 	ch.setFormatter(formatter)
 	logger.addHandler(fh)
-
-	# whether use the glove data
-	data_type = ''
-	if args.using_glove:
-		data_type = 'glove_'
-
-	if args.using_mixed:
-		data_type = 'mixed_'
-
 	logger.info('loading data...')
-	x = cPickle.load(open("./data/" + data_type  + "everything" + args.label_freq + ".p","rb"))
-	# train, dev, test, W, idx2word, word2idx, i2w_lb, i2w_sm, dicts_mapping, ConfigInfo, lb_freq_list = x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[10]
-	
-	train, dev, test, W, idx2word, word2idx, w2i_lb, i2w_lb, nl_clss, ConfigInfo = x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9]
+	x = cPickle.load(open("./data/everything_new" + args.label_freq + ".p","rb"))
+	train, dev, test, W_g, W_m, idx2word, word2idx, w2i_lb, i2w_lb, nl_clss, ConfigInfo = x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[10]
 
 	del x
 
 	n_classes = len(i2w_lb)
+	# whether use the glove data
+	data_type = ''
+	if args.using_glove:
+		data_type = 'glove_'
+		W = W_g
+	else:
+		data_type = 'mixed_'
+		W = W_m
 	config = Config(ConfigInfo,n_classes,data_type)
-	# for debug
-	train_debug = (train[0][:5000], train[1][:5000], train[2][:5000])
+
 
 
 	# add another special token called <pad_zero>

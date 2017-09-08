@@ -48,13 +48,11 @@ class Config:
 
 	# valid_batch_size = 10
 
-	def __init__(self,ConfigInfo,n_label,n_words_sm,dicts_mapping,data_type):
+	def __init__(self,ConfigInfo,n_label,n_words_sm,data_type):
 		self.nlabels = n_label
 		self.n_words_sm = n_words_sm
 		self.nhidden = np.round(n_label * 3000 / (3000+n_label))
-		self.dicts_mapping = dicts_mapping
 		self.n_words = ConfigInfo['vocab_size']  # 38564 for clean data_64, 39367 for rpl data_64
-		self.n_words_sm = len(dicts_mapping)
 		self.max_len = ConfigInfo['max_len']	 # 580 for clean data_64, 575 for rpl
 		self.max_len_sm = ConfigInfo['max_len_sm']	 # 10 for clean data_64, 9 for rpl
 		self.output_path = "./" + data_type + "result_lstm/{:%Y%m%d_%H%M%S}/".format(datetime.now())
@@ -528,7 +526,6 @@ if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
 	parser.add_argument('-lf','--label_freq', default='500', type=str)
 	parser.add_argument('-ug','--using_glove', default=False, type=bool)
-	parser.add_argument('-um','--using_mixed', default=False, type=bool)
 	args = parser.parse_args()
 
 	# https://docs.python.org/2/howto/logging-cookbook.html
@@ -542,22 +539,24 @@ if __name__ == "__main__":
 	fh.setFormatter(formatter)
 	ch.setFormatter(formatter)
 	logger.addHandler(fh)
+	logger.info('loading data...')
+	x = cPickle.load(open("./data/lstm_everything_new" + args.label_freq + ".p","rb"))
+	train, dev, test, W_g, W_m, idx2word, word2idx, i2w_lb, i2w_sm, ConfigInfo, lb_freq = x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[10]
+	del x
+
 
 	# whether use the glove data
 	data_type = ''
 	if args.using_glove:
 		data_type = 'glove_'
-	if args.using_mixed:
+		W = W_g
+	else:
 		data_type = 'mixed_'
-
-	logger.info('loading data...')
-	x = cPickle.load(open("./data/" + data_type + "lstm_everything" + args.label_freq + ".p","rb"))
-	train, dev, test, W, idx2word, word2idx, i2w_lb, i2w_sm, dicts_mapping, ConfigInfo, lb_freq = x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[10]
-	del x
+		W = W_m
 
 	n_classes = len(i2w_lb)
 	n_words_sm = len(i2w_sm)
-	config = Config(ConfigInfo,n_classes,n_words_sm,dicts_mapping,data_type)
+	config = Config(ConfigInfo, n_classes, n_words_sm, data_type)
 
 	pred_acc = []
 	acc_max = 0
