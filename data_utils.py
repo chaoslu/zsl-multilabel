@@ -238,12 +238,12 @@ if __name__ == "__main__":
     tp = zip(*train_set)
     train_notes = list(tp[0])
     train_labels = list(tp[1])
-    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/' + 'mixed_' + 'pre_clipped.p',"wb"))
+    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/pre_clipped.p',"wb"))
 
     # only use the notes and diagnoses more than certain amount
     freq_lbd = lb_lst[freq_lbd_idx - 1][1]
     train_notes,train_labels = diag_narrow(train_notes,train_labels,lb_freq,freq_lbd)
-    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/' + 'mixed_' + 'clipped_data_' + str(freq_lbd_idx) + '.p',"wb"))
+    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/clipped_data_' + str(freq_lbd_idx) + '.p',"wb"))
 
     # make labels natural language
     train_seman = []

@@ -284,21 +284,14 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--label_freq', default=500, type=int)
-    parser.add_argument('--using_glove', default=False, type=bool)
     args = parser.parse_args()
 
     loc = './data/'
     
-    w2v_file = 'GoogleNews-vectors-negative300.bin'
-    notes_path = 'tok_hpi_rpl'
-    dx_path = 'tok_dx_rpl'
-    use_glove = ''
-    
-    if args.using_glove:
-        notes_path = 'tok_hpi_clean_glove'
-        dx_path = 'tok_dx_clean_glove'
-        use_glove = 'glove_'
-        w2v_file = 'vectors_my.txt'
+    w2v_file_m = 'GoogleNews-vectors-negative300.bin'
+    w2v_file_g = 'vectors_my.txt'
+    notes_path = 'tok_hpi_clean'
+    dx_path = 'tok_dx_clean'
 
     freq_lbd_idx = args.label_freq
 
@@ -374,28 +367,25 @@ if __name__ == "__main__":
     # build the word embedding for dataset
     print "loading word2vec vectors...",
 
-    if args.using_glove:
-        w2v = load_text_vec(loc + w2v_file, word2idx)
-    else:
-        w2v = load_bin_vec(loc + w2v_file, word2idx)
+    w2v_g = load_text_vec(loc + w2v_file_g, word2idx)
+    w2v_m = load_bin_vec(loc + w2v_file_m, word2idx)
 
-    add_unknown_words(w2v, word2idx)
-    W = get_vocab_emb(w2v,idx2word)
+    add_unknown_words(w2v_g, word2idx)
+    add_unknown_words(w2v_m, word2idx)
+
+    W_g = get_vocab_emb(w2v_g,idx2word)
+    W_m = get_vocab_emb(w2v_m,idx2word)
+    # W_sm = get_vocab_emb(w2v_sm,i2w_sm)
 
     # add special token to both the notes vocabulary and the semantic vocabulary
     word2idx,idx2word = add_special_token(word2idx,idx2word)
-    w2i_sm, i2w_sm = add_special_token(w2i_sm,i2w_sm)
-
     vocab_size = len(word2idx)
-    vocab_size_sm = len(w2i_sm)
+    
+    Wemb_g = np.random.uniform(-0.25,0.25,(vocab_size,300))
+    Wemb_m = np.random.uniform(-0.25,0.25,(vocab_size,300))
+    Wemb_g[:vocab_size-3] = W_g
+    Wemb_m[:vocab_size-3] = W_m
 
-    Wemb = np.zeros((vocab_size,300))
-    Wemb[:vocab_size-3] = W
-
-    # build mapping between notes dictionary and the seman dictionary
-    dict_s2n = np.zeros((vocab_size_sm,1),dtype=np.int32)
-    for idx in i2w_sm:
-        dict_s2n[idx] = word2idx[i2w_sm[idx]]
 
     ConfigInfo = {}
     ConfigInfo['n_diagnosis'] = max_diags
@@ -404,6 +394,6 @@ if __name__ == "__main__":
     ConfigInfo['vocab_size'] = vocab_size
 
     lb_lst = dict(lb_lst)
-    everything = [train, dev, test, Wemb, idx2word, word2idx, i2w_lb, i2w_sm,dict_s2n,ConfigInfo,(lb_lst,lb_freq_train,lb_freq_test)]
+    everything = [train, dev, test, Wemb_g, Wemb_m, idx2word, word2idx, i2w_lb, i2w_sm, ConfigInfo,(lb_lst,lb_freq_train,lb_freq_test)]
     cPickle.dump(everything, open('./data/' + use_glove + 'hlstm_everything' + str(freq_lbd_idx) + '.p', "wb"))
 #    print "dataset created!"
