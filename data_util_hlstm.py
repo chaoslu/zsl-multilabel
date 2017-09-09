@@ -390,6 +390,9 @@ if __name__ == "__main__":
     for i in range(len(i2w_sm)):
        dicts_mapping[i,:] = word2idx[i2w_sm[i]]
 
+    # get the hyperparameters
+    max_len = max([len(nts) for nts in train[0] + test[0] + dev[0]])
+    max_len_sm = max([len(sm) for sm in train[2] + test[2] + dev[2]]) + 1  # 'GO' or 'EOS' takes up a postition
 
     ConfigInfo = {}
     ConfigInfo['n_diagnosis'] = max_diags
