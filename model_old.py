@@ -117,6 +117,7 @@ class Model(object):
 
     def build(self):
         self.add_placeholders()
+        self.encoded = self.cnn_enc()
         # self.seman = self.cnn_enc(True)
         # self.map,self.regularizer = self.add_mapping_op()
         self.pred = self.add_prediction()

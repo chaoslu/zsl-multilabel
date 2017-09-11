@@ -261,6 +261,13 @@ class ResCNNModel(Model):
 
 		return loss
 
+
+	def predict_on_batch(self, sess, inputs_batch, seman_batch):
+		feed = self.create_feed_dict(inputs_batch,seman_batch)
+		predictions,cnn_ecoded = sess.run([self.pred,self.encoded], feed_dict=feed)
+
+		return predictions,cnn_ecoded
+
 	'''
 	def predict_on_batch(self, sess, inputs_batch):
 		feed = self.create_feed_dict(inputs_batch,dropout_rate=0)
@@ -275,6 +282,7 @@ class ResCNNModel(Model):
 		iterator = get_minibatches_idx(len(examples[0]),self.Config.valid_size,False)	
 		preds = []
 		labels = []
+		cnn_encodeds = []
 
 		for i,idx in enumerate(iterator):
 			nts,lb,sm = examples
@@ -289,21 +297,22 @@ class ResCNNModel(Model):
 			padded_sm_batch = np.array(padded_sm_batch)
 			lb_batch = np.array(lb_batch)
 
-			pred = self.predict_on_batch(sess,padded_nts_batch,padded_sm_batch)
-			
+			pred,cnn_encoded = self.predict_on_batch(sess,padded_nts_batch,padded_sm_batch)
+
 			# multiclass version
 			preds.append(pred)
 			labels.append(lb_batch)
-		
+			cnn_encodeds.append(cnn_encoded)
+
 		preds = np.concatenate(preds,axis=0)
 		labels = np.concatenate(labels,axis=0)
-
+		cnn_encodeds = np.concatenate(cnn_encodeds,axis=0) 
 		'''
 		# multiclass version to get class prediction for each sample
 		preds_dense = np.argmax(preds,axis=1)
 		preds_topk = [np.argpartition(preds,-k,axis=1) for k in range(1,self.Config.top_k+1)]
 		labels_dense = np.argmax(labels,axis=1)
-		
+
 		label_binarizer = sklearn.preprocessing.LabelBinarizer()
 		label_binarizer.fit(range(self.Config.nlabels))
 		preds_peak = label_binarizer.transform(preds_dense)
@@ -329,24 +338,25 @@ class ResCNNModel(Model):
 
 		# precision and recall for all the classes
 		pr_rcl_cls = [average_precision_score(labels[:,i],preds[:,i]) for i in range(labels.shape[1])]
-		
+
 		# precision and recall for all instances
 		# preds = preds.flatten()
 		# labels = labels.flatten()
-   		pr_rcl_cls_clean = [itm for itm in pr_rcl_cls if not np.isnan(itm)]
+		pr_rcl_cls_clean = [itm for itm in pr_rcl_cls if not np.isnan(itm)]
 		pr = np.average(pr_rcl_cls_clean)
-		
+
 		# error = 1. - pr
 		# auc = roc_auc_score(labels,preds)
 		# error = 1. - auc
 
+
+		# should return the embbeding before the classification step and the labels
 		# return k_accuracy,(precision_cls,recall_cls,f1_cls,pr_rcl_cls)
-		return pr,pr_rcl_cls
-	
+		return pr,pr_rcl_cls,cnn_encodeds,labels
+
 
 	def run_epoch(self,sess,train_examples,dev_set):
 		iterator = get_minibatches_idx(len(train_examples[0]),self.Config.batch_size,False)
-		auc_score = 0
 		dispFreq = self.Config.dispFreq
 
 		for i,idx in enumerate(iterator):
@@ -386,8 +396,11 @@ if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
 	parser.add_argument('-lf','--label_freq', default='500', type=str)
 	parser.add_argument('-ug','--using_glove', default=False, type=bool)
+	parser.add_argument('-it','--is_train',default='train', type=str)
+	parser.add_argument('-mp','--model_path',default='',type=str)
+
 	args = parser.parse_args()
-	
+
 	# https://docs.python.org/2/howto/logging-cookbook.html
 	logger = logging.getLogger('eval_tok64_cnn_res4')
 	logger.setLevel(logging.INFO)
@@ -442,7 +455,7 @@ if __name__ == "__main__":
 		logger.info("the output path: %s", model.Config.output_path)
 		init = tf.global_variables_initializer()
 		saver = tf.train.Saver()
-		
+
 		if not os.path.exists(model.Config.output_path):
 			os.makedirs(model.Config.output_path)
 
@@ -450,25 +463,33 @@ if __name__ == "__main__":
 			os.makedirs(model.Config.output_path_results)
 
 		with tf.Session(config=GPU_config) as session:
+			path = ''
 			session.run(init)
-			for epoch in range(Config.max_epochs):
-				logger.info("running epoch %d", epoch)
-				pred_acc.append(model.run_epoch(session,train,dev))
-				# if pred_acc[-1][model.Config.top_k-1] > acc_max:
-				if pred_acc[-1] > acc_max:
-					logger.info("new best AUC score: %.4f", pred_acc[-1])  # [model.Config.top_k-1])
-					acc_max = pred_acc[-1]  # [model.Config.top_k-1]
-					saver.save(session, model.Config.model_path)
-				logger.info("BEST AUC SCORE: %.4f", acc_max)
-			saver.restore(session, model.Config.model_path)	
-			test_acc,precision_recall_cls = model.evaluate(session,test)
-			logger.info("TEST ERROR: %.4f", test_acc)  # [model.Config.top_k-1])
+			if args.is_train == 'train':
+				path = model.Config.model_path
+				for epoch in range(Config.max_epochs):
+					logger.info("running epoch %d", epoch)
+					pred_acc.append(model.run_epoch(session,train,dev))
+					# if pred_acc[-1][model.Config.top_k-1] > acc_max:
+					if pred_acc[-1] > acc_max:
+						logger.info("new best AUC score: %.4f", pred_acc[-1])  # [model.Config.top_k-1])
+						acc_max = pred_acc[-1]  # [model.Config.top_k-1]
+						saver.save(session, path)
+					logger.info("BEST AUC SCORE: %.4f", acc_max)
+				saver.restore(session, path)	
+				test_acc,precision_recall_cls,cnn_encodings,labels = model.evaluate(session,test)
+				logger.info("TEST ERROR: %.4f", test_acc)  # [model.Config.top_k-1])
 
+			else:
+				path = args.model_path
+				saver.restore(session, path)
+				test_acc,precision_recall_cls,cnn_encodings,labels = model.evaluate(session,test)
+				logger.info("TEST ERROR: %.4f", test_acc)  # [model.Config.top_k-1])
 			# make description of the configuration and test result
 			with open(model.Config.output_path_results + "description.txt","w") as f:
 				cfg = model.Config
-				f.write("feature_maps: %d\nfilters: [%d,%d,%d]\nlearn_rate: %f\nbatch_size: %d\nresult: %f" % (cfg.feature_maps,cfg.filters[0],cfg.filters[1],cfg.filters[2],cfg.learn_rate,cfg.batch_size,test_acc))  # [cfg.top_k-1]))
+				f.write("model_path: %s\nfeature_maps: %d\nfilters: [%d,%d,%d]\nlearn_rate: %f\nbatch_size: %d\nresult: %f" % (path,cfg.feature_maps,cfg.filters[0],cfg.filters[1],cfg.filters[2],cfg.learn_rate,cfg.batch_size,test_acc))  # [cfg.top_k-1]))
 			f.close()
 
 			# save all the results
-			cPickle.dump([pred_acc,test_acc,precision_recall_cls],open(model.Config.output_path_results + 'results' + str(n_classes) + '.p','wb'))
+			cPickle.dump([pred_acc,test_acc,precision_recall_cls,cnn_encodings,labels],open(model.Config.output_path_results + 'results' + str(n_classes) + '.p','wb'))
