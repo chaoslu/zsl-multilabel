@@ -547,7 +547,6 @@ if __name__ == "__main__":
 	n_classes = len(i2w_lb)
 	n_words_sm = len(i2w_sm)
 
-	imo
 	config = Config(ConfigInfo,n_classes,n_words_sm,dicts_mapping, data_type)
 
 	pred_acc = []
