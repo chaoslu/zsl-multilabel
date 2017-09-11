@@ -508,9 +508,7 @@ class ResCNNModel(Model):
 			sm_original = [sm_target[i][j] for j in range(sm_target.shape[1]) if masks[i][j]]
 			masked_sm_target.append(sm_original)
 			masked_decoded.append(rnn_decoded)
-		# import pdb; pdb.set_trace()
-		# is_correctly_predicted = [np.array_equal(preds_cnn_peak[i],labels[i]) for i in range(preds_cnn_peak.shape[0])]  # check if predcition is correct
-
+		
 		incorrect_cls_decoded = [(masked_sm_target[i],masked_decoded[i],nts[i]) for i,c_p in enumerate(classified_result_k) if not c_p]  # if not correctly classified
 		all_decoded = [(masked_sm_target[i],masked_decoded[i],nts[i]) for i in range(len(classified_result_k))]
 		# import pdb; pdb.set_trace()

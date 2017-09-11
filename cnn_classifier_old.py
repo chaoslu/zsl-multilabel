@@ -46,7 +46,7 @@ class Config:
 
 	# valid_batch_size = 10
 
-	def __init__(self,ConfigInfo,n_label,data_type):
+	def __init__(self,ConfigInfo,n_label,data_type,label_type):
 		self.nlabels = n_label
 		self.nhidden = np.round(n_label * 3000 / (3000+n_label))
 		self.n_words = ConfigInfo['vocab_size']  # 38564 for clean data_64, 39367 for rpl data_64
@@ -215,13 +215,15 @@ class ResCNNModel(Model):
 		# without mapping structure
 		encoded = self.cnn_enc(is_seman)
 		prediction = tf.matmul(encoded,params['ResNet_0_W'])
-		
+
 		# for multiclass case
-		# prediction_dropout = tf.nn.bias_add(prediction,params['ResNet_0_b'])
-		
+		if self.label_type == 'single':
+			prediction_dropout = tf.nn.bias_add(prediction,params['ResNet_0_b'])
+
 		# for multilabel case
-		prediction_dropout = tf.sigmoid(tf.nn.bias_add(prediction,params['ResNet_0_b']))
-		
+		else:
+			prediction_dropout = tf.sigmoid(tf.nn.bias_add(prediction,params['ResNet_0_b']))
+
 		'''
 		# Residual Network
 		Reslayer1_X,Reslayer1_Z = ResNet_Unit(prediction,prediction_dropout,params,prefix='ResNet_1')
@@ -238,12 +240,12 @@ class ResCNNModel(Model):
 
 
 	def add_loss_op(self,pred):  # mapping,seman,
-		# for evaluation of auc
-		# loss_data_seman = tf.nn.l2_loss(mapping - seman)/self.Config.batch_size * 2 + self.regularizer * self.Config.beta1
-		loss_seman_label = - tf.reduce_mean(self.labels_placeholder * tf.log(pred + 1e-6) + (1 - self.labels_placeholder) * tf.log(1 - pred + 1e-6))
-		loss = loss_seman_label  # + loss_data_seman * self.Config.beta2
-		
-		# loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels = self.labels_placeholder, logits= pred))
+
+		if self.label_type == 'single':
+			loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels = self.labels_placeholder, logits= pred))
+
+		else:
+			loss = - tf.reduce_mean(self.labels_placeholder * tf.log(pred + 1e-6) + (1 - self.labels_placeholder) * tf.log(1 - pred + 1e-6)) 
 
 		return loss
 
@@ -306,53 +308,49 @@ class ResCNNModel(Model):
 
 		preds = np.concatenate(preds,axis=0)
 		labels = np.concatenate(labels,axis=0)
-		cnn_encodeds = np.concatenate(cnn_encodeds,axis=0) 
-		'''
-		# multiclass version to get class prediction for each sample
-		preds_dense = np.argmax(preds,axis=1)
-		preds_topk = [np.argpartition(preds,-k,axis=1) for k in range(1,self.Config.top_k+1)]
-		labels_dense = np.argmax(labels,axis=1)
+		cnn_encodeds = np.concatenate(cnn_encodeds,axis=0)
 
-		label_binarizer = sklearn.preprocessing.LabelBinarizer()
-		label_binarizer.fit(range(self.Config.nlabels))
-		preds_peak = label_binarizer.transform(preds_dense)
-		assert preds_peak.shape == labels.shape
+		if self.label_type == 'multi': 
+			# precision and recall for all the classes
+			pr_rcl_cls = [average_precision_score(labels[:,i],preds[:,i]) for i in range(labels.shape[1])]
+			pr_rcl_cls_clean = [itm for itm in pr_rcl_cls if not np.isnan(itm)]
+			pr = np.average(pr_rcl_cls_clean)
 
-		true_positive_cls = np.sum(preds_peak * labels,axis=0).astype('f')
-		gold_cls = np.sum(labels,axis=0).astype('f')
-		preds_cnn_cls = np.sum(preds_peak,axis=0).astype('f')
+			# should return the embbeding before the classification step and the labels
+			return pr,pr_rcl_cls,cnn_encodeds,labels
 
-		# precision recall f1 scores
-		precision_cls = [tp/gd if gd != 0 else 0 for (tp,gd) in zip(true_positive_cls,gold_cls)]
-		recall_cls = [tp/prd if prd != 0 else 0 for (tp,prd) in zip(true_positive_cls,preds_cnn_cls)]
-		f1_cls = [2 * p * r/(p+r) if p * r != 0 else 0 for (p,r) in zip(precision_cls,recall_cls)]
+		else:
 
-		# import pdb; pdb.set_trace()
-		k_accuracy = []
-		for k in range(self.Config.top_k):
-			mask = [labels_dense[i] in preds_topk[k][i][-k-1:] for i in range(preds.shape[0])]
-			tp = [msk for msk in mask if msk]
-			acc = float(len(tp))/len(mask)
-			k_accuracy.append(acc)
-		'''
+			# multiclass version to get class prediction for each sample
+			preds_dense = np.argmax(preds,axis=1)
+			preds_topk = [np.argpartition(preds,-k,axis=1) for k in range(1,self.Config.top_k+1)]
+			labels_dense = np.argmax(labels,axis=1)
 
-		# precision and recall for all the classes
-		pr_rcl_cls = [average_precision_score(labels[:,i],preds[:,i]) for i in range(labels.shape[1])]
+			label_binarizer = sklearn.preprocessing.LabelBinarizer()
+			label_binarizer.fit(range(self.Config.nlabels))
+			preds_peak = label_binarizer.transform(preds_dense)
+			assert preds_peak.shape == labels.shape
 
-		# precision and recall for all instances
-		# preds = preds.flatten()
-		# labels = labels.flatten()
-		pr_rcl_cls_clean = [itm for itm in pr_rcl_cls if not np.isnan(itm)]
-		pr = np.average(pr_rcl_cls_clean)
+			true_positive_cls = np.sum(preds_peak * labels,axis=0).astype('f')
+			gold_cls = np.sum(labels,axis=0).astype('f')
+			preds_cnn_cls = np.sum(preds_peak,axis=0).astype('f')
 
-		# error = 1. - pr
-		# auc = roc_auc_score(labels,preds)
-		# error = 1. - auc
+			# precision recall f1 scores
+			precision_cls = [tp/gd if gd != 0 else 0 for (tp,gd) in zip(true_positive_cls,gold_cls)]
+			recall_cls = [tp/prd if prd != 0 else 0 for (tp,prd) in zip(true_positive_cls,preds_cnn_cls)]
+			f1_cls = [2 * p * r/(p+r) if p * r != 0 else 0 for (p,r) in zip(precision_cls,recall_cls)]
+			pr_rcl_cls = [average_precision_score(labels[:,i],preds[:,i]) for i in range(labels.shape[1])]
 
+			# import pdb; pdb.set_trace()
+			k_accuracy = []
+			for k in range(self.Config.top_k):
+				mask = [labels_dense[i] in preds_topk[k][i][-k-1:] for i in range(preds.shape[0])]
+				tp = [msk for msk in mask if msk]
+				acc = float(len(tp))/len(mask)
+				k_accuracy.append(acc)
 
-		# should return the embbeding before the classification step and the labels
-		# return k_accuracy,(precision_cls,recall_cls,f1_cls,pr_rcl_cls)
-		return pr,pr_rcl_cls,cnn_encodeds,labels
+			return k_accuracy,(precision_cls,recall_cls,f1_cls,pr_rcl_cls),cnn_encodeds,labels
+
 
 
 	def run_epoch(self,sess,train_examples,dev_set):
@@ -379,7 +377,7 @@ class ResCNNModel(Model):
 				logger.info("loss until batch_%d, : %f", i,loss)
 
 		logger.info("Evaluating on devlopment data")
-		acc,_ = self.evaluate(sess,dev_set)
+		acc,_,_,_ = self.evaluate(sess,dev_set)
 		logger.info("new updated AUC scores %.4f",acc)  # [self.Config.top_k-1])
 
 		return acc
@@ -395,6 +393,7 @@ class ResCNNModel(Model):
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
 	parser.add_argument('-lf','--label_freq', default='500', type=str)
+	parser.add_argument('-lt','--label_type', default='multi', type=str)
 	parser.add_argument('-ug','--using_glove', default=False, type=bool)
 	parser.add_argument('-it','--is_train',default='train', type=str)
 	parser.add_argument('-mp','--model_path',default='',type=str)
@@ -413,7 +412,7 @@ if __name__ == "__main__":
 	ch.setFormatter(formatter)
 	logger.addHandler(fh)
 	logger.info('loading data...')
-	x = cPickle.load(open("./data/everything_new" + args.label_freq + ".p","rb"))
+	x = cPickle.load(open("./data/everything_new" + args.label_type + args.label_freq + ".p","rb"))
 	train, dev, test, W_g, W_m, idx2word, word2idx, w2i_lb, i2w_lb, ConfigInfo, lb_freq = x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[10]
 
 	del x
@@ -427,7 +426,7 @@ if __name__ == "__main__":
 	else:
 		data_type = 'mixed_'
 		W = W_m
-	config = Config(ConfigInfo,n_classes,data_type)
+	config = Config(ConfigInfo,n_classes,data_type,args.label_type)
 
 
 
@@ -470,12 +469,18 @@ if __name__ == "__main__":
 				for epoch in range(Config.max_epochs):
 					logger.info("running epoch %d", epoch)
 					pred_acc.append(model.run_epoch(session,train,dev))
-					# if pred_acc[-1][model.Config.top_k-1] > acc_max:
-					if pred_acc[-1] > acc_max:
-						logger.info("new best AUC score: %.4f", pred_acc[-1])  # [model.Config.top_k-1])
-						acc_max = pred_acc[-1]  # [model.Config.top_k-1]
-						saver.save(session, path)
-					logger.info("BEST AUC SCORE: %.4f", acc_max)
+					if args.label_type == 'single':
+						if pred_acc[-1][model.Config.top_k-1] > acc_max:
+							logger.info("new best AUC score: %.4f", pred_acc[-1][model.Config.top_k-1])  # [model.Config.top_k-1])
+							acc_max = pred_acc[-1][model.Config.top_k-1]  # [model.Config.top_k-1]
+							saver.save(session, path)
+						logger.info("BEST AUC SCORE: %.4f", acc_max)
+					else:
+						if pred_acc[-1] > acc_max:
+							logger.info("new best AUC score: %.4f", pred_acc[-1])  # [model.Config.top_k-1])
+							acc_max = pred_acc[-1]  # [model.Config.top_k-1]
+							saver.save(session, path)
+						logger.info("BEST AUC SCORE: %.4f", acc_max)
 				saver.restore(session, path)	
 				test_acc,precision_recall_cls,cnn_encodings,labels = model.evaluate(session,test)
 				logger.info("TEST ERROR: %.4f", test_acc)  # [model.Config.top_k-1])
@@ -486,9 +491,10 @@ if __name__ == "__main__":
 				test_acc,precision_recall_cls,cnn_encodings,labels = model.evaluate(session,test)
 				logger.info("TEST ERROR: %.4f", test_acc)  # [model.Config.top_k-1])
 			# make description of the configuration and test result
+			test_result = test_acc[-1]
 			with open(model.Config.output_path_results + "description.txt","w") as f:
 				cfg = model.Config
-				f.write("train_or_test: %s\n, model_path: %s\nfeature_maps: %d\nfilters: [%d,%d,%d]\nlearn_rate: %f\nbatch_size: %d\nresult: %f" % (args.is_train,path,cfg.feature_maps,cfg.filters[0],cfg.filters[1],cfg.filters[2],cfg.learn_rate,cfg.batch_size,test_acc))  # [cfg.top_k-1]))
+				f.write("train_or_test: %s\n, model_path: %s\nfeature_maps: %d\nfilters: [%d,%d,%d]\nlearn_rate: %f\nbatch_size: %d\nresult: %f" % (args.is_train,path,cfg.feature_maps,cfg.filters[0],cfg.filters[1],cfg.filters[2],cfg.learn_rate,cfg.batch_size,test_result))  # [cfg.top_k-1]))
 			f.close()
 
 			# save all the results
