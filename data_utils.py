@@ -128,6 +128,7 @@ def make_idx_data(train,train_labels,train_seman,nl_lb_dict,word2idx,w2i_lb,w2i_
 
 def split_train(train,dev_portion=0.1):
     lz = len(train[0])
+    np.random.seed(123)
     idx_dev = np.random.permutation(lz)
     n_train = int(np.round(lz * (1 - dev_portion)))
     
@@ -140,6 +141,17 @@ def split_train(train,dev_portion=0.1):
     dev_seman = [train[2][s] for s in idx_dev[n_train:]]
 
     return (train_sent,train_label,train_seman), (dev_sent,dev_label,dev_seman)
+
+
+def label_frequency(data,i2w):
+    lb_freq_list = {}
+    for lb_oh in data:
+        lb = np.argmax(lb_oh)
+        if i2w[lb] in lb_freq_list:
+            lb_freq_list[i2w[lb]] += 1
+        else:
+            lb_freq_list[i2w[lb]] = 1
+    return lb_freq_list
 
 
 def load_bin_vec(fname,  vocab):
@@ -201,6 +213,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--label_freq', default=500, type=int)
+    parser.add_argument('--label_type', default='multi', type=str)
     args = parser.parse_args()
 
     loc = './data/'
@@ -219,11 +232,6 @@ if __name__ == "__main__":
     train_notes, train_labels = prepare_data(notestext,labeltext)
     del notestext, labeltext
 
-
-    # test_labels,lb_test = make_labels_idx(test_labels)
-    # text = train + test
-    # labels = lb_train + lb_test
-
     # build the dictionary for labels
     w2i_lb, i2w_lb, lb_freq = build_vocab(train_labels)
     lb_vb = OrderedDict(sorted(lb_freq.items(), key = lambda t:t[1], reverse = True))
@@ -238,12 +246,20 @@ if __name__ == "__main__":
     tp = zip(*train_set)
     train_notes = list(tp[0])
     train_labels = list(tp[1])
-    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/pre_clipped.p',"wb"))
+
+    if args.label_type != 'multi':
+        # only remian the first diagnosis for each patient
+        train_labels = [[labels[0]] for labels in train_labels]
+
+        # update the label dictionary and the frequency list
+        w2i_lb, i2w_lb, lb_freq = build_vocab(train_labels)  
+        lb_vb = OrderedDict(sorted(lb_freq.items(), key = lambda t:t[1], reverse = True))
+        lb_lst = [(wd,lb_vb[wd]) for wd in lb_vb]
 
     # only use the notes and diagnoses more than certain amount
     freq_lbd = lb_lst[freq_lbd_idx - 1][1]
     train_notes,train_labels = diag_narrow(train_notes,train_labels,lb_freq,freq_lbd)
-    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/clipped_data_' + str(freq_lbd_idx) + '.p',"wb"))
+    
 
     # make labels natural language
     train_seman = []
@@ -270,6 +286,9 @@ if __name__ == "__main__":
     train,nl_clss = make_idx_data(train_notes, train_labels,train_seman, nl_lb_dict, word2idx, w2i_lb,word2idx)
     train,test = split_train(train)
     train,dev = split_train(train)
+    lb_freq_train = label_frequency(train[1],i2w_lb)
+    lb_freq_test = label_frequency(test[1],i2w_lb)
+
 
     # get the hyperparameters
     max_len = max([len(nts) for nts in train[0] + test[0] + dev[0]])
@@ -283,7 +302,7 @@ if __name__ == "__main__":
     # build the word embedding for dataset
     print "loading word2vec vectors...",
     w2v_g = load_text_vec(loc + w2v_file_g, word2idx)
-    w2v_m= load_bin_vec(loc + w2v_file_m, word2idx)
+    w2v_m = load_bin_vec(loc + w2v_file_m, word2idx)
 
     add_unknown_words(w2v_g, word2idx)
     add_unknown_words(w2v_m, word2idx)
@@ -292,6 +311,7 @@ if __name__ == "__main__":
     W_m = get_vocab_emb(w2v_m,idx2word)
     # W_sm = get_vocab_emb(w2v_sm,i2w_sm)
 
-    everything = [train, dev, test, W_g, W_m, idx2word, word2idx, w2i_lb, i2w_lb,nl_clss,ConfigInfo]
-    cPickle.dump(everything, open('./data/everything_new' + str(freq_lbd_idx) + '.p', "wb"))
+    lb_lst = dict(lb_lst)
+    everything = [train, dev, test, W_g, W_m, idx2word, word2idx, w2i_lb, i2w_lb,ConfigInfo,(lb_lst,lb_freq_train,lb_freq_test)]
+    cPickle.dump(everything, open('./data/everything_new' + args.label_type + str(freq_lbd_idx) + '.p', "wb"))
 #    print "dataset created!"

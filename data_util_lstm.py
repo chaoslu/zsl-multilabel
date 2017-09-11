@@ -115,56 +115,6 @@ def diag_narrow(train,train_labels,vocab_freq,freq_lbd):
     return train,train_labels
 
 
-'''
-def label_vocab(text,valid_ngram):
-    vocab = []
-    vocab_dict = {}
-    for labels in text:
-        for label in labels:
-            if label not in valid_ngram:
-                splitted = label.split('_')
-
-                for lb in splitted:
-                    if lb not in vocab:
-                        vocab.append(lb)
-                        vocab_dict[lb] = 0
-                    else:
-                        vocab_dict[lb] += 1
-    for uni in vocab:
-        if '-' in uni:
-            uni_k = np.str(uni)
-            uni_k.replace('-','_')
-            if uni not in valid_ngram:
-                vocab_dict.pop(uni)
-                vocab.remove(uni)
-
-                splitted = label.split('_')
-
-                for lb in splitted:
-                    if lb not in vocab:
-                        vocab.append(lb)
-                        vocab_dict[lb] = 0
-                    else:
-                        vocab_dict[lb] += 1
-    w2i = OrderedDict(sorted(vocab_dict.items(), key= lambda t:t[1], reverse=True))
-    return vocab,w2i
-'''
-
-
-'''
-def make_labels_idx(labels):
-    d = {}
-    setlabels = set(labels)
-    count = 0
-    for l in setlabels:
-        d[l] = count
-        count += 1
-    idx_lables = [d[l] for l in labels]
-
-    return idx_lables,d
-'''
-
-
 def make_idx_sentences(text,word2idx):
     id_sentence = []
     for sent in text:
@@ -196,6 +146,7 @@ def make_idx_data(train,train_labels,train_seman,word2idx,w2i_lb,w2i_sm):
 
 def split_train(train,dev_portion=0.1):
     lz = len(train[0])
+    np.random.seed(123)
     idx_dev = np.random.permutation(lz)
     n_train = int(np.round(lz * (1 - dev_portion)))
     
@@ -297,11 +248,6 @@ if __name__ == "__main__":
 
     train_notes, train_labels = prepare_data(notestext,labeltext)
     del notestext, labeltext
-
-
-    # test_labels,lb_test = make_labels_idx(test_labels)
-    # text = train + test
-    # labels = lb_train + lb_test
 
     # build the dictionary for labels
     w2i_lb, i2w_lb, lb_freq = build_vocab(train_labels)

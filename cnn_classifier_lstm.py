@@ -371,7 +371,7 @@ class ResCNNModel(Model):
 
 	def predict_on_batch(self, sess, inputs,labels,seman_t,seman,mask):
 		feed = self.create_feed_dict(inputs=inputs, labelsC=labels, labelsR=seman_t, seman=seman, mask=mask)
-		predictions_cnn, predictions_rnn = sess.run([self.pred_cnn,self.pred_rnn_oh], feed_dict=feed)
+		predictions_cnn, predictions_rnn, cnn_encodings = sess.run([self.pred_cnn,self.pred_rnn_oh,self.encoded], feed_dict=feed)
 
 		return predictions_cnn, predictions_rnn
 
@@ -419,6 +419,7 @@ class ResCNNModel(Model):
 		iterator = get_minibatches_idx(len(examples[0]),self.Config.valid_size,False)	
 		preds_cnn = []
 		labels = []
+		cnn_encodings = []
 
 		preds_rnn = []
 		sm_target = []
@@ -439,10 +440,11 @@ class ResCNNModel(Model):
 			mask = np.array(mask)
 			lb_batch = np.array(lb_batch)
 
-			predictions_cnn, predictions_rnn = self.predict_on_batch(sess, padded_nts_batch, lb_batch, padded_sm_target, padded_sm_ipnuts, mask)
+			predictions_cnn, predictions_rnn, cnn_encoded = self.predict_on_batch(sess, padded_nts_batch, lb_batch, padded_sm_target, padded_sm_ipnuts, mask)
 
 			preds_cnn.append(predictions_cnn)
 			labels.append(lb_batch)
+			cnn_encodings.append(cnn_encoded)
 
 			preds_rnn.append(predictions_rnn)
 			sm_target.append(padded_sm_target)
@@ -452,6 +454,7 @@ class ResCNNModel(Model):
 		# all results are transformed into num_dev * ?
 		preds_cnn = np.concatenate(preds_cnn,axis=0)  
 		labels = np.concatenate(labels,axis=0)
+		cnn_encodings = np.concatenate(cnn_encodings,axis=0)
 		preds_rnn = np.concatenate(preds_rnn,axis=0)
 		sm_target = np.concatenate(sm_target,axis=0)
 		masks = np.concatenate(masks,axis=0)
@@ -469,7 +472,7 @@ class ResCNNModel(Model):
 		label_binarizer.fit(range(self.Config.nlabels))
 		preds_cnn_peak = label_binarizer.transform(preds_cnn_dense)
 		assert preds_cnn_peak.shape == labels.shape
-		
+
 		# import pdb; pdb.set_trace()
 		true_positive_cls = np.sum(preds_cnn_peak * labels,axis=0).astype('f')
 		gold_cls = np.sum(labels,axis=0).astype('f')
@@ -479,11 +482,9 @@ class ResCNNModel(Model):
 		precision_cls = [tp / gd if gd != 0 else 0 for (tp,gd) in zip(true_positive_cls,gold_cls)] 
 		recall_cls = [tp / prd if prd != 0 else 0 for (tp,prd) in zip(true_positive_cls,preds_cnn_cls)]
 		f1_cls = [2 * p * r / (p+r) if p * r != 0 else 0 for (p,r) in zip(precision_cls,recall_cls)]
-		
-		
+
 		# precicion and recall for all the classes		
 		pr_rcl_cls = [average_precision_score(labels[:,i],preds_cnn[:,i]) for i in range(labels.shape[1])]
-		
 
 		# error for all choices of k
 		acc_list = []
@@ -513,7 +514,7 @@ class ResCNNModel(Model):
 		incorrect_cls_decoded = [(masked_sm_target[i],masked_decoded[i],nts[i]) for i,c_p in enumerate(classified_result_k) if not c_p]  # if not correctly classified
 		all_decoded = [(masked_sm_target[i],masked_decoded[i],nts[i]) for i in range(len(classified_result_k))]
 		# import pdb; pdb.set_trace()
-		return acc_list, (precision_cls,recall_cls,f1_cls,pr_rcl_cls), incorrect_cls_decoded, all_decoded
+		return acc_list, (precision_cls,recall_cls,f1_cls,pr_rcl_cls), incorrect_cls_decoded, all_decoded, cnn_encodings, labels
 
 
 	def __init__(self,Config,pretrained_embedding):
@@ -528,6 +529,9 @@ if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
 	parser.add_argument('-lf','--label_freq', default='500', type=str)
 	parser.add_argument('-ug','--using_glove', default=False, type=bool)
+	parser.add_argument('-it','--is_train',default='train', type=str)
+	parser.add_argument('-mp','--model_path',default='',type=str)
+
 	args = parser.parse_args()
 
 	# https://docs.python.org/2/howto/logging-cookbook.html
@@ -543,8 +547,8 @@ if __name__ == "__main__":
 	logger.addHandler(fh)
 	logger.info('loading data...')
 	x = cPickle.load(open("./data/lstm_everything_new" + args.label_freq + ".p","rb"))
-
 	train, dev, test, W_g, W_m, idx2word, word2idx, i2w_lb, i2w_sm, ConfigInfo, dicts_mapping, lb_freq = x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[10], x[11]
+	
 	del x
 
 
@@ -572,38 +576,50 @@ if __name__ == "__main__":
 		start = time.time()
 		model = ResCNNModel(config, W)
 		logger.info("time to build the model: %d", time.time() - start)
-
+		logger.info("the output path: %s", model.Config.output_path)
 		init = tf.global_variables_initializer()
 		saver = tf.train.Saver()
 	
 		if not os.path.exists(model.Config.output_path):
 			os.makedirs(model.Config.output_path)	
+
 		if not os.path.exists(model.Config.output_path_results):
 			os.makedirs(model.Config.output_path_results)	
 		
 		with tf.Session(config=GPU_config) as session:
+			path = ''
 			session.run(init)
-			for epoch in range(Config.max_epochs):
-				logger.info("running epoch %d", epoch)
-				pred_acc.append(model.run_epoch(session,train,dev))
-				# import pdb; pdb.set_trace()
-				if pred_acc[-1][model.Config.top_k-1] > acc_max:
-					logger.info("new best AUC score: %.4f", pred_acc[-1][model.Config.top_k-1])
-					acc_max = pred_acc[-1][model.Config.top_k-1] 
-					saver.save(session,model.Config.model_path)
-				logger.info("BEST AUC SCORE: %.4f", acc_max)
+			if args.is_train == 'train':
+				path = model.Config.model_path
+				for epoch in range(Config.max_epochs):
+					logger.info("running epoch %d", epoch)
+					pred_acc.append(model.run_epoch(session,train,dev))
+					# import pdb; pdb.set_trace()
+					if pred_acc[-1][model.Config.top_k-1] > acc_max:
+						logger.info("new best AUC score: %.4f", pred_acc[-1][model.Config.top_k-1])
+						acc_max = pred_acc[-1][model.Config.top_k-1] 
+						saver.save(session, path)
+					logger.info("BEST AUC SCORE: %.4f", acc_max)
 
-			saver.restore(session,model.Config.model_path)
-			test_score,precision_recall_cls,incorrectly_decoded,all_decoded = model.evaluate(session,test)
-			incorrectly_decoded = idxs_to_sentences(incorrectly_decoded,idx2word,i2w_sm,model.Config)
-			all_decoded = idxs_to_sentences(all_decoded,idx2word,i2w_sm,model.Config)
-			logger.info("TEST ERROR: %.4f",test_score[model.Config.top_k-1])
+				saver.restore(session, path)
+				test_score,precision_recall_cls,incorrectly_decoded,all_decoded,cnn_encodings,labels = model.evaluate(session,test)
+				incorrectly_decoded = idxs_to_sentences(incorrectly_decoded,idx2word,i2w_sm,model.Config)
+				all_decoded = idxs_to_sentences(all_decoded,idx2word,i2w_sm,model.Config)
+				logger.info("TEST ERROR: %.4f",test_score[model.Config.top_k-1])
+
+			else:
+				path = args.model_path
+				saver.restore(session, path)
+				test_score,precision_recall_cls,incorrectly_decoded,all_decoded,cnn_encodings,labels = model.evaluate(session,test)
+				incorrectly_decoded = idxs_to_sentences(incorrectly_decoded,idx2word,i2w_sm,model.Config)
+				all_decoded = idxs_to_sentences(all_decoded,idx2word,i2w_sm,model.Config)
+				logger.info("TEST ERROR: %.4f",test_score[model.Config.top_k-1])
 
 			# make description of the configuration and test result
 			with open(model.Config.output_path_results + "description.txt","w") as f:
 				cfg = model.Config
-				f.write("feature_maps: %d\nfilters: [%d,%d,%d]\nrnncel: %s\nlearn_rate: %f\nbatch_size: %d\nbeta: %f\nresult: %f" % (cfg.feature_maps,cfg.filters[0],cfg.filters[1],cfg.filters[2],cfg.rnncell,cfg.learn_rate,cfg.batch_size,cfg.beta,test_score[cfg.top_k-1]))
+				f.write("train_or_test: %s\nmodel_path: %s\nfeature_maps: %d\nfilters: [%d,%d,%d]\nrnncel: %s\nlearn_rate: %f\nbatch_size: %d\nbeta: %f\nresult: %f" % (args.is_train,path,cfg.feature_maps,cfg.filters[0],cfg.filters[1],cfg.filters[2],cfg.rnncell,cfg.learn_rate,cfg.batch_size,cfg.beta,test_score[cfg.top_k-1]))
 			f.close()
 
 			# save all the results
-			cPickle.dump([pred_acc ,test_score ,precision_recall_cls,incorrectly_decoded,all_decoded,lb_freq,i2w_lb],open(model.Config.output_path_results + 'results' + str(n_classes) + ".p","wb"))
+			cPickle.dump([pred_acc ,test_score ,precision_recall_cls,cnn_encodings,labels,incorrectly_decoded,all_decoded,lb_freq,i2w_lb],open(model.Config.output_path_results + 'results' + str(n_classes) + ".p","wb"))
