@@ -231,14 +231,22 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--label_freq', default=500, type=int)
+    parser.add_argument('--data', default='clean', type=str)
     args = parser.parse_args()
 
     loc = './data/'
     
     w2v_file_m = 'GoogleNews-vectors-negative300.bin'
     w2v_file_g = 'vectors_my.txt'
-    notes_path = 'tok_hpi_clean'
-    dx_path = 'tok_dx_clean'
+    affx = ''  # about the saved adat filename affix
+
+    if args.data == 'clean':
+        notes_path = 'tok_hpi_clean'
+        dx_path = 'tok_dx_clean'
+        affx = '_new'
+    else:
+        notes_path = 'tok_hpi_rpl'
+        dx_path = 'tok_dx_rpl'
 
     freq_lbd_idx = args.label_freq
 
@@ -329,7 +337,7 @@ if __name__ == "__main__":
     dicts_mapping = np.zeros((len(i2w_sm),1),dtype=np.int)
     for i in range(len(i2w_sm)):
 	   dicts_mapping[i,:] = word2idx[i2w_sm[i]]
-    
+
     # get the hyperparameters
     max_len = max([len(nts) for nts in train[0] + test[0] + dev[0]])
     max_len_sm = max([len(sm) for sm in train[2] + test[2] + dev[2]]) + 1  # 'GO' or 'EOS' takes up a postition
@@ -341,5 +349,5 @@ if __name__ == "__main__":
     
     lb_lst = dict(lb_lst)
     everything = [train, dev, test, Wemb_g, Wemb_m, idx2word, word2idx, i2w_lb, i2w_sm,ConfigInfo, dicts_mapping, (lb_lst,lb_freq_train,lb_freq_test)]
-    cPickle.dump(everything, open('./data/lstm_everything_new' + str(freq_lbd_idx) + '.p', "wb"))
+    cPickle.dump(everything, open('./data/lstm_everything'+ affx + str(freq_lbd_idx) + '.p', "wb"))
 #    print "dataset created!"
