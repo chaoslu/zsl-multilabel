@@ -52,8 +52,9 @@ class Config:
 		self.n_words = ConfigInfo['vocab_size']  # 38564 for clean data_64, 39367 for rpl data_64
 		self.max_len = ConfigInfo['max_len']	 # 580 for clean data_64, 575 for rpl
 		self.max_len_sm = ConfigInfo['max_len_sm']	 # 10 for clean data_64, 9 for rpl
-		self.output_path = "./" + data_type + "result_old/{:%Y%m%d_%H%M%S}/".format(datetime.now())
-		self.output_path_results = "./" + data_type + "result_old/results_only/{:%Y%m%d_%H%M%S}/".format(datetime.now())
+		self.label_type = label_type
+		self.output_path = "./" + data_type + label_type + "_result_old/{:%Y%m%d_%H%M%S}/".format(datetime.now())
+		self.output_path_results = "./" + data_type + label_type + "_result_old/results_only/{:%Y%m%d_%H%M%S}/".format(datetime.now())
 		self.model_path = self.output_path + "model.weights"
 
 	"""
@@ -217,7 +218,7 @@ class ResCNNModel(Model):
 		prediction = tf.matmul(encoded,params['ResNet_0_W'])
 
 		# for multiclass case
-		if self.label_type == 'single':
+		if self.Config.label_type == 'single':
 			prediction_dropout = tf.nn.bias_add(prediction,params['ResNet_0_b'])
 
 		# for multilabel case
@@ -241,7 +242,7 @@ class ResCNNModel(Model):
 
 	def add_loss_op(self,pred):  # mapping,seman,
 
-		if self.label_type == 'single':
+		if self.Config.label_type == 'single':
 			loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels = self.labels_placeholder, logits= pred))
 
 		else:
@@ -310,7 +311,7 @@ class ResCNNModel(Model):
 		labels = np.concatenate(labels,axis=0)
 		cnn_encodeds = np.concatenate(cnn_encodeds,axis=0)
 
-		if self.label_type == 'multi': 
+		if self.Config.label_type == 'multi': 
 			# precision and recall for all the classes
 			pr_rcl_cls = [average_precision_score(labels[:,i],preds[:,i]) for i in range(labels.shape[1])]
 			pr_rcl_cls_clean = [itm for itm in pr_rcl_cls if not np.isnan(itm)]
@@ -378,8 +379,10 @@ class ResCNNModel(Model):
 
 		logger.info("Evaluating on devlopment data")
 		acc,_,_,_ = self.evaluate(sess,dev_set)
-		logger.info("new updated AUC scores %.4f",acc)  # [self.Config.top_k-1])
-
+		if self.Config.label_type == 'multi':
+			logger.info("new updated AUC scores %.4f",acc)  # [self.Config.top_k-1])
+		else:
+			logger.info("new updated AUC scores %.4f",acc[self.Config.top_k-1])
 		return acc
 
 	def __init__(self,Config,pretrained_embedding):

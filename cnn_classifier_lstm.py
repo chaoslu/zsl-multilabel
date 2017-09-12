@@ -373,7 +373,7 @@ class ResCNNModel(Model):
 		feed = self.create_feed_dict(inputs=inputs, labelsC=labels, labelsR=seman_t, seman=seman, mask=mask)
 		predictions_cnn, predictions_rnn, cnn_encodings = sess.run([self.pred_cnn,self.pred_rnn_oh,self.encoded], feed_dict=feed)
 
-		return predictions_cnn, predictions_rnn
+		return predictions_cnn, predictions_rnn, cnn_encodings
 
 
 	def run_epoch(self,sess,train_examples,dev_set):
@@ -410,7 +410,7 @@ class ResCNNModel(Model):
 					word_embeddings_old = word_embeddings_new
 				'''
 		logger.info("Evaluating on devlopment data")
-		score,_,_,_ = self.evaluate(sess,dev_set)
+		score,_,_,_,_,_ = self.evaluate(sess,dev_set)
 		logger.info("new updated AUC scores %.4f", score[self.Config.top_k-1])
 
 		return score
