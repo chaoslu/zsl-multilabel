@@ -510,6 +510,7 @@ class ResCNNModel(Model):
 		self.Config = Config
 		self.pretrained_embedding = tf.cast(pretrained_embedding, tf.float32)
 		self.params = init_parameters(Config,self.pretrained_embedding)
+
 		self.build()
 
 
@@ -517,6 +518,8 @@ if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
 	parser.add_argument('-lf','--label_freq', default='500', type=str)
 	parser.add_argument('-ug','--using_glove', default=False, type=bool)
+	parser.add_argument('-it','--is_train',default='train', type=str)
+	parser.add_argument('-mp','--model_path',default='',type=str)
 	args = parser.parse_args()
 	
 	# https://docs.python.org/2/howto/logging-cookbook.html
@@ -573,25 +576,35 @@ if __name__ == "__main__":
 		
 		with tf.Session(config=GPU_config) as session:
 			session.run(init)
-			for epoch in range(Config.max_epochs):
-				logger.info("running epoch %d", epoch)
-				pred_acc.append(model.run_epoch(session,train,dev))
-				# import pdb; pdb.set_trace()
-				if pred_acc[-1] > acc_max:
-					logger.info("new best AUC score: %.4f", pred_acc[-1])
-					acc_max = pred_acc[-1] 
-					saver.save(session,model.Config.model_path)
-				logger.info("BEST AUC SCORE: %.4f", acc_max)
+			if args.is_train == 'train':
+				path = model.Config.model_path
+				for epoch in range(Config.max_epochs):
+					logger.info("running epoch %d", epoch)
+					pred_acc.append(model.run_epoch(session,train,dev))
+					# import pdb; pdb.set_trace()
+					if pred_acc[-1] > acc_max:
+						logger.info("new best AUC score: %.4f", pred_acc[-1])
+						acc_max = pred_acc[-1] 
+						saver.save(session,model.Config.model_path)
+					logger.info("BEST AUC SCORE: %.4f", acc_max)
 
-			saver.restore(session,model.Config.model_path)
-			test_score,precision_recall_cls,all_decoded = model.evaluate(session,test)
-			all_decoded = idxs_to_sentences(all_decoded,idx2word,i2w_sm,model.Config)
-			logger.info("TEST ERROR: %.4f",test_score)
+				saver.restore(session,model.Config.model_path)
+				test_score,precision_recall_cls,all_decoded = model.evaluate(session,test)
+				all_decoded = idxs_to_sentences(all_decoded,idx2word,i2w_sm,model.Config)
+				logger.info("TEST ERROR: %.4f",test_score)
+
+			else:
+				path = args.model_path
+				saver.restore(session, path)
+				saver.restore(session,model.Config.model_path)
+				test_score,precision_recall_cls,all_decoded = model.evaluate(session,test)
+				all_decoded = idxs_to_sentences(all_decoded,idx2word,i2w_sm,model.Config)
+				logger.info("TEST ERROR: %.4f",test_score)
 
 			# make description of the configuration and test result
 			with open(model.Config.output_path_results + "description.txt","w") as f:
 				cfg = model.Config
-				f.write("feature_maps: %d\nfilters: [%d,%d,%d]\nrnncel: %s\nlearn_rate: %f\nbatch_size: %d\nbeta: %f\nresult: %f" % (cfg.feature_maps,cfg.filters[0],cfg.filters[1],cfg.filters[2],cfg.rnncell,cfg.learn_rate,cfg.batch_size,cfg.beta,test_score))
+				f.write("train_or_test: %s\nmodel_path: %s\nfeature_maps: %d\nfilters: [%d,%d,%d]\nrnncel: %s\nlearn_rate: %f\nbatch_size: %d\nbeta: %f\nresult: %f" % (args.is_train,path,cfg.feature_maps,cfg.filters[0],cfg.filters[1],cfg.filters[2],cfg.rnncell,cfg.learn_rate,cfg.batch_size,cfg.beta,test_score))
 			f.close()
 
 			# save all the results
