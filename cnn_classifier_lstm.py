@@ -529,6 +529,7 @@ if __name__ == "__main__":
 	parser.add_argument('-ug','--using_glove', default=False, type=bool)
 	parser.add_argument('-it','--is_train',default='train', type=str)
 	parser.add_argument('-mp','--model_path',default='',type=str)
+	parser.add_argument('-dt','--data',default='clean',type=str)
 
 	args = parser.parse_args()
 
@@ -543,8 +544,13 @@ if __name__ == "__main__":
 	fh.setFormatter(formatter)
 	ch.setFormatter(formatter)
 	logger.addHandler(fh)
+
+	affx = ''
+	if args.data == 'clean':
+		affx = '_new'
+
 	logger.info('loading data...')
-	x = cPickle.load(open("./data/lstm_everything_new" + args.label_freq + ".p","rb"))
+	x = cPickle.load(open("./data/lstm_everything" + affx + args.label_freq + ".p","rb"))
 	train, dev, test, W_g, W_m, idx2word, word2idx, i2w_lb, i2w_sm, ConfigInfo, dicts_mapping, lb_freq = x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[10], x[11]
 	
 	del x
@@ -616,7 +622,9 @@ if __name__ == "__main__":
 			# make description of the configuration and test result
 			with open(model.Config.output_path_results + "description.txt","w") as f:
 				cfg = model.Config
-				f.write("train_or_test: %s\nmodel_path: %s\nfeature_maps: %d\nfilters: [%d,%d,%d]\nrnncel: %s\nlearn_rate: %f\nbatch_size: %d\nbeta: %f\nresult: %f" % (args.is_train,path,cfg.feature_maps,cfg.filters[0],cfg.filters[1],cfg.filters[2],cfg.rnncell,cfg.learn_rate,cfg.batch_size,cfg.beta,test_score[cfg.top_k-1]))
+				f.write("train_or_test: %s\nmodel_path: %s\ndata_version: %s\nfeature_maps: %d\nfilters: [%d,%d,%d]\n \
+					rnncel: %s\nlearn_rate: %f\nbatch_size: %d\nbeta: %f\nresult: %f" % (args.is_train,path,args.data,
+					cfg.feature_maps,cfg.filters[0],cfg.filters[1],cfg.filters[2],cfg.rnncell,cfg.learn_rate,cfg.batch_size,cfg.beta,test_score[cfg.top_k-1]))
 			f.close()
 
 			# save all the results
