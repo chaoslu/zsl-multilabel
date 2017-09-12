@@ -494,7 +494,10 @@ if __name__ == "__main__":
 				test_acc,precision_recall_cls,cnn_encodings,labels = model.evaluate(session,test)
 				logger.info("TEST ERROR: %.4f", test_acc)  # [model.Config.top_k-1])
 			# make description of the configuration and test result
-			test_result = test_acc[-1]
+			if args.label_type == 'single':
+				test_result = test_acc[-1]
+			else:
+				test_result = test_acc
 			with open(model.Config.output_path_results + "description.txt","w") as f:
 				cfg = model.Config
 				f.write("train_or_test: %s\n, model_path: %s\nfeature_maps: %d\nfilters: [%d,%d,%d]\nlearn_rate: %f\nbatch_size: %d\nresult: %f" % (args.is_train,path,cfg.feature_maps,cfg.filters[0],cfg.filters[1],cfg.filters[2],cfg.learn_rate,cfg.batch_size,test_result))  # [cfg.top_k-1]))
