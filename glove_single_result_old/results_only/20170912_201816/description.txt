@@ -1,0 +1,8 @@
+train_or_test: test
+model_path: ./glove_single_result_old/20170912_201816/model.weights
+data_version: rpl
+feature_maps: 100
+filters: [3,4,5]
+ 					learn_rate: 0.000200
+batch_size: 20
+result: 0.793131
