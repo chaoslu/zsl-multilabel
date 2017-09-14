@@ -327,16 +327,19 @@ if __name__ == "__main__":
 
     # add special token to both the notes vocabulary and the semantic vocabulary
     word2idx,idx2word = add_special_token(word2idx,idx2word)
+    w2i_sm, i2w_sm = add_special_token(w2i_sm,i2w_sm)
+
     vocab_size = len(word2idx)
+    vocab_size_sm = len(w2i_sm)
     
     Wemb_g = np.random.uniform(-0.25,0.25,(vocab_size,300))
     Wemb_m = np.random.uniform(-0.25,0.25,(vocab_size,300))
     Wemb_g[:vocab_size-3] = W_g
     Wemb_m[:vocab_size-3] = W_m
 
-    dicts_mapping = np.zeros((len(i2w_sm),1),dtype=np.int)
+    dicts_mapping = np.zeros((vocab_size_sm,1),dtype=np.int)
     for i in range(len(i2w_sm)):
-	   dicts_mapping[i,:] = word2idx[i2w_sm[i]]
+        dicts_mapping[i] = word2idx[i2w_sm[i]]
 
     # get the hyperparameters
     max_len = max([len(nts) for nts in train[0] + test[0] + dev[0]])
