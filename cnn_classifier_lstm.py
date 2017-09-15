@@ -45,6 +45,7 @@ class Config:
 	valid_size = 10
 	dispFreq = 50
 	top_k = 15
+	rare_freq = 300
 
 	# valid_batch_size = 10
 
@@ -178,18 +179,10 @@ def idxs_to_sentences(classified,i2w,i2w_sm,cfg):
 	return (sen_original,sen_decoded,nts)
 
 
-'''
-def scores_summary(scores,num_buckets,w2i_lb,lb_lst):
-	precision = scores[0]
-	recall = scores[1]
-	f1 = scores[2]
-
-	precision = [precision[w2i_lb[lb]] for lb in lb_lst]
-	recall = [recall[w2i_lb[lb]] for lb in lb_lst]
-	f1 = [f1[w2i_lb[lb]] for lb in lb_lst]
-
-	return (precision,recall,f1)
-'''
+def rare_case_indices(rare_freq,freq,i2w):
+	freq_lst = sorted([(itm,freq[itm]) for itm in freq],key = lambda t:t[1], reverse=True)
+	indices = [i for i in range(len(i2w)) if freq[i2w[i]] < freq_lst[rare_freq]]
+	return indices
 
 
 class ResCNNModel(Model):
@@ -376,7 +369,7 @@ class ResCNNModel(Model):
 		return predictions_cnn, predictions_rnn, cnn_encodings
 
 
-	def run_epoch(self,sess,train_examples,dev_set):
+	def run_epoch(self,sess,train_examples,dev_set,rci):
 		iterator = get_minibatches_idx(len(train_examples[0]),self.Config.batch_size,False)
 		score = 0
 		cnn_encodings = []
@@ -411,13 +404,13 @@ class ResCNNModel(Model):
 					word_embeddings_old = word_embeddings_new
 				'''
 		logger.info("Evaluating on devlopment data")
-		score,_,_,_,_,_ = self.evaluate(sess,dev_set)
+		score,_,_,_,_,_,_ = self.evaluate(sess,dev_set,rci)
 		logger.info("new updated AUC scores %.4f", score[self.Config.top_k-1])
 
 
 		return score
 
-	def evaluate(self,sess,examples,only_encoding=False):
+	def evaluate(self,sess,examples,rci,only_encoding=False):
 		iterator = get_minibatches_idx(len(examples[0]),self.Config.valid_size,False)	
 		preds_cnn = []
 		labels = []
@@ -465,10 +458,16 @@ class ResCNNModel(Model):
 		masks = np.concatenate(masks,axis=0)
 
 		# transform preds_cnn into densely representation (top k)
-		preds_cnn_topk = [np.argpartition(preds_cnn,-k,axis=1) for k in range(1,self.Config.top_k+1)]
+
 		preds_cnn_dense = np.argmax(preds_cnn, axis=1)
-		preds_cnn_dense_k = preds_cnn_topk[self.Config.top_k - 1][:,-self.Config.top_k - 1:]
 		labels_dense = np.argmax(labels,axis=1)
+		preds_cnn_rare = [preds_cnn[i] for i in range(preds_cnn.shape[0]) if labels_dense[i] in rci]
+		labels_dense_rare = [labels_dense[i] for i in range(preds_cnn.shape[0]) if labels_dense[i] in rci]
+		preds_cnn_rare = np.concatenate(preds_cnn_rare,axis=0)
+		labels_dense_rare = np.concatenate(labels_dense_rare,axis=0)
+
+		preds_cnn_topk = [np.argpartition(preds_cnn,-k,axis=1) for k in range(1,self.Config.top_k+1)]
+		preds_topk_rare = [np.argpartition(preds_cnn_rare,-k,axis=1) for k in range(1,self.Config.top_k+1)]
 
 
 		# import pdb; pdb.set_trace()
@@ -492,20 +491,26 @@ class ResCNNModel(Model):
 		pr_rcl_cls = [average_precision_score(labels[:,i],preds_cnn[:,i]) for i in range(labels.shape[1])]
 
 		# error for all choices of k
-		acc_list = []
-		classified_result_k = []
-		for k in range(self.Config.top_k):
-			true_positive = [labels_dense[i] for i in range(labels_dense.shape[0]) if labels_dense[i] in preds_cnn_topk[k][i][-k-1:]]
-			acc_list.append(float(len(true_positive))/labels_dense.shape[0])
 
+		classified_result_k = []
+
+		def accuracy_list(labels_dense,preds_cnn_topk):
+			acc_list = []
+			for k in range(self.Config.top_k):
+				true_positive = [labels_dense[i] for i in range(labels_dense.shape[0]) if labels_dense[i] in preds_cnn_topk[k][i][-k-1:]]
+				acc_list.append(float(len(true_positive))/labels_dense.shape[0])
 			# for k, get the boolean mask of the classification result
 			if k == self.Config.top_k - 1:
 				classified_result_k = [labels_dense[i] in preds_cnn_topk[k][i][-k-1:] for i in range(labels_dense.shape[0])]
-
+			return acc_list,classified_result_k
 		# auc = roc_auc_score(labels,preds)
 		# error = 1. - auc
 
 		# for those incorrectly classified, show its decoding result
+
+		acc_list,classified_result_k = accuracy_list(labels_dense,preds_cnn_topk)
+		acc_list_rare,_ = accuracy_list(labels_dense_rare,preds_topk_rare)
+
 		masked_decoded = []
 		masked_sm_target = []
 		for i in range(preds_rnn.shape[0]):
@@ -513,11 +518,11 @@ class ResCNNModel(Model):
 			sm_original = [sm_target[i][j] for j in range(sm_target.shape[1]) if masks[i][j]]
 			masked_sm_target.append(sm_original)
 			masked_decoded.append(rnn_decoded)
-		
+
 		incorrect_cls_decoded = [(masked_sm_target[i],masked_decoded[i],nts[i]) for i,c_p in enumerate(classified_result_k) if not c_p]  # if not correctly classified
 		all_decoded = [(masked_sm_target[i],masked_decoded[i],nts[i]) for i in range(len(classified_result_k))]
 		# import pdb; pdb.set_trace()
-		return acc_list, (precision_cls,recall_cls,f1_cls,pr_rcl_cls), incorrect_cls_decoded, all_decoded, cnn_encodings, labels
+		return acc_list,acc_list_rare,(precision_cls,recall_cls,f1_cls,pr_rcl_cls), incorrect_cls_decoded, all_decoded, cnn_encodings, labels
 
 
 	def __init__(self,Config,pretrained_embedding):
@@ -584,6 +589,7 @@ if __name__ == "__main__":
 		logger.info("Building model")
 		start = time.time()
 		model = ResCNNModel(config, W)
+		rci = rare_case_indices(model.Config.rare_freq,lb_freq[1],i2w_lb)
 		logger.info("time to build the model: %d", time.time() - start)
 		logger.info("the output path: %s", model.Config.output_path)
 		init = tf.global_variables_initializer()
@@ -602,7 +608,7 @@ if __name__ == "__main__":
 				path = model.Config.model_path
 				for epoch in range(Config.max_epochs):
 					logger.info("running epoch %d", epoch)
-					pred_acc.append(model.run_epoch(session,train,dev))
+					pred_acc.append(model.run_epoch(session,train,dev,rci))
 					# import pdb; pdb.set_trace()
 					if pred_acc[-1][model.Config.top_k-1] > acc_max:
 						logger.info("new best AUC score: %.4f", pred_acc[-1][model.Config.top_k-1])
@@ -611,16 +617,11 @@ if __name__ == "__main__":
 					logger.info("BEST AUC SCORE: %.4f", acc_max)
 
 				saver.restore(session, path)
-				test_score,precision_recall_cls,incorrectly_decoded,all_decoded,cnn_encodings,labels = model.evaluate(session,test)
-				incorrectly_decoded = idxs_to_sentences(incorrectly_decoded,idx2word,i2w_sm,model.Config)
-				all_decoded = idxs_to_sentences(all_decoded,idx2word,i2w_sm,model.Config)
-				logger.info("TEST ERROR: %.4f",test_score[model.Config.top_k-1])
-
 			else:
 				path = args.model_path
 				saver.restore(session, path)
-			cnn_encodings_train,train_labels = model.evaluate(session,train,True)
-			test_score,precision_recall_cls,incorrectly_decoded,all_decoded,cnn_encodings,labels = model.evaluate(session,test)
+			cnn_encodings_train,train_labels = model.evaluate(session,train,rci,True)
+			test_score,test_score_rare,precision_recall_cls,incorrectly_decoded,all_decoded,cnn_encodings,labels = model.evaluate(session,rci,test)
 			incorrectly_decoded = idxs_to_sentences(incorrectly_decoded,idx2word,i2w_sm,model.Config)
 			all_decoded = idxs_to_sentences(all_decoded,idx2word,i2w_sm,model.Config)
 			logger.info("TEST ERROR: %.4f",test_score[model.Config.top_k-1])
@@ -634,4 +635,4 @@ if __name__ == "__main__":
 			f.close()
 
 			# save all the results
-			cPickle.dump([pred_acc ,test_score ,precision_recall_cls,(cnn_encodings_train,cnn_encodings),(train_labels,labels),incorrectly_decoded,all_decoded,lb_freq,i2w_lb],open(model.Config.output_path_results + 'results' + str(n_classes) + ".p","wb"))
+			cPickle.dump([pred_acc ,test_score ,test_score_rare, precision_recall_cls,(cnn_encodings_train,cnn_encodings),(train_labels,labels),incorrectly_decoded,all_decoded,lb_freq,i2w_lb],open(model.Config.output_path_results + 'results' + str(n_classes) + ".p","wb"))

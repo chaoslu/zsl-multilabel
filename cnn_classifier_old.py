@@ -43,6 +43,7 @@ class Config:
 	valid_size = 10
 	dispFreq = 50
 	top_k = 15
+	rare_freq = 300
 
 	# valid_batch_size = 10
 
@@ -131,7 +132,14 @@ def prepare_data(batch,Config,is_seman=False):
 	return new_seqs
 
 
+def rare_case_indices(rare_freq,freq,i2w):
+	freq_lst = sorted([(itm,freq[itm]) for itm in freq],key = lambda t:t[1], reverse=True)
+	indices = [i for i in range(len(i2w)) if freq[i2w[i]] < freq_lst[rare_freq]]
+	return indices
+
+
 class ResCNNModel(Model):
+
 
 	def add_placeholders(self):
 		s_lz = self.Config.max_len  # + 2 * (Config.filters[-1] - 1)
@@ -282,7 +290,7 @@ class ResCNNModel(Model):
 
 
 
-	def evaluate(self,sess,examples,only_encoding=False):
+	def evaluate(self,sess,examples,rci,only_encoding=False):
 		iterator = get_minibatches_idx(len(examples[0]),self.Config.valid_size,False)	
 		preds = []
 		labels = []
@@ -328,8 +336,15 @@ class ResCNNModel(Model):
 
 			# multiclass version to get class prediction for each sample
 			preds_dense = np.argmax(preds,axis=1)
-			preds_topk = [np.argpartition(preds,-k,axis=1) for k in range(1,self.Config.top_k+1)]
 			labels_dense = np.argmax(labels,axis=1)
+
+			preds_rare = [preds[i] for i in range(preds.shape[0]) if labels_dense[i] in rci]
+			labels_dense_rare = [labels_dense[i] for i in range(preds.shape[0]) if labels_dense[i] in rci]
+			preds_rare = np.concatenate(preds_rare,axis=0)
+			labels_dense_rare = np.concatenate(labels_dense_rare,axis=0)
+
+			preds_topk = [np.argpartition(preds,-k,axis=1) for k in range(1,self.Config.top_k+1)]
+			preds_topk_rare = [np.argpartition(preds_rare,-k,axis=1) for k in range(1,self.Config.top_k+1)]
 
 			label_binarizer = sklearn.preprocessing.LabelBinarizer()
 			label_binarizer.fit(range(self.Config.nlabels))
@@ -346,19 +361,27 @@ class ResCNNModel(Model):
 			f1_cls = [2 * p * r/(p+r) if p * r != 0 else 0 for (p,r) in zip(precision_cls,recall_cls)]
 			pr_rcl_cls = [average_precision_score(labels[:,i],preds[:,i]) for i in range(labels.shape[1])]
 
-			# import pdb; pdb.set_trace()
-			k_accuracy = []
-			for k in range(self.Config.top_k):
-				mask = [labels_dense[i] in preds_topk[k][i][-k-1:] for i in range(preds.shape[0])]
-				tp = [msk for msk in mask if msk]
-				acc = float(len(tp))/len(mask)
-				k_accuracy.append(acc)
 
-			return k_accuracy,(precision_cls,recall_cls,f1_cls,pr_rcl_cls),cnn_encodeds,labels
+			def scores_gen(preds_topk,labels_dense):
+				# import pdb; pdb.set_trace()
+				k_accuracy = []
+				for k in range(self.Config.top_k):
+					mask = [labels_dense[i] in preds_topk[k][i][-k-1:] for i in range(preds.shape[0])]
+					tp = [msk for msk in mask if msk]
+					acc = float(len(tp))/len(mask)
+					k_accuracy.append(acc)
+
+				return k_accuracy
+
+
+			k_acc = scores_gen(preds_topk,labels_dense)
+			k_acc_rare = scores_gen(preds_topk_rare,labels_dense_rare)
+
+			return k_acc,k_acc_rare,(precision_cls,recall_cls,f1_cls,pr_rcl_cls),cnn_encodeds,labels
 
 
 
-	def run_epoch(self,sess,train_examples,dev_set,is_test=False):
+	def run_epoch(self,sess,train_examples,dev_set,rci,is_test=False):
 		iterator = get_minibatches_idx(len(train_examples[0]),self.Config.batch_size,False)
 		dispFreq = self.Config.dispFreq
 		cnn_encodings = []
@@ -384,7 +407,7 @@ class ResCNNModel(Model):
 				logger.info("loss until batch_%d, : %f", i,loss)
 
 		logger.info("Evaluating on devlopment data")
-		acc,_,_,_ = self.evaluate(sess,dev_set)
+		acc,_,_,_,_ = self.evaluate(sess,dev_set,rci)
 		if self.Config.label_type == 'multi':
 			logger.info("new updated AUC scores %.4f",acc)  # [self.Config.top_k-1])
 		else:
@@ -455,7 +478,6 @@ if __name__ == "__main__":
 	pred_acc = []
 	acc_max = 0
 
-
 	GPU_config = tf.ConfigProto()
 	GPU_config.gpu_options.per_process_gpu_memory_fraction = 0.2
 	with tf.Graph().as_default():
@@ -463,6 +485,7 @@ if __name__ == "__main__":
 		logger.info("Building model")
 		start = time.time()
 		model = ResCNNModel(config, Wemb)
+		rci = rare_case_indices(model.Config.rare_freq,lb_freq[1],i2w_lb)
 		logger.info("time to build the model: %d", time.time() - start)
 		logger.info("the output path: %s", model.Config.output_path)
 		init = tf.global_variables_initializer()
@@ -481,7 +504,7 @@ if __name__ == "__main__":
 				path = model.Config.model_path
 				for epoch in range(Config.max_epochs):
 					logger.info("running epoch %d", epoch)
-					pred_acc.append(model.run_epoch(session,train,dev))
+					pred_acc.append(model.run_epoch(session,train,dev,rci))
 					if args.label_type == 'single':
 						if pred_acc[-1][model.Config.top_k-1] > acc_max:
 							logger.info("new best AUC score: %.4f", pred_acc[-1][model.Config.top_k-1])  # [model.Config.top_k-1])
@@ -498,8 +521,8 @@ if __name__ == "__main__":
 			else:
 				path = args.model_path
 				saver.restore(session, path)
-			cnn_encodings_train,labels_train = model.evaluate(session,train,True)
-			test_acc,precision_recall_cls,cnn_encodings,labels = model.evaluate(session,test)
+			cnn_encodings_train,labels_train = model.evaluate(session,train,rci,True)
+			test_acc,test_acc_rare,precision_recall_cls,cnn_encodings,labels = model.evaluate(session,rci,test)
 			# make description of the configuration and test result
 			if args.label_type == 'single':
 				test_result = test_acc[-1]
@@ -516,4 +539,4 @@ if __name__ == "__main__":
 			f.close()
 
 			# save all the results
-			cPickle.dump([pred_acc,test_acc,precision_recall_cls,(cnn_encodings_train,cnn_encodings),(labels_train,labels),i2w_lb,lb_freq],open(model.Config.output_path_results + 'results' + str(n_classes) + '.p','wb'))
+			cPickle.dump([pred_acc,test_acc,test_acc_rare,precision_recall_cls,(cnn_encodings_train,cnn_encodings),(labels_train,labels),i2w_lb,lb_freq],open(model.Config.output_path_results + 'results' + str(n_classes) + '.p','wb'))
