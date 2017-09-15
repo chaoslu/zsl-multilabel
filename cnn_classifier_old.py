@@ -37,6 +37,7 @@ class Config:
 	dropout_rate = 0.5
 	beta1 = 1
 	beta2 = 1
+	max_epochs = 80
 	learn_rate = 0.0002
 	batch_size = 20
 	valid_size = 10
@@ -57,8 +58,6 @@ class Config:
 		self.model_path = self.output_path + "model.weights"
 		if label_type == 'single':
 			self.max_epochs = 30
-		else:
-			self.max_epochs = 80
 	"""
 	img_h = max_len + 2*(filter_hs[-1]-1)
    
@@ -494,23 +493,21 @@ if __name__ == "__main__":
 							saver.save(session, path)
 						logger.info("BEST AUC SCORE: %.4f", acc_max)
 				saver.restore(session, path)	
-				test_acc,precision_recall_cls,cnn_encodings,labels = model.evaluate(session,test)
-				logger.info("TEST ERROR: %.4f", test_acc)  # [model.Config.top_k-1])
-
 			else:
 				path = args.model_path
 				saver.restore(session, path)
-				test_acc,precision_recall_cls,cnn_encodings,labels = model.evaluate(session,test)
-				logger.info("TEST ERROR: %.4f", test_acc)  # [model.Config.top_k-1])
-			# make description of the configuration and test result
+			test_acc,precision_recall_cls,cnn_encodings,labels = model.evaluate(session,test)
 			if args.label_type == 'single':
 				test_result = test_acc[-1]
 			else:
 				test_result = test_acc
+
+			logger.info("TEST ERROR: %.4f", test_result)  # [model.Config.top_k-1])
+			# make description of the configuration and test result
 			with open(model.Config.output_path_results + "description.txt","w") as f:
 				cfg = model.Config
 				f.write("train_or_test: %s\nmodel_path: %s\ndata_version: %s\nfeature_maps: %d\nfilters: [%d,%d,%d]\n \
-					learn_rate: %f\nbatch_size: %d\nresult: %f" % (args.is_train,path,cfg.feature_maps,args.data,
+					learn_rate: %f\nbatch_size: %d\nresult: %f" % (args.is_train,path,args.data,cfg.feature_maps,
 					cfg.filters[0],cfg.filters[1],cfg.filters[2],cfg.learn_rate,cfg.batch_size,test_result))  # [cfg.top_k-1]))
 			f.close()
 
