@@ -461,11 +461,11 @@ class ResCNNModel(Model):
 
 		preds_cnn_dense = np.argmax(preds_cnn, axis=1)
 		labels_dense = np.argmax(labels,axis=1)
+		
 		preds_cnn_rare = [preds_cnn[i] for i in range(preds_cnn.shape[0]) if labels_dense[i] in rci]
 		labels_dense_rare = [labels_dense[i] for i in range(preds_cnn.shape[0]) if labels_dense[i] in rci]
-		preds_cnn_rare = np.concatenate(preds_cnn_rare,axis=0)
-		labels_dense_rare = np.concatenate(labels_dense_rare,axis=0)
-
+		preds_cnn_rare = np.concatenate(preds_cnn_rare,axis=0)	
+		preds_cnn_rare = np.reshape(preds_cnn_rare,(-1,preds_cnn.shape[1]))
 		preds_cnn_topk = [np.argpartition(preds_cnn,-k,axis=1) for k in range(1,self.Config.top_k+1)]
 		preds_topk_rare = [np.argpartition(preds_cnn_rare,-k,axis=1) for k in range(1,self.Config.top_k+1)]
 
@@ -497,11 +497,11 @@ class ResCNNModel(Model):
 		def accuracy_list(labels_dense,preds_cnn_topk):
 			acc_list = []
 			for k in range(self.Config.top_k):
-				true_positive = [labels_dense[i] for i in range(labels_dense.shape[0]) if labels_dense[i] in preds_cnn_topk[k][i][-k-1:]]
-				acc_list.append(float(len(true_positive))/labels_dense.shape[0])
+				true_positive = [labels_dense[i] for i in range(len(labels_dense)) if labels_dense[i] in preds_cnn_topk[k][i][-k-1:]]
+				acc_list.append(float(len(true_positive))/len(labels_dense))
 			# for k, get the boolean mask of the classification result
 			if k == self.Config.top_k - 1:
-				classified_result_k = [labels_dense[i] in preds_cnn_topk[k][i][-k-1:] for i in range(labels_dense.shape[0])]
+				classified_result_k = [labels_dense[i] in preds_cnn_topk[k][i][-k-1:] for i in range(len(labels_dense))]
 			return acc_list,classified_result_k
 		# auc = roc_auc_score(labels,preds)
 		# error = 1. - auc
@@ -610,9 +610,9 @@ if __name__ == "__main__":
 					logger.info("running epoch %d", epoch)
 					pred_acc.append(model.run_epoch(session,train,dev,rci))
 					# import pdb; pdb.set_trace()
-					if pred_acc[-1][model.Config.top_k-1] > acc_max:
-						logger.info("new best AUC score: %.4f", pred_acc[-1][model.Config.top_k-1])
-						acc_max = pred_acc[-1][model.Config.top_k-1] 
+					if pred_acc[-1][0][model.Config.top_k-1] > acc_max:
+						logger.info("new best AUC score: %.4f", pred_acc[-1][0][model.Config.top_k-1])
+						acc_max = pred_acc[-1][0][model.Config.top_k-1] 
 						saver.save(session, path)
 					logger.info("BEST AUC SCORE: %.4f", acc_max)
 
@@ -621,7 +621,7 @@ if __name__ == "__main__":
 				path = args.model_path
 				saver.restore(session, path)
 			cnn_encodings_train,train_labels = model.evaluate(session,train,rci,True)
-			test_score,test_score_rare,precision_recall_cls,incorrectly_decoded,all_decoded,cnn_encodings,labels = model.evaluate(session,rci,test)
+			test_score,test_score_rare,precision_recall_cls,incorrectly_decoded,all_decoded,cnn_encodings,labels = model.evaluate(session,test,rci)
 			incorrectly_decoded = idxs_to_sentences(incorrectly_decoded,idx2word,i2w_sm,model.Config)
 			all_decoded = idxs_to_sentences(all_decoded,idx2word,i2w_sm,model.Config)
 			logger.info("TEST ERROR: %.4f",test_score[model.Config.top_k-1])

@@ -134,7 +134,7 @@ def prepare_data(batch,Config,is_seman=False):
 
 def rare_case_indices(rare_freq,freq,i2w):
 	freq_lst = sorted([(itm,freq[itm]) for itm in freq],key = lambda t:t[1], reverse=True)
-	indices = [i for i in range(len(i2w)) if freq[i2w[i]] < freq_lst[rare_freq]]
+	indices = [i for i in range(len(i2w)) if freq[i2w[i]] < freq_lst[rare_freq][1]]
 	return indices
 
 
@@ -341,8 +341,7 @@ class ResCNNModel(Model):
 			preds_rare = [preds[i] for i in range(preds.shape[0]) if labels_dense[i] in rci]
 			labels_dense_rare = [labels_dense[i] for i in range(preds.shape[0]) if labels_dense[i] in rci]
 			preds_rare = np.concatenate(preds_rare,axis=0)
-			labels_dense_rare = np.concatenate(labels_dense_rare,axis=0)
-
+			preds_rare = np.reshape(preds_rare,(-1,preds.shape[1]))
 			preds_topk = [np.argpartition(preds,-k,axis=1) for k in range(1,self.Config.top_k+1)]
 			preds_topk_rare = [np.argpartition(preds_rare,-k,axis=1) for k in range(1,self.Config.top_k+1)]
 
@@ -366,7 +365,7 @@ class ResCNNModel(Model):
 				# import pdb; pdb.set_trace()
 				k_accuracy = []
 				for k in range(self.Config.top_k):
-					mask = [labels_dense[i] in preds_topk[k][i][-k-1:] for i in range(preds.shape[0])]
+					mask = [labels_dense[i] in preds_topk[k][i][-k-1:] for i in range(len(labels_dense))]
 					tp = [msk for msk in mask if msk]
 					acc = float(len(tp))/len(mask)
 					k_accuracy.append(acc)
@@ -377,7 +376,7 @@ class ResCNNModel(Model):
 			k_acc = scores_gen(preds_topk,labels_dense)
 			k_acc_rare = scores_gen(preds_topk_rare,labels_dense_rare)
 
-			return k_acc,k_acc_rare,(precision_cls,recall_cls,f1_cls,pr_rcl_cls),cnn_encodeds,labels
+			return (k_acc,k_acc_rare),(precision_cls,recall_cls,f1_cls,pr_rcl_cls),cnn_encodeds,labels
 
 
 
@@ -407,7 +406,7 @@ class ResCNNModel(Model):
 				logger.info("loss until batch_%d, : %f", i,loss)
 
 		logger.info("Evaluating on devlopment data")
-		acc,_,_,_,_ = self.evaluate(sess,dev_set,rci)
+		acc,_,_,_ = self.evaluate(sess,dev_set,rci)
 		if self.Config.label_type == 'multi':
 			logger.info("new updated AUC scores %.4f",acc)  # [self.Config.top_k-1])
 		else:
@@ -425,7 +424,7 @@ class ResCNNModel(Model):
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
 	parser.add_argument('-lf','--label_freq', default='500', type=str)
-	parser.add_argument('-lt','--label_type', default='multi', type=str)
+	parser.add_argument('-lt','--label_type', default='single', type=str)
 	parser.add_argument('-ug','--using_glove', default=False, type=bool)
 	parser.add_argument('-it','--is_train',default='train', type=str)
 	parser.add_argument('-mp','--model_path',default='',type=str)
@@ -506,9 +505,9 @@ if __name__ == "__main__":
 					logger.info("running epoch %d", epoch)
 					pred_acc.append(model.run_epoch(session,train,dev,rci))
 					if args.label_type == 'single':
-						if pred_acc[-1][model.Config.top_k-1] > acc_max:
-							logger.info("new best AUC score: %.4f", pred_acc[-1][model.Config.top_k-1])  # [model.Config.top_k-1])
-							acc_max = pred_acc[-1][model.Config.top_k-1]  # [model.Config.top_k-1]
+						if pred_acc[-1][0][model.Config.top_k-1] > acc_max:
+							logger.info("new best AUC score: %.4f", pred_acc[-1][0][model.Config.top_k-1])  # [model.Config.top_k-1])
+							acc_max = pred_acc[-1][0][model.Config.top_k-1]  # [model.Config.top_k-1]
 							saver.save(session, path)
 						logger.info("BEST AUC SCORE: %.4f", acc_max)
 					else:
@@ -522,10 +521,10 @@ if __name__ == "__main__":
 				path = args.model_path
 				saver.restore(session, path)
 			cnn_encodings_train,labels_train = model.evaluate(session,train,rci,True)
-			test_acc,test_acc_rare,precision_recall_cls,cnn_encodings,labels = model.evaluate(session,rci,test)
+			test_acc,precision_recall_cls,cnn_encodings,labels = model.evaluate(session,test,rci)
 			# make description of the configuration and test result
 			if args.label_type == 'single':
-				test_result = test_acc[-1]
+				test_result = test_acc[0][-1]
 			else:
 				test_result = test_acc
 
@@ -539,4 +538,4 @@ if __name__ == "__main__":
 			f.close()
 
 			# save all the results
-			cPickle.dump([pred_acc,test_acc,test_acc_rare,precision_recall_cls,(cnn_encodings_train,cnn_encodings),(labels_train,labels),i2w_lb,lb_freq],open(model.Config.output_path_results + 'results' + str(n_classes) + '.p','wb'))
+			cPickle.dump([pred_acc,test_acc,precision_recall_cls,(cnn_encodings_train,cnn_encodings),(labels_train,labels),i2w_lb,lb_freq],open(model.Config.output_path_results + 'results' + str(n_classes) + '.p','wb'))
