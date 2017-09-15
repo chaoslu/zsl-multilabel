@@ -344,7 +344,7 @@ class ResCNNModel(Model):
 			preds_rnn = tf.reshape(tf.concat(preds_rnn,axis=1),shape=[-1,mx_len,dec_num])
 			preds_rnn_oh = tf.concat(preds_rnn_oh,axis=1)
 
-			return preds_rnn,preds_rnn_oh #,states[-1]
+			return preds_rnn,preds_rnn_oh  #,states[-1]
 
 
 	def add_loss_op(self,pred_cnn,pred_rnn):  # mapping, seman
@@ -379,6 +379,7 @@ class ResCNNModel(Model):
 	def run_epoch(self,sess,train_examples,dev_set):
 		iterator = get_minibatches_idx(len(train_examples[0]),self.Config.batch_size,False)
 		score = 0
+		cnn_encodings = []
 		dispFreq = self.Config.dispFreq
 		# word_embeddings_old = sess.run(self.params['Wemb'])
 
@@ -401,7 +402,7 @@ class ResCNNModel(Model):
 			# print something about the loss
 			if i % dispFreq == 0:
 				logger.info("loss until batch_%d, : %f", i,loss)
-				
+
 				# to see if the word embeddings are being trained.
 				'''
 				word_embeddings_new = sess.run(self.params['Wemb'])
@@ -413,9 +414,10 @@ class ResCNNModel(Model):
 		score,_,_,_,_,_ = self.evaluate(sess,dev_set)
 		logger.info("new updated AUC scores %.4f", score[self.Config.top_k-1])
 
+
 		return score
 
-	def evaluate(self,sess,examples):
+	def evaluate(self,sess,examples,only_encoding=False):
 		iterator = get_minibatches_idx(len(examples[0]),self.Config.valid_size,False)	
 		preds_cnn = []
 		labels = []
@@ -452,9 +454,12 @@ class ResCNNModel(Model):
 			nts = nts + nts_batch
 
 		# all results are transformed into num_dev * ?
+		cnn_encodings = np.concatenate(cnn_encodings,axis=0)
+		if only_encoding:
+			return cnn_encodings
+
 		preds_cnn = np.concatenate(preds_cnn,axis=0)  
 		labels = np.concatenate(labels,axis=0)
-		cnn_encodings = np.concatenate(cnn_encodings,axis=0)
 		preds_rnn = np.concatenate(preds_rnn,axis=0)
 		sm_target = np.concatenate(sm_target,axis=0)
 		masks = np.concatenate(masks,axis=0)
@@ -614,6 +619,7 @@ if __name__ == "__main__":
 			else:
 				path = args.model_path
 				saver.restore(session, path)
+				cnn_encodings_train = model.evaluate(session,train,True)
 				test_score,precision_recall_cls,incorrectly_decoded,all_decoded,cnn_encodings,labels = model.evaluate(session,test)
 				incorrectly_decoded = idxs_to_sentences(incorrectly_decoded,idx2word,i2w_sm,model.Config)
 				all_decoded = idxs_to_sentences(all_decoded,idx2word,i2w_sm,model.Config)
@@ -628,4 +634,4 @@ if __name__ == "__main__":
 			f.close()
 
 			# save all the results
-			cPickle.dump([pred_acc ,test_score ,precision_recall_cls,cnn_encodings,labels,incorrectly_decoded,all_decoded,lb_freq,i2w_lb],open(model.Config.output_path_results + 'results' + str(n_classes) + ".p","wb"))
+			cPickle.dump([pred_acc ,test_score ,precision_recall_cls,(cnn_encodings_train,cnn_encodings),labels,incorrectly_decoded,all_decoded,lb_freq,i2w_lb],open(model.Config.output_path_results + 'results' + str(n_classes) + ".p","wb"))

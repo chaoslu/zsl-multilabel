@@ -282,7 +282,7 @@ class ResCNNModel(Model):
 
 
 
-	def evaluate(self,sess,examples):
+	def evaluate(self,sess,examples,only_encoding=False):
 		iterator = get_minibatches_idx(len(examples[0]),self.Config.valid_size,False)	
 		preds = []
 		labels = []
@@ -311,6 +311,9 @@ class ResCNNModel(Model):
 		preds = np.concatenate(preds,axis=0)
 		labels = np.concatenate(labels,axis=0)
 		cnn_encodeds = np.concatenate(cnn_encodeds,axis=0)
+
+		if only_encoding:
+			return cnn_encodeds
 
 		if self.Config.label_type == 'multi': 
 			# precision and recall for all the classes
@@ -355,9 +358,10 @@ class ResCNNModel(Model):
 
 
 
-	def run_epoch(self,sess,train_examples,dev_set):
+	def run_epoch(self,sess,train_examples,dev_set,is_test=False):
 		iterator = get_minibatches_idx(len(train_examples[0]),self.Config.batch_size,False)
 		dispFreq = self.Config.dispFreq
+		cnn_encodings = []
 
 		for i,idx in enumerate(iterator):
 			nts,lb,sm = train_examples
@@ -373,6 +377,7 @@ class ResCNNModel(Model):
 			lb_batch = np.array(lb_batch)
 
 			loss = self.train_on_batch(sess,padded_nts_batch,padded_sm_batch,lb_batch)
+		
 
 			# print something about the loss
 			if i % dispFreq == 0:
@@ -401,7 +406,7 @@ if __name__ == "__main__":
 	parser.add_argument('-ug','--using_glove', default=False, type=bool)
 	parser.add_argument('-it','--is_train',default='train', type=str)
 	parser.add_argument('-mp','--model_path',default='',type=str)
-	parser.add_argument('-dt','--data',default='',type=str)
+	parser.add_argument('-dt','--data',default='clean',type=str)
 
 	args = parser.parse_args()
 
@@ -424,10 +429,8 @@ if __name__ == "__main__":
 	logger.info('loading data...')
 	x = cPickle.load(open("./data/everything" + affx + args.label_type + args.label_freq + ".p","rb"))
 	train, dev, test, W_g, W_m, idx2word, word2idx, w2i_lb, i2w_lb, ConfigInfo, lb_freq = x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[10]
-
 	del x
 
-	n_classes = len(i2w_lb)
 	# whether use the glove data
 	data_type = ''
 	if args.using_glove:
@@ -437,9 +440,8 @@ if __name__ == "__main__":
 		data_type = 'mixed_'
 		W = W_m
 
+	n_classes = len(i2w_lb)
 	config = Config(ConfigInfo,n_classes,data_type,args.label_type)
-
-
 
 	# add another special token called <pad_zero>
 	n_words = len(idx2word)
@@ -496,7 +498,10 @@ if __name__ == "__main__":
 			else:
 				path = args.model_path
 				saver.restore(session, path)
-			test_acc,precision_recall_cls,cnn_encodings,labels = model.evaluate(session,test)
+				cnn_encodings_train = model.evaluate(session,train,True)
+				test_acc,precision_recall_cls,cnn_encodings,labels = model.evaluate(session,test)
+				logger.info("TEST ERROR: %.4f", test_acc)  # [model.Config.top_k-1])
+			# make description of the configuration and test result
 			if args.label_type == 'single':
 				test_result = test_acc[-1]
 			else:
@@ -512,4 +517,4 @@ if __name__ == "__main__":
 			f.close()
 
 			# save all the results
-			cPickle.dump([pred_acc,test_acc,precision_recall_cls,cnn_encodings,labels,i2w_lb,lb_freq],open(model.Config.output_path_results + 'results' + str(n_classes) + '.p','wb'))
+			cPickle.dump([pred_acc,test_acc,precision_recall_cls,(cnn_encodings_train,cnn_encodings),labels,i2w_lb,lb_freq],open(model.Config.output_path_results + 'results' + str(n_classes) + '.p','wb'))
