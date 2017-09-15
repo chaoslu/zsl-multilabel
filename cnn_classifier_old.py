@@ -313,7 +313,7 @@ class ResCNNModel(Model):
 		cnn_encodeds = np.concatenate(cnn_encodeds,axis=0)
 
 		if only_encoding:
-			return cnn_encodeds
+			return cnn_encodeds,labels
 
 		if self.Config.label_type == 'multi': 
 			# precision and recall for all the classes
@@ -498,9 +498,8 @@ if __name__ == "__main__":
 			else:
 				path = args.model_path
 				saver.restore(session, path)
-				cnn_encodings_train = model.evaluate(session,train,True)
-				test_acc,precision_recall_cls,cnn_encodings,labels = model.evaluate(session,test)
-				logger.info("TEST ERROR: %.4f", test_acc)  # [model.Config.top_k-1])
+			cnn_encodings_train,labels_train = model.evaluate(session,train,True)
+			test_acc,precision_recall_cls,cnn_encodings,labels = model.evaluate(session,test)
 			# make description of the configuration and test result
 			if args.label_type == 'single':
 				test_result = test_acc[-1]
@@ -517,4 +516,4 @@ if __name__ == "__main__":
 			f.close()
 
 			# save all the results
-			cPickle.dump([pred_acc,test_acc,precision_recall_cls,(cnn_encodings_train,cnn_encodings),labels,i2w_lb,lb_freq],open(model.Config.output_path_results + 'results' + str(n_classes) + '.p','wb'))
+			cPickle.dump([pred_acc,test_acc,precision_recall_cls,(cnn_encodings_train,cnn_encodings),(labels_train,labels),i2w_lb,lb_freq],open(model.Config.output_path_results + 'results' + str(n_classes) + '.p','wb'))

@@ -455,11 +455,11 @@ class ResCNNModel(Model):
 
 		# all results are transformed into num_dev * ?
 		cnn_encodings = np.concatenate(cnn_encodings,axis=0)
+		labels = np.concatenate(labels,axis=0)
 		if only_encoding:
-			return cnn_encodings
+			return cnn_encodings,labels
 
 		preds_cnn = np.concatenate(preds_cnn,axis=0)  
-		labels = np.concatenate(labels,axis=0)
 		preds_rnn = np.concatenate(preds_rnn,axis=0)
 		sm_target = np.concatenate(sm_target,axis=0)
 		masks = np.concatenate(masks,axis=0)
@@ -619,11 +619,11 @@ if __name__ == "__main__":
 			else:
 				path = args.model_path
 				saver.restore(session, path)
-				cnn_encodings_train = model.evaluate(session,train,True)
-				test_score,precision_recall_cls,incorrectly_decoded,all_decoded,cnn_encodings,labels = model.evaluate(session,test)
-				incorrectly_decoded = idxs_to_sentences(incorrectly_decoded,idx2word,i2w_sm,model.Config)
-				all_decoded = idxs_to_sentences(all_decoded,idx2word,i2w_sm,model.Config)
-				logger.info("TEST ERROR: %.4f",test_score[model.Config.top_k-1])
+			cnn_encodings_train,train_labels = model.evaluate(session,train,True)
+			test_score,precision_recall_cls,incorrectly_decoded,all_decoded,cnn_encodings,labels = model.evaluate(session,test)
+			incorrectly_decoded = idxs_to_sentences(incorrectly_decoded,idx2word,i2w_sm,model.Config)
+			all_decoded = idxs_to_sentences(all_decoded,idx2word,i2w_sm,model.Config)
+			logger.info("TEST ERROR: %.4f",test_score[model.Config.top_k-1])
 
 			# make description of the configuration and test result
 			with open(model.Config.output_path_results + "description.txt","w") as f:
@@ -634,4 +634,4 @@ if __name__ == "__main__":
 			f.close()
 
 			# save all the results
-			cPickle.dump([pred_acc ,test_score ,precision_recall_cls,(cnn_encodings_train,cnn_encodings),labels,incorrectly_decoded,all_decoded,lb_freq,i2w_lb],open(model.Config.output_path_results + 'results' + str(n_classes) + ".p","wb"))
+			cPickle.dump([pred_acc ,test_score ,precision_recall_cls,(cnn_encodings_train,cnn_encodings),(train_labels,labels),incorrectly_decoded,all_decoded,lb_freq,i2w_lb],open(model.Config.output_path_results + 'results' + str(n_classes) + ".p","wb"))
