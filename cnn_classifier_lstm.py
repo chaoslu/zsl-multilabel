@@ -468,7 +468,7 @@ class ResCNNModel(Model):
 		preds_cnn_rare = np.reshape(preds_cnn_rare,(-1,preds_cnn.shape[1]))
 		preds_cnn_topk = [np.argpartition(preds_cnn,-k,axis=1) for k in range(1,self.Config.top_k+1)]
 		preds_topk_rare = [np.argpartition(preds_cnn_rare,-k,axis=1) for k in range(1,self.Config.top_k+1)]
-
+		import pdb; pdb.set_trace()
 
 		# import pdb; pdb.set_trace()
 		# transform preds_cnn to one_hot form
@@ -536,9 +536,9 @@ class ResCNNModel(Model):
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
 	parser.add_argument('-lf','--label_freq', default='500', type=str)
-	parser.add_argument('-ug','--using_glove', default=False, type=bool)
-	parser.add_argument('-it','--is_train',default='train', type=str)
-	parser.add_argument('-mp','--model_path',default='',type=str)
+	parser.add_argument('-ug','--using_glove', default=True, type=bool)
+	parser.add_argument('-it','--is_train',default='test', type=str)
+	parser.add_argument('-mp','--model_path',default='./glove_result_lstm/20170914_205341/model.weights',type=str)
 	parser.add_argument('-dt','--data',default='clean',type=str)
 
 	args = parser.parse_args()
