@@ -181,7 +181,7 @@ def idxs_to_sentences(classified,i2w,i2w_sm,cfg):
 
 def rare_case_indices(rare_freq,freq,i2w):
 	freq_lst = sorted([(itm,freq[itm]) for itm in freq],key = lambda t:t[1], reverse=True)
-	indices = [i for i in range(len(i2w)) if freq[i2w[i]] < freq_lst[rare_freq]]
+	indices = [i for i in range(len(i2w)) if freq[i2w[i]] < freq_lst[rare_freq][1]]
 	return indices
 
 
