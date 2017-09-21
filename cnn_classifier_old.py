@@ -364,19 +364,21 @@ class ResCNNModel(Model):
 			def scores_gen(preds_topk,labels_dense):
 				# import pdb; pdb.set_trace()
 				k_accuracy = []
+				mask = []
 				for k in range(self.Config.top_k):
 					mask = [labels_dense[i] in preds_topk[k][i][-k-1:] for i in range(len(labels_dense))]
 					tp = [msk for msk in mask if msk]
 					acc = float(len(tp))/len(mask)
 					k_accuracy.append(acc)
 
-				return k_accuracy
+				return k_accuracy,mask
 
+			k_acc,mask = scores_gen(preds_topk,labels_dense)
+			k_acc_rare,_ = scores_gen(preds_topk_rare,labels_dense_rare)
 
-			k_acc = scores_gen(preds_topk,labels_dense)
-			k_acc_rare = scores_gen(preds_topk_rare,labels_dense_rare)
+			incorrect_classified = [(labels_dense[i],preds_dense[i]) for i,c_p in enumerate(mask) if not c_p]
 
-			return (k_acc,k_acc_rare),(precision_cls,recall_cls,f1_cls,pr_rcl_cls),cnn_encodeds,labels
+			return (k_acc,k_acc_rare),(precision_cls,recall_cls,f1_cls,pr_rcl_cls),cnn_encodeds,(zip(labels_dense,preds_dense),incorrect_classified)
 
 
 

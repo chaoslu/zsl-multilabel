@@ -519,9 +519,10 @@ class ResCNNModel(Model):
 			masked_decoded.append(rnn_decoded)
 
 		incorrect_cls_decoded = [(masked_sm_target[i],masked_decoded[i],nts[i]) for i,c_p in enumerate(classified_result_k) if not c_p]  # if not correctly classified
+		incorrect_classified = [(labels_dense[i],preds_cnn_dense[i]) for i,c_p in enumerate(classified_result_k) if not c_p]
 		all_decoded = [(masked_sm_target[i],masked_decoded[i],nts[i]) for i in range(len(classified_result_k))]
 		# import pdb; pdb.set_trace()
-		return acc_list,acc_list_rare,(precision_cls,recall_cls,f1_cls,pr_rcl_cls), incorrect_cls_decoded, all_decoded, cnn_encodings, labels
+		return acc_list,acc_list_rare,(precision_cls,recall_cls,f1_cls,pr_rcl_cls), incorrect_cls_decoded, all_decoded, cnn_encodings, (zip(labels_dense,preds_cnn_dense), incorrect_classified)
 
 
 	def __init__(self,Config,pretrained_embedding):
