@@ -540,4 +540,5 @@ if __name__ == "__main__":
 			f.close()
 
 			# save all the results
-			cPickle.dump([pred_acc,test_acc,precision_recall_cls,(cnn_encodings_train,cnn_encodings),(labels_train,labels),i2w_lb,lb_freq],open(model.Config.output_path_results + 'results' + str(n_classes) + '.p','wb'))
+			cPickle.dump([pred_acc,test_acc,precision_recall_cls,(labels_train,labels),i2w_lb,lb_freq],open(model.Config.output_path_results + 'results' + str(n_classes) + '.p','wb'))
+			cPickle.dump((cnn_encodings_train,cnn_encodings),open(model.Config.output_path_results + 'encodings' + str(n_classes) + '.p','wb'))
