@@ -15,15 +15,15 @@ from sklearn.manifold import TSNE
 
 if __name__ == "__main__":
     
-    output_path_500_mixed = "./mixed_single_result_old/results_only/20170915_191447/results506.p"
-    output_path_500_lstm_mixed = "./mixed_result_lstm/results_only/20170918_131633/results506.p"
-    output_path_500 = "./glove_single_result_old/results_only/20170915_191331/results506.p"
-    output_path_500_lstm = "./glove_result_lstm/results_only/20170918_131022/results506.p"
+    #output_path_500_mixed = "./mixed_single_result_old/results_only/20170915_191447/results506.p"
+    #output_path_500_lstm_mixed = "./mixed_result_lstm/results_only/20170918_131633/results506.p"
+    output_path_500 = "./glove_single_result_old/results_only/20170920_205657/results506.p"
+    #output_path_500_lstm = "./glove_result_lstm/results_only/20170918_131022/results506.p"
 
-    x_mixed_freq_500 = cPickle.load(open(output_path_500_mixed,"rb"))
-    x_mixed_freq_500_lstm =cPickle.load(open(output_path_500_lstm_mixed,"rb"))
+    #x_mixed_freq_500 = cPickle.load(open(output_path_500_mixed,"rb"))
+    #x_mixed_freq_500_lstm =cPickle.load(open(output_path_500_lstm_mixed,"rb"))
     x_for_freq_500 = cPickle.load(open(output_path_500,"rb"))
-    x_for_freq_500_lstm = cPickle.load(open(output_path_500_lstm,"rb"))
+    #x_for_freq_500_lstm = cPickle.load(open(output_path_500_lstm,"rb"))
     
     cnn_encodings,labels,i2w_lb,lb_freq = x_for_freq_500[3],x_for_freq_500[4],x_for_freq_500[5],x_for_freq_500[6]
     cnn_encodings_lstm,labels_lstm,lb_freq_lstm,i2w_lb_lstm = x_for_freq_500_lstm[4],x_for_freq_500_lstm[5],x_for_freq_500_lstm[8],x_for_freq_500_lstm[9]
@@ -125,22 +125,22 @@ if __name__ == "__main__":
     
      # plot scatter for top k test accuracy
     
-    acc_500 = x_mixed_freq_500[1]
+    acc_500 = x_mixed_freq_500[1][0]
     acc_500_lstm = x_mixed_freq_500_lstm[1]
-    acc_500_glove = x_for_freq_500[1]
+    acc_500_glove = x_for_freq_500[1][0]
     acc_500_glove_lstm = x_for_freq_500_lstm[1]
    
     
-    fig1 = plt.figure()
+    fig1 = plt.figure(figsize=(8,6))
     line_500_CNN, = plt.plot(range(1,len(acc_500)+1),acc_500)
-    line_500_CNN-RNN, = plt.plot(range(1,len(acc_500_lstm)+1),acc_500_lstm)
+    line_500_CNN_RNN, = plt.plot(range(1,len(acc_500_lstm)+1),acc_500_lstm)
     line_500_glove_CNN, = plt.plot(range(1,len(acc_500_glove)+1),acc_500_glove)
-    line_500_glove_CNN-RNN, = plt.plot(range(1,len(acc_500_glove_lstm)+1),acc_500_glove_lstm)
+    line_500_glove_CNN_RNN, = plt.plot(range(1,len(acc_500_glove_lstm)+1),acc_500_glove_lstm)
    
     plt.xlabel('k')
     plt.ylabel('accuracy')
     plt.title('accuracy of predicting within the top k classes over top500 diagnosis')
-    plt.legend([line_500,line_500_CNN,line_1000,line_1000_CNN],['CNN-WordVec','CNN-RNN-WordVec','CNN-Glove','CNN-RNN-Glove'])
+    plt.legend([line_500_CNN,line_500_CNN_RNN,line_500_glove_CNN,line_500_glove_CNN_RNN],['CNN-WordVec','CNN-RNN-WordVec','CNN-Glove','CNN-RNN-Glove'])
     
     
     plt.show()
