@@ -449,19 +449,18 @@ class ResCNNModel(Model):
 		# all results are transformed into num_dev * ?
 		cnn_encodings = np.concatenate(cnn_encodings,axis=0)
 		labels = np.concatenate(labels,axis=0)
+		labels_dense = np.argmax(labels,axis=1)
 		if only_encoding:
-			return cnn_encodings,labels
+			return cnn_encodings,labels_dense
 
-		preds_cnn = np.concatenate(preds_cnn,axis=0)  
+		preds_cnn = np.concatenate(preds_cnn,axis=0) 
+		preds_cnn_dense = np.argmax(preds_cnn, axis=1) 
 		preds_rnn = np.concatenate(preds_rnn,axis=0)
 		sm_target = np.concatenate(sm_target,axis=0)
 		masks = np.concatenate(masks,axis=0)
 
 		# transform preds_cnn into densely representation (top k)
 
-		preds_cnn_dense = np.argmax(preds_cnn, axis=1)
-		labels_dense = np.argmax(labels,axis=1)
-		
 		preds_cnn_rare = [preds_cnn[i] for i in range(preds_cnn.shape[0]) if labels_dense[i] in rci]
 		labels_dense_rare = [labels_dense[i] for i in range(preds_cnn.shape[0]) if labels_dense[i] in rci]
 		preds_cnn_rare = np.concatenate(preds_cnn_rare,axis=0)	
@@ -594,13 +593,13 @@ if __name__ == "__main__":
 		logger.info("the output path: %s", model.Config.output_path)
 		init = tf.global_variables_initializer()
 		saver = tf.train.Saver()
-	
+
 		if not os.path.exists(model.Config.output_path):
 			os.makedirs(model.Config.output_path)	
 
 		if not os.path.exists(model.Config.output_path_results):
 			os.makedirs(model.Config.output_path_results)	
-		
+
 		with tf.Session(config=GPU_config) as session:
 			path = ''
 			session.run(init)
@@ -635,5 +634,5 @@ if __name__ == "__main__":
 			f.close()
 
 			# save all the results
-			cPickle.dump([pred_acc ,test_score ,test_score_rare, precision_recall_cls,(train_labels,labels),incorrectly_decoded,all_decoded,lb_freq,i2w_lb],open(model.Config.output_path_results + 'results' + str(n_classes) + ".p","wb"))
-			cPickle.dump(cnn_encodings_train,cnn_encodings),open(model.Config.output_path_results + 'encodings' + str(n_classes) + '.p',"wb"))
+			cPickle.dump([pred_acc ,test_score ,test_score_rare,precision_recall_cls,(train_labels,labels),incorrectly_decoded,all_decoded,lb_freq,i2w_lb],open(model.Config.output_path_results + 'results' + str(n_classes) + ".p","wb"))
+			cPickle.dump((cnn_encodings_train,cnn_encodings),open(model.Config.output_path_results + 'encodings' + str(n_classes) + '.p',"wb"))

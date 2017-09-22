@@ -318,10 +318,12 @@ class ResCNNModel(Model):
 
 		preds = np.concatenate(preds,axis=0)
 		labels = np.concatenate(labels,axis=0)
+		preds_dense = np.argmax(preds,axis=1)
+		labels_dense = np.argmax(labels,axis=1)
 		cnn_encodeds = np.concatenate(cnn_encodeds,axis=0)
 
 		if only_encoding:
-			return cnn_encodeds,labels
+			return cnn_encodeds,labels_dense
 
 		if self.Config.label_type == 'multi': 
 			# precision and recall for all the classes
@@ -330,13 +332,11 @@ class ResCNNModel(Model):
 			pr = np.average(pr_rcl_cls_clean)
 
 			# should return the embbeding before the classification step and the labels
-			return pr,pr_rcl_cls,cnn_encodeds,labels
+			return pr,pr_rcl_cls,cnn_encodeds,labels_dense
 
 		else:
 
 			# multiclass version to get class prediction for each sample
-			preds_dense = np.argmax(preds,axis=1)
-			labels_dense = np.argmax(labels,axis=1)
 
 			preds_rare = [preds[i] for i in range(preds.shape[0]) if labels_dense[i] in rci]
 			labels_dense_rare = [labels_dense[i] for i in range(preds.shape[0]) if labels_dense[i] in rci]
