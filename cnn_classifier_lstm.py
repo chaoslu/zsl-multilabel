@@ -85,7 +85,7 @@ def init_parameters(Config,W):
 	# W is initialized by the pretrained word embedding
 	# otherwise, W will be initialized by random word embedding
 	params = OrderedDict()
-	params['Wemb'] = tf.Variable(W,trainable=False)
+	params['Wemb'] = tf.Variable(W,trainable=True)
 	# params['Wemb'] = tf.Variable(tf.random_uniform((W.shape), minval=-0.01, maxval=0.01))
 
 	n_ft_map = Config.feature_maps
