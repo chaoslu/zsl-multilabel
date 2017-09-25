@@ -84,7 +84,7 @@ def init_parameters(Config,W):
 	# W is initialized by the pretrained word embedding
 	# otherwise, W will be initialized by random word embedding
 	params = OrderedDict()
-	params['Wemb'] = tf.Variable(W)
+	params['Wemb'] = tf.Variable(W,trainable=False)
 	# params['Wemb'] = tf.Variable(tf.random_uniform((W.shape), minval=-0.01, maxval=0.01))
 
 	n_ft_map = Config.feature_maps
@@ -412,7 +412,7 @@ class ResCNNModel(Model):
 		if self.Config.label_type == 'multi':
 			logger.info("new updated AUC scores %.4f",acc)  # [self.Config.top_k-1])
 		else:
-			logger.info("new updated AUC scores %.4f",acc[self.Config.top_k-1])
+			logger.info("new updated AUC scores %.4f",acc[0][self.Config.top_k-1])
 		return acc
 
 	def __init__(self,Config,pretrained_embedding):

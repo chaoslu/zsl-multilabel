@@ -85,7 +85,7 @@ def init_parameters(Config,W):
 	# W is initialized by the pretrained word embedding
 	# otherwise, W will be initialized by random word embedding
 	params = OrderedDict()
-	params['Wemb'] = tf.Variable(W)
+	params['Wemb'] = tf.Variable(W,trainable=False)
 	# params['Wemb'] = tf.Variable(tf.random_uniform((W.shape), minval=-0.01, maxval=0.01))
 
 	n_ft_map = Config.feature_maps
@@ -536,7 +536,7 @@ if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
 	parser.add_argument('-lf','--label_freq', default='500', type=str)
 	parser.add_argument('-ug','--using_glove', default=False, type=bool)
-	parser.add_argument('-it','--is_train',default='test', type=str)
+	parser.add_argument('-it','--is_train',default='train', type=str)
 	parser.add_argument('-mp','--model_path',default='./glove_result_lstm/20170914_205341/model.weights',type=str)
 	parser.add_argument('-dt','--data',default='clean',type=str)
 
@@ -609,9 +609,9 @@ if __name__ == "__main__":
 					logger.info("running epoch %d", epoch)
 					pred_acc.append(model.run_epoch(session,train,dev,rci))
 					# import pdb; pdb.set_trace()
-					if pred_acc[-1][0][model.Config.top_k-1] > acc_max:
-						logger.info("new best AUC score: %.4f", pred_acc[-1][0][model.Config.top_k-1])
-						acc_max = pred_acc[-1][0][model.Config.top_k-1] 
+					if pred_acc[-1][model.Config.top_k-1] > acc_max:
+						logger.info("new best AUC score: %.4f", pred_acc[-1][model.Config.top_k-1])
+						acc_max = pred_acc[-1][model.Config.top_k-1] 
 						saver.save(session, path)
 					logger.info("BEST AUC SCORE: %.4f", acc_max)
 
