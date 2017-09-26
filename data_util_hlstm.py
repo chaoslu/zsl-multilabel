@@ -220,7 +220,7 @@ def add_unknown_words(word_vecs,word2idx,k=300):
     for word in word2idx:
         if word not in word_vecs:
             word_vecs[word] = np.random.uniform(-0.25,0.25,k)
-
+            unk_words.append(word)
     return unk_words
 
 
@@ -374,5 +374,5 @@ if __name__ == "__main__":
     lb_lst = dict(lb_lst)
     everything = [train, dev, test, Wemb_g, Wemb_m, idx2word, word2idx, i2w_lb, i2w_sm, dicts_mapping, ConfigInfo,(lb_lst,lb_freq_train,lb_freq_test)]
     cPickle.dump(everything, open('./data/hlstm_everything' + affx + str(freq_lbd_idx) + '.p', "wb"))
-    cPickle.dump(everything[5:] + unk_lb_word_m + unk_lb_word_g + unk_word_m + unk_word_g, open('./data/hlstm_no_dt' + str(freq_lbd_idx) + '.p', "wb"))
+    cPickle.dump(everything[5:] + [unk_lb_word_m,unk_lb_word_g,unk_word_m,unk_word_g], open('./data/hlstm_no_dt' + affx + str(freq_lbd_idx) + '.p', "wb"))
 #    print "dataset created!"

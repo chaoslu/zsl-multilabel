@@ -216,7 +216,7 @@ def add_unknown_words(word_vecs,word2idx,k=300):
     for word in word2idx:
         if word not in word_vecs:
             word_vecs[word] = np.random.uniform(-0.25,0.25,k)
-
+	    unk_words.append(word)
     return unk_words
 
 
@@ -275,7 +275,6 @@ if __name__ == "__main__":
 
     train_notes = list(tp[0])
     train_labels = list(tp[1])
-    # import pdb;pdb.set_trace()
     
     # only remian the first diagnosis for each patient
     train_labels = [[labels[0]] for labels in train_labels]  
@@ -333,7 +332,7 @@ if __name__ == "__main__":
     unk_lb_word_m = [word for word in unk_m if word in w2i_sm]
     unk_word_g = [word for word in unk_g if word in word2idx]
     unk_word_m = [word for word in unk_m if word in word2idx]
-
+    
     # add special token to both the notes vocabulary and the semantic vocabulary
     word2idx,idx2word = add_special_token(word2idx,idx2word)
     w2i_sm, i2w_sm = add_special_token(w2i_sm,i2w_sm)
@@ -362,5 +361,5 @@ if __name__ == "__main__":
     lb_lst = dict(lb_lst)
     everything = [train, dev, test, Wemb_g, Wemb_m, idx2word, word2idx, i2w_lb, i2w_sm,ConfigInfo, dicts_mapping, (lb_lst,lb_freq_train,lb_freq_test)]
     cPickle.dump(everything, open('./data/lstm_everything' + affx + str(freq_lbd_idx) + '.p', "wb"))
-    cPickle.dump(everything[5:] + unk_lb_word_m + unk_lb_word_g + unk_word_m + unk_word_g, open('./data/lstm_no_dt' + str(freq_lbd_idx) + '.p', "wb"))
+    cPickle.dump(everything[5:] + [unk_lb_word_m,unk_lb_word_g,unk_word_m,unk_word_g], open('./data/lstm_no_dt' + affx + str(freq_lbd_idx) + '.p', "wb"))
 #    print "dataset created!"

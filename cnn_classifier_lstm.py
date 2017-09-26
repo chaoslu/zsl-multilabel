@@ -61,23 +61,6 @@ class Config:
 		self.output_path_results = "./" + data_type + "result_lstm/results_only/{:%Y%m%d_%H%M%S}/".format(datetime.now())
 		self.model_path = self.output_path + "model.weights"
 
-	"""
-	img_h = max_len + 2*(filter_hs[-1]-1)
-    options = {}
-    options['n_words'] = n_words
-    options['img_w'] = img_w
-    options['img_h'] = img_h
-    options['feature_maps'] = feature_maps
-    options['filter_hs'] = filter_hs
-    options['patience'] = patience
-    options['max_epochs'] = max_epochs
-    options['lrate'] = lrate
-    options['batch_size'] = batch_size
-    options['valid_batch_size'] = valid_batch_size
-    options['dispFreq'] = dispFreq
-    options['validFreq'] = validFreq
-    options['Sigma'] = Sigma
-	"""
 
 
 def init_parameters(Config,W):
@@ -85,7 +68,7 @@ def init_parameters(Config,W):
 	# W is initialized by the pretrained word embedding
 	# otherwise, W will be initialized by random word embedding
 	params = OrderedDict()
-	params['Wemb'] = tf.Variable(W,trainable=True)
+	params['Wemb'] = tf.Variable(W,trainable=False)
 	# params['Wemb'] = tf.Variable(tf.random_uniform((W.shape), minval=-0.01, maxval=0.01))
 
 	n_ft_map = Config.feature_maps
