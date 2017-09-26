@@ -268,7 +268,6 @@ if __name__ == "__main__":
     # only use the notes and diagnoses more than certain amount
     freq_lbd = lb_lst[freq_lbd_idx - 1][1]
     train_notes,train_labels = diag_narrow(train_notes,train_labels,lb_freq,freq_lbd)
-    
 
     # make labels natural language
     train_seman = []

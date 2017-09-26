@@ -216,9 +216,12 @@ def load_text_vec(fname,  vocab):
 
 
 def add_unknown_words(word_vecs,word2idx,k=300):
+    unk_words = []
     for word in word2idx:
         if word not in word_vecs:
             word_vecs[word] = np.random.uniform(-0.25,0.25,k)
+
+    return unk_words
 
 
 def get_vocab_emb(word_vecs,idx2word,k=300):
@@ -329,12 +332,16 @@ if __name__ == "__main__":
     w2v_g = load_text_vec(loc + w2v_file_g, word2idx)
     w2v_m = load_bin_vec(loc + w2v_file_m, word2idx)
 
-    add_unknown_words(w2v_g, word2idx)
-    add_unknown_words(w2v_m, word2idx)
+    unk_g = add_unknown_words(w2v_g, word2idx)
+    unk_m = add_unknown_words(w2v_m, word2idx)
 
     W_g = get_vocab_emb(w2v_g,idx2word)
     W_m = get_vocab_emb(w2v_m,idx2word)
     # W_sm = get_vocab_emb(w2v_sm,i2w_sm)
+
+    # words in labels set as unknown
+    unk_lb_word_g = [word for word in unk_g if word in w2i_sm]
+    unk_lb_word_m = [word for word in unk_m if word in w2i_sm]
 
     # add special token to both the notes vocabulary and the semantic vocabulary
     word2idx,idx2word = add_special_token(word2idx,idx2word)
@@ -364,5 +371,6 @@ if __name__ == "__main__":
 
     lb_lst = dict(lb_lst)
     everything = [train, dev, test, Wemb_g, Wemb_m, idx2word, word2idx, i2w_lb, i2w_sm, dicts_mapping, ConfigInfo,(lb_lst,lb_freq_train,lb_freq_test)]
-    cPickle.dump(everything, open('./data/hlstm_everything'+ affx + str(freq_lbd_idx) + '.p', "wb"))
+    cPickle.dump(everything, open('./data/hlstm_everything' + affx + str(freq_lbd_idx) + '.p', "wb"))
+    cPickle.dump(everything[5:] + unk_lb_word_m + unk_lb_word_g, open('./data/lstm_no_dt' + str(freq_lbd_idx) + '.p', "wb"))
 #    print "dataset created!"
