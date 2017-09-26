@@ -597,11 +597,9 @@ if __name__ == "__main__":
 						acc_max = pred_acc[-1][model.Config.top_k-1] 
 						saver.save(session, path)
 					logger.info("BEST AUC SCORE: %.4f", acc_max)
-
-				saver.restore(session, path)
 			else:
 				path = args.model_path
-				saver.restore(session, path)
+			saver.restore(session, path)
 			cnn_encodings_train,train_labels = model.evaluate(session,train,rci,True)
 			test_score,test_score_rare,precision_recall_cls,incorrectly_decoded,all_decoded,cnn_encodings,labels = model.evaluate(session,test,rci)
 			incorrectly_decoded = idxs_to_sentences(incorrectly_decoded,idx2word,i2w_sm,model.Config)

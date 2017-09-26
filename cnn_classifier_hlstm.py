@@ -199,7 +199,7 @@ def idxs_to_sentences(classified,i2w,i2w_sm,cfg):
 		nts.append(sen_n)
 	# import pdb; pdb.set_trace()
 	return (sen_original,sen_decoded,nts)
-
+	
 
 class ResCNNModel(Model):
 
@@ -468,17 +468,17 @@ class ResCNNModel(Model):
 			masks.append(mask)
 			notes = notes + nts_batch
 
+
+		labels = np.concatenate(labels,axis=0)
+
 		# all results are transformed into num_dev * ?
+		preds_cnn = np.concatenate(preds_cnn,axis=0)
 		preds_rnn = np.concatenate(preds_rnn,axis=0)
 		sm_target = np.concatenate(sm_target,axis=0)
 		masks = np.concatenate(masks,axis=0)
 
-		# transform preds_cnn into densely representation (top k)
-		preds_cnn = np.concatenate(preds_cnn,axis=0)  
-		labels = np.concatenate(labels,axis=0)
-		# preds_cnn_flat = preds_cnn.flatten()
-		# labels_flatten = labels.flatten()		
-		
+		# transform preds_cnn into densely representation (top k)	
+
 		# precicion and recall for all the classes		
 		pr_rcl_cls = [average_precision_score(labels[:,i],preds_cnn[:,i]) for i in range(labels.shape[1])]
 		pr_rcl_cls_clean = [itm for itm in pr_rcl_cls if not np.isnan(itm)]
@@ -570,7 +570,7 @@ if __name__ == "__main__":
 		start = time.time()
 		model = ResCNNModel(config, W)
 		logger.info("time to build the model: %d", time.time() - start)
-
+		logger.info("the output path: %s", model.Config.output_path)
 		init = tf.global_variables_initializer()
 		saver = tf.train.Saver()
 	
@@ -595,17 +595,14 @@ if __name__ == "__main__":
 					logger.info("BEST AUC SCORE: %.4f", acc_max)
 
 				saver.restore(session,model.Config.model_path)
-				test_score,precision_recall_cls,all_decoded = model.evaluate(session,test)
-				all_decoded = idxs_to_sentences(all_decoded,idx2word,i2w_sm,model.Config)
-				logger.info("TEST ERROR: %.4f",test_score)
 
 			else:
 				path = args.model_path
-				saver.restore(session, path)
-				saver.restore(session,model.Config.model_path)
-				test_score,precision_recall_cls,all_decoded = model.evaluate(session,test)
-				all_decoded = idxs_to_sentences(all_decoded,idx2word,i2w_sm,model.Config)
-				logger.info("TEST ERROR: %.4f",test_score)
+
+			saver.restore(session, path)
+			test_score,precision_recall_cls,all_decoded = model.evaluate(session,test)
+			all_decoded = idxs_to_sentences(all_decoded,idx2word,i2w_sm,model.Config)
+			logger.info("TEST ERROR: %.4f",test_score)
 
 			# make description of the configuration and test result
 			with open(model.Config.output_path_results + "description.txt","w") as f:
