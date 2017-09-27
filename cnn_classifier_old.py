@@ -290,7 +290,7 @@ class ResCNNModel(Model):
 
 
 
-	def evaluate(self,sess,examples,rci,only_encoding=False):
+	def evaluate(self,sess,examples,rci=None,only_encoding=False):
 		iterator = get_minibatches_idx(len(examples[0]),self.Config.valid_size,False)	
 		preds = []
 		labels = []
@@ -382,7 +382,7 @@ class ResCNNModel(Model):
 
 
 
-	def run_epoch(self,sess,train_examples,dev_set,rci,is_test=False):
+	def run_epoch(self,sess,train_examples,dev_set,rci=None,is_test=False):
 		iterator = get_minibatches_idx(len(train_examples[0]),self.Config.batch_size,False)
 		dispFreq = self.Config.dispFreq
 		cnn_encodings = []
@@ -486,7 +486,10 @@ if __name__ == "__main__":
 		logger.info("Building model")
 		start = time.time()
 		model = ResCNNModel(config, Wemb)
-		rci = rare_case_indices(model.Config.rare_freq,lb_freq[1],i2w_lb)
+		if args.label_type == 'single':
+			rci = rare_case_indices(model.Config.rare_freq,lb_freq[1],i2w_lb)
+		else:
+			rci = None
 		logger.info("time to build the model: %d", time.time() - start)
 		logger.info("the output path: %s", model.Config.output_path)
 		init = tf.global_variables_initializer()
