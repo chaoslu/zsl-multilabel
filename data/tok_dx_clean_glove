@@ -304,7 +304,7 @@ end stage renal disease @ pulmonary edema @ tachypnea
 diarrhea @ end stage renal disease
 dysarthria @ weakness
 abdominal pain @ wound infection surgical
-itch not specified otherwise @ burning sensation
+itch not not unspecified otherwise @ burning sensation
 near syncope @ hypertension @ hyperglycemia nos
 hyponatremia @ diabetes mellitus non insulin dependent poorly controlled @ leukocytosis unclear cause recurrent
 gi bleed @ diarrhea @ abdominal pain @ colitis large intestine
@@ -345,7 +345,7 @@ chest pain @ cad
 cellulitis leg
 transient ischemia attack
 unstable angina @ arm pain
-hip fracture trochanteric section closed unspec @ seizure grand mal @ fall accidental
+hip fracture trochanteric section closed unspecified @ seizure grand mal @ fall accidental
 diarrhea @ nausea and vomiting
 nausea and vomiting
 back pain @ knee pain @ fall accidental
@@ -841,7 +841,7 @@ fall accidental @ contusion chest wall
 cellulitis @ intravascular foreign body
 asthma with acute exacerbation @ uri acute
 asthma with acute exacerbation
-subdural hemorrhage traumatic unspec consciousness @ septic shock @ gi bleed
+subdural hemorrhage traumatic unspecified consciousness @ septic shock @ gi bleed
 gastritis acute
 headache @ hypertension
 headache
@@ -1064,7 +1064,7 @@ migraine complicated
 stridor
 vascular disorder of finger
 abdominal pain
-hematoma scalp @ concussion with consciousness loss unspec duration @ abrasions multiple sites @ bicycle accident
+hematoma scalp @ concussion with consciousness loss unspecified duration @ abrasions multiple sites @ bicycle accident
 uti @ candidiasis vulva and vagina
 marijuana abuse
 ankle sprain
@@ -1088,7 +1088,7 @@ altered mental status @ headache
 chest pain @ arm pain
 concussion with no loss of consciousness
 chest pain @ nausea @ incidental finding of 6mm right lung nodule on chest ct
-radial head fracture closed @ hip fracture trochanteric section closed unspec
+radial head fracture closed @ hip fracture trochanteric section closed unspecified
 palpitations @ chest discomfort
 tendonitis lt quadricep
 tia @ hypertension
@@ -1212,7 +1212,7 @@ chest pain
 viral uri
 mandible fracture closed @ radius with ulna fracture closed @ chin laceration
 headache
-postconcussion syndrome @ epicondylitis elbow
+post concussion syndrome @ epicondylitis elbow
 abdominal pain
 sickle cell crisis @ priapism resolved @ syncope
 sickle cell crisis
@@ -1221,7 +1221,7 @@ sore throat @ abdominal pain
 headache
 conjunctivitis
 pharyngitis acute @ bronchitis acute
-arm pain transient unclear cause @ lymphomas other
+arm pain transient unclear cause @ lymphoma other
 gunshot wound to hand
 fall accidental @ paresthesia
 abdominal pain
@@ -1630,7 +1630,7 @@ knee pain @ osteoarthritis
 medial wall orbital fracture open
 foot contusion
 femur fracture base of neck closed @ fall accidental @ tibia fracture upper end closed
-otitis media suppurative acute without eardrum rupt @ sinusitis acute
+otitis media suppurative acute without eardrum rupture @ sinusitis acute
 suicidal ideations @ burn [num] degree
 concussion @ neck pain
 viral uri @ musculoskeletal chest pain
@@ -1685,7 +1685,7 @@ cellulitis finger
 cholecystitis
 wound surgical
 sore throat
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 possible ectopic pregnancy
 ectopic pregnancy
 fibula fracture closed
@@ -1897,7 +1897,7 @@ abdominal pain
 hypertension essential @ chest pain @ headache
 osteomyelitis @ sinusitis acute @ brain abscess
 picc line insertion @ osteomyelitis
-fever @ lupus erythematosis systemic
+fever @ lupus erythematosus systemic
 hypotension @ syncope
 abdominal pain
 esophagitis @ bronchitis acute
@@ -2045,7 +2045,7 @@ appendicitis acute wo perforation peritonitis rupture
 abdominal pain
 ectopic pregnancy
 chest pain
-abdominal pain other specified site
+abdominal pain other not unspecified site
 otitis externa acute
 chest discomfort @ polydrug abuse
 sinusitis acute @ uri acute
@@ -2192,7 +2192,7 @@ substance induced mood disorder
 alcohol intoxication acute
 inguinal hernia
 cocaine abuse @ heroin dependence
-hip fracture @ lymphomas other
+hip fracture @ lymphoma other
 contusion arm and shoulder @ wrist sprain
 renal colic @ nausea and vomiting
 pneumothorax closed traumatic @ fractured hand open @ pneumomediastinum @ closed head injury
@@ -2266,7 +2266,7 @@ dizziness @ palpitations
 dizziness
 uri acute @ asthma
 knee pain
-ingestion nonmedicinal substance non  toxic effect
+ingestion non medicinal substance non  toxic effect
 hematoma back @ coumadin poisoning
 pericarditis acute
 laceration forehead @ wrist pain
@@ -2323,7 +2323,7 @@ urinary tract infection @ hip pain
 altered mental status @ abdominal pain
 asthma
 concussion
-postconcussion syndrome
+post concussion syndrome
 hematoma scalp
 menstrual cycle irregular
 contusion eye @ abrasion elbow
@@ -2482,7 +2482,7 @@ ms
 abdominal pain @ presumed gastroenteritis
 gi bleed @ diverticular disease
 uti
-postconcussion syndrome
+post concussion syndrome
 head injury unspecified @ laceration scalp
 unspecified
 depressive state
@@ -2562,8 +2562,8 @@ abdominal pain left upper quadrant
 abdominal pain
 low back pain
 abdominal pain right upper quadrant
-fall accidental @ contusion scalp @ postconcussion syndrome
-appendicitis unqualified
+fall accidental @ contusion scalp @ post concussion syndrome
+appendicitis not qualified
 diarrhea
 cough
 pneumonia bacterial
@@ -2974,7 +2974,7 @@ knee pain
 contusion face
 schizo affective type
 pharyngitis acute
-otitis media nonsuppurative acute
+otitis media non suppurative acute
 post op wound disruption external
 abdominal pain
 wrist contusion @ elbow contusion
@@ -3143,7 +3143,7 @@ shortness of breath @ hypoxemia
 hypertension
 erectile disorder male
 skin disorder
-drug overdose accidental specified drugs
+drug overdose accidental not unspecified drugs
 seizure grand mal
 liver contusion @ femur fracture open
 facial swelling
@@ -3220,7 +3220,7 @@ respiratory distress @ pneumonia bacterial @ asthma
 neck pain
 neck pain
 schizo affective type
-bite nonvenomous arthropod
+bite non venomous arthropod
 sickle cell crisis
 sickle cell crisis
 diverticulitis of colon
@@ -3248,7 +3248,7 @@ ectopic pregnancy
 sciatica @ low back pain
 syncope @ fall accidental @ leukocytosis @ copd
 syncope
-schizophrenia @ otitis media suppurative wspontaneous eardrum rup
+schizophrenia @ otitis media suppurative with spontaneous eardrum rupture
 otitis externa infective
 patella fracture closed
 allergic reaction
@@ -3467,7 +3467,7 @@ chest pain @ pleuritic pain
 concussion with loss consciousness @ contusion orbital tissue
 concussion
 contact with communicable diseases
-appendicitis unqualified
+appendicitis not qualified
 pneumonia bacterial @ edema leg @ mental status change
 pneumonia lobar
 hematoma face @ abrasion face
@@ -3823,7 +3823,7 @@ vomiting @ gastritis @ hypokalemia @ rhinitis obstructive
 pain in hip region @ pain in knee
 hip joint pain @ knee pain
 threatened abortion
-bite nonvenomous arthropod
+bite non venomous arthropod
 asthma @ chest pain
 paranoid schizophrenia
 bipolar affective disorder @ behavioral problems @ alcohol abuse episodic
@@ -3892,7 +3892,7 @@ gerd @ chest pain
 pregnancy uncomplicated @ abdominal pain
 kidney calculus
 bacteremia @ diabetes mellitus insulin dependent @ renal failure
-thrombosis of other specified veins @ dialysis status renal @ pain in neck
+thrombosis of other not unspecified veins @ dialysis status renal @ pain in neck
 leg swelling transient unclear cause
 chronic pain due to trauma @ ptsd
 pain due to trauma chronic
@@ -3986,7 +3986,7 @@ biliary colic
 laceration face
 foreign body auditory canal
 abdominal pain unclear cause @ palpitations unclear cause @ pregnancy @ prothrombin gene mutation
-abdominal pain @ pregnancy complication other specified
+abdominal pain @ pregnancy complication other not unspecified
 low back pain @ mva
 shoulder contusion @ leg contusion @ uti
 migraine resolved
@@ -4300,7 +4300,7 @@ chf @ dyspnea @ chest pain
 abdominal pain @ anemia iron deficiency @ kidney stone
 kidney stone @ uti
 degenerative disc disease
-subdural hemorrhage traumatic unspec consciousness @ coagulation defects
+subdural hemorrhage traumatic unspecified consciousness @ coagulation defects
 shoulder pain
 shortness of breath @ anemia in chronic illness kidney @ lung cancer
 parotitis mechanical blockage of parotid gland
@@ -4481,7 +4481,7 @@ low back pain
 hip contusion
 pneumonia bacterial
 tia
-insect bite foot nonvenomous
+insect bite foot non venomous
 emesis
 appendicitis acute wo perforation peritonitis rupture
 wound infection surgical
@@ -4775,7 +4775,7 @@ viral syndrome @ fever
 viral syndrome
 viral syndrome @ low back pain
 musculoskeletal back pain
-insect bite leg nonvenomous infected
+insect bite leg non venomous infected
 vomiting @ diarrhea @ abdominal pain
 chest pain @ cough
 dehydration
@@ -4793,7 +4793,7 @@ vp shunt malfunction
 aaa ruptured
 anaphylactic reaction
 svt
-otitis media suppurative acute without eardrum rupt @ lymphadenopathy
+otitis media suppurative acute without eardrum rupture @ lymphadenopathy
 laceration cheek
 pneumonia bacterial @ asthma @ difficulty breathing @ hypoxemia
 chest pain @ reflux esophagitis
@@ -4887,7 +4887,7 @@ pilonidal cyst with abscess
 sickle cell crisis
 sickle cell crisis
 globe rupture @ hemorrhagic chemosis @ hemorrhage conjunctival @ hyphema [num] %
-ingestion nonmedicinal substance toxic effect @ seizure grand mal
+ingestion non medicinal substance toxic effect @ seizure grand mal
 gunshot wound
 arm pain
 pain in hand
@@ -4946,7 +4946,7 @@ allergic reaction
 stabbed assault @ hand pain
 cellulitis
 fever
-subdural hemorrhage traumatic unspec consciousness @ laceration face multiple sites
+subdural hemorrhage traumatic unspecified consciousness @ laceration face multiple sites
 abdominal pain @ constipation
 alcohol dependence acute @ cocaine abuse
 missed abortion
@@ -5060,7 +5060,7 @@ wound check follow up exam
 unstable angina
 back pain
 low back pain @ venous stasis ulcer
-appendicitis unqualified
+appendicitis not qualified
 chest pain
 dizziness @ stroke
 chf @ hypoxemia
@@ -5310,7 +5310,7 @@ thigh mass
 respiratory failure acute @ opiate overdose accidental
 respiratory distress acute @ acidosis
 gi bleed
-syncope @ subdural hemorrhage traumatic unspec consciousness @ facial bone fracture closed
+syncope @ subdural hemorrhage traumatic unspecified consciousness @ facial bone fracture closed
 atrial flutter @ alcohol withdrawal
 alcohol abuse episodic @ dehydration @ hypertension
 angioedema
@@ -5878,7 +5878,7 @@ rotator cuff strain shoulder
 shoulder injury
 radius fracture distal closed @ ulna fracture distal end closed @ abrasion multiple
 migraine
-tympanic membrane laceration @ otitis media suppurative wspontaneous eardrum rup
+tympanic membrane laceration @ otitis media suppurative with spontaneous eardrum rupture
 tachycardia
 abdominal pain
 subdural hematoma nontraumatic
@@ -5889,7 +5889,7 @@ back pain
 gallbladder disease
 contusion @ mva @ abrasion @ head injury unspecified consciousness state
 cough
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 epigastric pain @ nausea and vomiting
 abdominal pain @ gastritis
 abdominal pain
@@ -5927,7 +5927,7 @@ medication refill
 elbow dislocation closed @ fractured arm upper closed
 mva
 vaginitis
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 gunshot wound
 stroke
 metrorrhagia @ concern for condition not found
@@ -5947,7 +5947,7 @@ laceration scalp
 psych exam general requested @ overdose heroin
 vitreous hemorrhage
 back contusion @ hip contusion
-mva @ postconcussion syndrome @ back pain
+mva @ post concussion syndrome @ back pain
 headache
 copd
 diarrhea @ abdominal pain
@@ -6100,7 +6100,7 @@ chest pain @ sob
 abdominal pain @ crohn s disease
 cirrhosis of liver @ shortness of breath
 vasovagal syncope @ anemia deficiency @ pleural effusion
-otitis media suppurative wspontaneous eardrum rup @ otitis externa infective @ uri acute
+otitis media suppurative with spontaneous eardrum rupture @ otitis externa infective @ uri acute
 pelvic inflammatory disease @ abdominal pain
 hand contusion @ wrist sprain @ hand abrasion
 laceration hand
@@ -6152,7 +6152,7 @@ pyelonephritis acute
 hematuria
 abdominal pain
 bipolar affective disorder @ drug abuse mixed
-uti @ drug overdose accidental specified drugs
+uti @ drug overdose accidental not unspecified drugs
 vertigo
 cellulitis leg
 uti @ anemia cause unknown
@@ -6242,13 +6242,13 @@ hematuria
 numbness lower extremites unclear cause @ possible cauda equina or cord compression etc
 musculoskeletal chest pain
 adenovirus conjunctivitis
-otitis media nonsuppurative acute
+otitis media non suppurative acute
 gastroenteritis
 abdominal pain @ pregnancy early
 sickle cell crisis @ hypoxia @ narcotic overdose
 gastroenteritis
 arm contusion upper
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 chest pain
 mallet finger @ cervical radiculopathy
 tooth decay
@@ -6363,14 +6363,14 @@ finger fracture closed
 radial head fracture closed @ elbow dislocation closed
 pneumonia organism unspecified @ asthma
 hip sprain
-fever @ lymphomas other @ uti
+fever @ lymphoma other @ uti
 abscess thigh @ cellulitis thigh
 wound check follow up exam
 abscess axilla
 failure to thrive @ altered mental status associated with narcotics
 back pain @ nausea and vomiting
 hand open wound complicated @ sprained ankle
-otitis media suppurative acute without eardrum rupt @ abdominal pain right lower quadrant
+otitis media suppurative acute without eardrum rupture @ abdominal pain right lower quadrant
 chest pain
 seizure
 seizure
@@ -6460,7 +6460,7 @@ numbness @ anxiety
 hypertension
 pharyngitis acute
 tonsillitis acute
-bladder anomaly specified @ back pain @ hematuria @ uti
+bladder anomaly not unspecified @ back pain @ hematuria @ uti
 cough @ asthma pediatric
 yeast infection @ pregnancy complication
 abdominal pain
@@ -6591,7 +6591,7 @@ chest pain @ pulmonary hypertension primary @ pulmonary edema
 headache @ vomiting
 intra cranial hypotension @ headache @ ventricular shunt complication
 pneumonia bacterial @ wheezing
-appendicitis unqualified
+appendicitis not qualified
 dyspnea
 shortness of breath
 fall accidental @ pain acute @ coagulopathy
@@ -6640,7 +6640,7 @@ fever @ viral syndrome
 uri acute
 seizure grand mal @ lupus @ hypertension
 pericardial effusion
-acute pain @ leg pain @ lupus erythematosis systemic
+acute pain @ leg pain @ lupus erythematosus systemic
 epistaxis
 dental caries
 strep pharyngitis
@@ -6754,7 +6754,7 @@ constipation @ gas pain
 ear injury @ abdominal pain resolved
 chest pain @ shortness of breath @ mi
 fever @ cabg
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 abdominal pain @ nausea and vomiting
 thumb tip laceration
 contusion back @ neck strain @ laceration knee complicated @ laceration face
@@ -6893,7 +6893,7 @@ pancreatitis acute @ abdominal pain
 conjunctivitis infectious @ impetigo
 prostatitis
 prostatitis chronic @ dysuria
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 allergic reaction
 abdominal pain @ petechiae @ pregnancy incidental
 high blood pressure @ proteinuria
@@ -7000,7 +7000,7 @@ eye pain @ double vision
 bronchitis acute @ uri acute
 headache @ fever @ blurred vision @ urinary tract infection
 cervical strain @ lupus
-systemic lupus erythematosis
+systemic lupus erythematosus
 allergic rhinitis due to pollen @ eczema atopic
 gastritis
 nausea
@@ -7775,14 +7775,14 @@ headache
 nephrolithiasis @ renal colic
 headache
 fever @ cough @ possible pnuemonia
-fever @ lymphomas other
+fever @ lymphoma other
 facial mass
 chest pain
 chest pain
 nephrolithiasis already passed @ renal insufficiency chronic
 abdominal pain @ vomiting
 dizziness
-mental status change @ cerebral arteritis @ lupus erythematosis systemic
+mental status change @ cerebral arteritis @ lupus erythematosus systemic
 delirium acute @ syncope
 cocaine abuse @ chest pain acute
 hypoglycemia from diabetic medication @ mental status change @ diarrhea
@@ -7852,7 +7852,7 @@ groin strain @ knee contusion @ fall accidental
 chest pain @ hypokalemia
 abdominal pain
 fever @ tachycardia @ cellulitis face
-subdural hemorrhage traumatic unspec consciousness @ pneumothorax closed traumatic @ back pain @ rib fracture multiple unspecified closed
+subdural hemorrhage traumatic unspecified consciousness @ pneumothorax closed traumatic @ back pain @ rib fracture multiple unspecified closed
 glaucoma
 swelling leg
 uri acute @ asthma flare
@@ -7868,7 +7868,7 @@ cervical spine fracture closed unspecified level @ motor vehicle accident @ faci
 contusion face @ lip laceration
 diarrhea @ hyponatremia
 chest pain @ chest wall pain
-subdural hemorrhage traumatic unspec consciousness @ subarachnoid hemorrhage trauma
+subdural hemorrhage traumatic unspecified consciousness @ subarachnoid hemorrhage trauma
 chest pain
 leg pain
 constipation @ abdominal pain
@@ -7936,7 +7936,7 @@ pneumonia bacterial @ atrial fibrillation
 fever suspect flu syndrome
 pneumonia streptococcal @ pain acute
 laceration ear complicated
-subdural hemorrhage traumatic unspec consciousness @ headache
+subdural hemorrhage traumatic unspecified consciousness @ headache
 myocardial infarction
 dysuria @ urinary complications @ prostate disorder
 abdominal pain right lower quadrant
@@ -8111,7 +8111,7 @@ viral uri
 musculoskeletal back pain
 fever @ leukocytosis @ myelodysplasia
 cough
-otitis media nonsuppurative @ allergic rhinitis unspecified cause
+otitis media non suppurative @ allergic rhinitis unspecified cause
 allergic reaction medicinal biological substance
 wrist fx closed
 fever unclear cause @ suspect uti
@@ -8244,7 +8244,7 @@ chest pain
 tia @ cva acute
 depression
 concussion with no loss of consciousness
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 syncope @ hypoglycemia
 head injury unspecified @ syncope
 uri acute @ asthma
@@ -8312,7 +8312,7 @@ manic affective psychosis recurrent
 chf @ pneumonia bacterial @ hypoxemia
 pleuritic pain @ pleural effusion
 pacemaker complication @ chest pressure @ shortness of breath
-appendicitis unqualified
+appendicitis not qualified
 asthma pediatric
 fracture closed @ pain in finger
 bronchitis acute
@@ -8335,7 +8335,7 @@ chest pain
 viral bronchitis acute @ asthma
 vomiting
 palpitations
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 tachycardia @ asthma pediatric
 subungual hematoma toenail @ hemorrhoids bleeding @ diabetes mellitus non insulin dependent
 tremors @ vomiting
@@ -8621,7 +8621,7 @@ fall accidental @ concussion
 altered mental status @ renal failure acute @ hypovolemia
 chest pressure
 abdominal pain
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 finger contusion
 achilles tear @ shoulder pain
 abdominal pain @ thrombocytopenia @ neutropenia
@@ -8711,7 +8711,7 @@ tubo ovarian abcess
 femoral fracture
 vomiting @ abdominal pain
 vomiting @ mallory weiss tear
-urticaria other specified @ viral syndrome
+urticaria other not unspecified @ viral syndrome
 allergic reaction @ vomiting @ diarrhea
 gastroenteritis
 chest pain
@@ -8721,7 +8721,7 @@ toothache
 abdominal pain
 picc line malfunction
 tinea cruris
-otitis media nonsuppurative
+otitis media non suppurative
 pelvic pain female possible pid @ vaginal bleeding unclear cause @ uti possible
 pneumonia bacterial
 pneumonia organism unspecified @ fever
@@ -8790,7 +8790,7 @@ copd @ shortness of breath
 pulmonary edema
 anemia cause unknown @ thrombocytopenia
 uri acute
-fever @ otitis media suppurative acute without eardrum rupt
+fever @ otitis media suppurative acute without eardrum rupture
 tia
 pulmonary cavitary lesion @ possible hiv @ pancreatic pseudocyst @ cachexia
 depression
@@ -8939,7 +8939,7 @@ asthma pediatric @ dermatitis
 asthma pediatric
 asthma
 asthma with acute exacerbation
-insect bites foot nonvenomous
+insect bites foot non venomous
 influenza like illness
 pneumonia bacterial @ urinary tract infection
 head injury unspecified consciousness state @ cough
@@ -9050,7 +9050,7 @@ nephrostomy tube check
 diarrhea @ abdominal cramps
 chest pain
 cervical spine fracture closed unspecified level @ fall accidental @ rhabdomyolysis @ hypothermia
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 migraine
 dvt arm
 chest pain acute unclear cause
@@ -9077,14 +9077,14 @@ pneumonia bacterial
 laceration elbow @ fractured humerus supracondylar closed
 wound check follow up exam @ cast change
 laceration auricle ear
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 abdominal pain @ hypokalemia
 nephrolithiasis
 kawasaki s disease
 abdominal pain
 gastroenteritis
 fall accidental @ scalp contusion
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 chf @ elevated troponin
 ankle sprain
 vomiting @ diarrhea
@@ -9220,7 +9220,7 @@ abdominal pain @ colon cancer
 leg pain
 pneumonia bacterial
 abdominal pain
-insect bite face nonvenomous not infected
+insect bite face non venomous not infected
 chondromalacia
 knee strain
 seizure grand mal
@@ -9295,7 +9295,7 @@ hyperemesis gravidarum @ uti during pregnancy
 supracondylar fracture humerus closed
 strep throat
 viral syndrome @ fever
-snake bite nonvenomous
+snake bite non venomous
 snake bite venomous
 seizure grand mal @ blurred vision
 laceration forehead @ hematoma face
@@ -9561,7 +9561,7 @@ hypoglycemia from diabetic medication @ cad @ copd
 hypoglycemia
 abdominal pain @ constipation
 respiratory insufficiency acute
-appendicitis unqualified
+appendicitis not qualified
 pharyngitis infective
 back pain
 asthma
@@ -9573,7 +9573,7 @@ chest pain
 pyelonephritis acute
 gunshot wound thigh
 wound check follow up exam
-otitis media nonsuppurative
+otitis media non suppurative
 rash
 headache
 schizo affective type
@@ -9807,7 +9807,7 @@ bell s palsy
 laceration chin
 bee sting
 parotitis
-parotitis (not otherwise specified: chronic intermittent)
+parotitis (not otherwise not unspecified: chronic intermittent)
 influenza like illness @ fever
 pneumonia atypical
 schizophrenia
@@ -9821,7 +9821,7 @@ renal failure acute @ dehydration @ nephrostomy tube replacement @ ovarian cance
 dehydration @ uti
 syncope @ fall accidental @ hematoma abdominal wall @ anemia cause unknown
 diarrhea chronic
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 pharyngitis viral
 fall accidental @ contusion finger @ contusion facehead
 pneumonia bacterial @ shortness of breath
@@ -9842,7 +9842,7 @@ neck pain
 cat bite
 musculoskeletal chest pain
 cystic hygroma @ fever
-otitis media nonsuppurative acute
+otitis media non suppurative acute
 viral syndrome
 cough
 abdominal pain @ constipation @ vomiting
@@ -9940,7 +9940,7 @@ cellulitis leg @ tinea pedis
 cellulitis
 fractured radius distal closed @ fractured hand multiple bones closed
 pain in finger @ hx of right radial fracture
-otitis media nonsuppurative acute
+otitis media non suppurative acute
 suture removal
 back pain
 depression @ overdose @ chest pain
@@ -9999,7 +9999,7 @@ pyelonephritis
 headache type unknown
 laceration forearm
 sepsis
-otitis media nonsuppurative acute
+otitis media non suppurative acute
 cough
 renal calculus
 heroin od
@@ -10029,7 +10029,7 @@ pneumonia bacterial
 osteomyelitis @ bacteremia
 svt @ chest pain
 fractured facial bones closed @ assault @ head injury with brief loss of consciousness
-otitis media suppurative acute without eardrum rupt @ fever
+otitis media suppurative acute without eardrum rupture @ fever
 strep pharyngitis
 chest pain suspected musculoskeletal
 vitreous detachment
@@ -10047,7 +10047,7 @@ sinusitis acute
 contusion wrist
 laceration scalp
 nosebleed
-otitis media nonsuppurative acute
+otitis media non suppurative acute
 otitis media @ viral syndrome
 sick contact parental concern
 viral illness
@@ -10063,7 +10063,7 @@ paronychia of finger
 cough @ fever @ uri acute
 dehydration @ fever @ vomiting @ diarrhea
 fall down stairs or steps @ head injury unspecified consciousness state @ nausea
-postconcussion syndrome
+post concussion syndrome
 paronychia of toe @ ingrown toenail
 domestic violence @ laceration scalp @ contusions multiple @ cervical strain
 fever @ headache
@@ -10188,7 +10188,7 @@ chest pain
 nausea and vomiting
 chest pain
 atrial fibrillation with rapid ventricular rate
-appendicitis unqualified
+appendicitis not qualified
 gastroenteritis
 insect bite @ hematoma arm
 tonsillitis acute
@@ -10339,7 +10339,7 @@ syncope @ effusion
 conjunctival hyperemia @ viral infection
 headache @ abdominal pain @ uti @ blurred vision
 fever @ uri acute
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 asthma pediatric
 swelling leg
 peritoneal dialysis catheter malfunction
@@ -10424,9 +10424,9 @@ fever @ influenza
 yeast infection vagina
 fall same level @ muscular pain
 allergic reaction
-subdural hemorrhage traumatic unspec consciousness
+subdural hemorrhage traumatic unspecified consciousness
 headache
-poisoning by other specified systemic agents
+poisoning by other not unspecified systemic agents
 neck strain
 gi bleed @ fever @ ehlers danlos syndrome
 chest pain @ catheter complication @ ehlers danlos syndrome
@@ -10446,7 +10446,7 @@ dehydration @ viral syndrome
 ingestion unspecified substance toxic effect
 gi hemorrhage @ anemia cause unknown
 neck pain @ motor vehicle accident @ pregnancy incidental
-contusion scalp @ subdural hemorrhage traumatic unspec consciousness
+contusion scalp @ subdural hemorrhage traumatic unspecified consciousness
 laceration forehead
 altered mental status @ dementia disease related without behavioral disturbance @ alzheimer s disease
 headache @ hypertension @ hyperglycemia nos
@@ -10521,7 +10521,7 @@ hemoperitoneum nontraumatic
 rhinitis @ rash @ stye external
 head injury superficial @ cephalhematoma
 otitis media
-otitis media nonsuppurative @ fever
+otitis media non suppurative @ fever
 upper respiratory infection acute @ cough @ asthma
 uri acute @ asthma
 asthma with status asthmaticus @ hypoxemia @ pneumonia bacterial
@@ -10584,7 +10584,7 @@ muscular pain
 leg pain @ polymyalgia rheumatica
 nasal bones closed fracture @ fall accidental
 mouth laceration
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 ascites @ fever
 burn hand [num] degree
 seizure grand mal @ head injury superficial
@@ -11122,7 +11122,7 @@ abdominal pain @ hyponatremia @ hypokalemia
 failure to thrive @ pancreatic cancer
 dehydration @ nausea @ hypokalemia @ failure to thrive
 unstable angina
-abdominal pain other specified site @ shortness of breath @ metatarsal fracture closed
+abdominal pain other not unspecified site @ shortness of breath @ metatarsal fracture closed
 mva @ rib fracture [num] ribs closed @ hypokalemia @ etoh intoxication
 bradycardia @ junctional escape rhythm @ hyponatremia
 chest pain
@@ -11440,10 +11440,10 @@ wrist injury @ hip injury @ fall accidental
 chest pain uncertain cause @ very low cardiopulmonary risk
 headache
 headache
-headache @ tremor (essential & other specified)
-chest pain @ headache @ tremor (essential & other specified) @ homeless
+headache @ tremor (essential & other not unspecified)
+chest pain @ headache @ tremor (essential & other not unspecified) @ homeless
 shoulder pain @ low back pain
-tremor (essential & other specified) @ cough
+tremor (essential & other not unspecified) @ cough
 chest pain
 chest contusion
 hematuria
@@ -11522,10 +11522,10 @@ paranoid psychosis chronic
 mva @ cervical strain @ back strain
 concussion
 acute otitis media @ viral uri
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 no diagnosis made feared complaint
 visual disturbance
-otitis media nonsuppurative acute
+otitis media non suppurative acute
 asthma with acute exacerbation
 viral syndrome
 tracheostomy mechanical complication
@@ -11538,13 +11538,13 @@ toe contusion @ toe abrasion
 viral syndrome @ otitis media
 carbon monoxide inhalation toxic effect
 biliary colic
-abdominal pain other specified site @ diarrhea
+abdominal pain other not unspecified site @ diarrhea
 depression
 anxiety @ constipation @ status post brain surgery
 nasal contusion
 laceration wrist @ abrasion hand
 uti @ pain in hand possible tendon injury right thumb
-itch not specified otherwise @ medication side effect
+itch not not unspecified otherwise @ medication side effect
 headache @ hiv
 assault @ pain acute
 abdominal pain @ nausea and vomiting @ ectopic pregnancy
@@ -11649,7 +11649,7 @@ facial laceration complicated
 choking due to food regurgitated
 epistaxis @ hypertension essential
 conjunctivitis acute
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 thumb contusion
 bronchitis @ upper respiratory infection acute
 shortness of breath @ abdominal pain resolved
@@ -11776,13 +11776,13 @@ finger injury
 influenza like illness
 depression @ etoh intoxication
 ulcerative colitis other @ abdominal pain @ diarrhea
-fever @ otitis media suppurative acute without eardrum rupt @ asthma with acute exacerbation
+fever @ otitis media suppurative acute without eardrum rupture @ asthma with acute exacerbation
 leg swelling
 altered mental status @ fecal incontinence @ urinary incontinence
 metacarpal fracture closed
 abdominal pain @ uti
 tremors @ anxiety
-tremor (essential & other specified)
+tremor (essential & other not unspecified)
 mva non collision @ shoulder contusion
 cellulitis leg
 cervical strain
@@ -11802,7 +11802,7 @@ abdominal pain @ gastritis
 trazadone overdose @ depression
 chest pain
 mva @ shoulder pain @ leg pain
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 altered mental status
 chest pain musculoskeletal
 pain in leg
@@ -11971,7 +11971,7 @@ viral syndrome
 depression
 pyelonephritis
 viral uri
-otitis media suppurative acute without eardrum rupt @ fever
+otitis media suppurative acute without eardrum rupture @ fever
 asthma pediatric @ uri acute
 urinary tract infection
 laceration scalp @ head injury unspecified
@@ -12247,7 +12247,7 @@ pregnancy uncomplicated
 uti
 scabies
 headache
-rightotitis media suppurative acute without eardrum rupt @ fever
+rightotitis media suppurative acute without eardrum rupture @ fever
 back pain @ hyperglycemia nos
 epiploic appendagitis
 burn abdominal wall [num] degree @ burn abdominal wall [num] degree @ burn groin [num] degree @ burn groin [num] degree
@@ -12272,7 +12272,7 @@ strain back @ contusion knee
 subungual hematoma fingernail
 pyuria @ foreign body vagina
 skin infection
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 laceration forehead complicated
 asthma
 hives @ headache
@@ -12616,9 +12616,9 @@ cough @ pleural effusion
 nephrolithiasis
 ventricular tachycardia
 chf @ fall accidental
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 cellulitis arm
-fever @ otitis media suppurative acute without eardrum rupt @ sinusitis acute
+fever @ otitis media suppurative acute without eardrum rupture @ sinusitis acute
 tinea capitis
 tooth avulsion
 otitis externa acute @ viral uri
@@ -12747,7 +12747,7 @@ acute om
 hyperkalemia @ renal failure chronic
 ovarian cyst
 hives
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 bite animal
 viral syndrome
 fall accidental
@@ -12824,8 +12824,8 @@ unstable angina
 fever @ influenza
 tachycardia
 burn hand unspecified degree
-otitis media suppurative acute without eardrum rupt
-otitis media nonsuppurative acute
+otitis media suppurative acute without eardrum rupture
+otitis media non suppurative acute
 suspect viral syndrome
 thigh injury @ fall accidental
 abdominal pain
@@ -12922,7 +12922,7 @@ viral infection @ fever
 diarrhea
 gallstone pancreatitis
 abdominal pain @ nausea and vomiting
-abdominal pain @ appendicitis unqualified
+abdominal pain @ appendicitis not qualified
 nosebleed
 chest pain
 tick bite @ cellulitis
@@ -12930,7 +12930,7 @@ laceration nose
 drug reaction
 laceration face brow
 uv radiation burn eyes
-concussion without loss of consciousness @ postconcussion syndrome @ nasal fracture closed now
+concussion without loss of consciousness @ post concussion syndrome @ nasal fracture closed now
 pain syndrome @ connective tissue disease
 viral infection
 abdominal cramps @ anemia cause unknown
@@ -13042,7 +13042,7 @@ viral uri
 hypoglycemia
 viral uri @ hernia abdominal
 concussion @ loss of consciousness @ lacerations face @ mva
-postconcussion syndrome
+post concussion syndrome
 humerus fracture closed @ fall down stairs or steps
 laceration nose @ contusion nose
 reactive airway
@@ -13066,7 +13066,7 @@ gi bleed @ renal insufficiency acute
 psychosis
 cough lung transplant @ renal failure acute @ hyperkalemia
 sinusitis acute
-subdural hemorrhage traumatic unspec consciousness
+subdural hemorrhage traumatic unspecified consciousness
 failure to thrive @ vomiting
 corneal abrasion
 corneal abrasion
@@ -13139,7 +13139,7 @@ pyelonephritis
 suicidal ideations @ alcohol intoxication
 motor vehicle accident passenger
 vomiting resolved
-otitis media suppurative acute without eardrum rupt @ uri acute
+otitis media suppurative acute without eardrum rupture @ uri acute
 suicidal ideations
 appendicitis obstructive acute
 chest pain
@@ -13153,7 +13153,7 @@ bradycardia @ reaction to sedation
 sciatica
 lupus flare
 pneumonia bacterial
-subdural hemorrhage traumatic unspec consciousness
+subdural hemorrhage traumatic unspecified consciousness
 foreign body ear
 acute otitis media @ fever
 abscess buttock
@@ -13191,7 +13191,7 @@ wound check follow up exam
 concern for distal radius fracture closed @ salter harris i injury
 ventricular shunt complication @ hydrocephalus obstructive
 asthma with acute exacerbation @ upper respiratory infection acute
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 pregnancy incidental @ bacteriuria
 abortion threatened
 abdominal pain
@@ -13231,11 +13231,11 @@ fractured arm upper closed
 uti @ allergic rhinitis unspecified cause
 contact dermatitis unspecified cause
 paronychia of finger
-fractured acromion process closed @ concussion with consciousness loss unspec duration
+fractured acromion process closed @ concussion with consciousness loss unspecified duration
 abdominal pain @ nausea and vomiting @ diarrhea @ uti
 suspect viral syndrome
 asthma pediatric @ contact dermatitis unspecified cause
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 uri acute
 uri acute @ asthma with acute exacerbation @ allergic reaction medicinal biological substance
 chest pain @ shortness of breath
@@ -13253,7 +13253,7 @@ pneumonia bacterial
 bite human
 flu @ fever
 hypotension
-snake bite nonvenomous
+snake bite non venomous
 anxiety reaction
 fever
 forehead laceration
@@ -13266,7 +13266,7 @@ viral uri
 laceration scalp
 laceration scalp @ staple removal
 ascites
-viral syndrome @ otitis media suppurative acute without eardrum rupt
+viral syndrome @ otitis media suppurative acute without eardrum rupture
 uri acute @ viral syndrome
 asthma pediatric
 knee sprain
@@ -13356,12 +13356,12 @@ acute otitis media
 diabetic foot infection @ hyperglycemia nos
 hip contusion @ knee contusion @ mva
 submental deep space infection @ hiv
-fever @ otitis media suppurative wspontaneous eardrum rup
+fever @ otitis media suppurative with spontaneous eardrum rupture
 diabetic ketoacidosis insulin dependent
 chest pain acute unclear cause
 head injury superficial
 chest pain
-otitis media suppurative acute without eardrum rupt @ uri acute
+otitis media suppurative acute without eardrum rupture @ uri acute
 scalp laceration
 threatened abortion
 low back pain
@@ -13408,7 +13408,7 @@ suicidal ideations @ depression
 abdominal pain
 abdominal pain
 uri acute @ conjunctivitis
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 back pain @ trauma complications early
 fever @ tick bites possible tick borne illness
 abscess groin
@@ -13456,7 +13456,7 @@ foot fracture open @ foreign body foot superficial subcutaneous @ gunshot wound
 flu
 facial laceration @ assault by blunt or thrown object
 suture removal
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 fractured metacarpal closed
 chest pain
 dehydration @ diarrhea
@@ -13556,7 +13556,7 @@ assault @ neck contusion
 laryngeal spasm @ hoarseness
 unstable angina
 std
-fever @ otitis media suppurative acute without eardrum rupt
+fever @ otitis media suppurative acute without eardrum rupture
 syncope @ vertigo benign paroxysmal
 headache
 testicular torsion
@@ -13642,7 +13642,7 @@ uti
 allergic reaction @ cellulitis
 asthma with acute exacerbation
 laceration forehead
-otitis media suppurative acute without eardrum rupt @ diarrhea @ dehydration
+otitis media suppurative acute without eardrum rupture @ diarrhea @ dehydration
 gastric tube check
 mechanical complication of gastrostomy
 urinary tract infection
@@ -13719,14 +13719,14 @@ nausea and vomiting
 failure to thrive @ dementia senile @ brain tumor
 chest pain
 mastitis acute @ abdominal pain
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 fever unclear cause @ suspect viral syndrome
 laceration scalp @ head injury unspecified
 seizure grand mal
 asthma
 asthma
 motor vehicle accident @ arm contusion
-insect bite neck nonvenomous not infected
+insect bite neck non venomous not infected
 head injury superficial
 strep pharyngitis
 palpitations
@@ -13742,7 +13742,7 @@ allergic reaction @ eczema atopic
 vomiting
 tonsillitis acute
 pharyngitis acute
-otitis media suppurative wspontaneous eardrum rup @ dehydration
+otitis media suppurative with spontaneous eardrum rupture @ dehydration
 abdominal pain @ diarrhea @ vomiting
 dehydration @ post op complication
 uti @ pregnancy @ abdominal pain
@@ -13758,7 +13758,7 @@ drug abuse mixed @ hypokalemia
 psychosis @ drug abuse mixed @ schizo affective type @ hypokalemia
 psychiatric exam @ suicidal ideations @ depression @ drug abuse mixed
 abrasion penis
-fall accidental @ postconcussion syndrome
+fall accidental @ post concussion syndrome
 laceration scalp @ head injury superficial @ enuresis
 heart failure @ pleural effusion @ hypoxemia
 cough
@@ -13854,7 +13854,7 @@ lumbar strain
 mva @ tick removal @ bruising left chest wall
 trigeminal neuralgia @ jaw pain
 laceration forehead @ facial trauma
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 vomiting @ fever
 wheezing @ respiratory distress acute
 uri acute @ conjunctivitis acute @ nausea and vomiting
@@ -14212,7 +14212,7 @@ abdominal pain @ yeast infection vagina @ urinary tract infection
 abdominal pain @ pregnancy incidental
 abdominal pain right lower quadrant @ urinary tract infection @ nausea
 abdominal pain suprapubic
-pregnancy complication other specified @ uterine spasms during pregnancy
+pregnancy complication other not unspecified @ uterine spasms during pregnancy
 allergic rhinitis due to pollen @ asthma @ musculoskeletal chest pain
 contusion wrist
 reactive airway disease exacerbation
@@ -14409,7 +14409,7 @@ renal colic
 elbow pain @ shoulder pain
 arm pain
 shoulder pain
-insect bite face nonvenomous not infected
+insect bite face non venomous not infected
 psychogenic polydipsea
 urethritis in men @ copd
 back pain
@@ -14581,7 +14581,7 @@ low back pain
 pain due to neoplasm acute or chronic
 heart failure
 chf
-hemopneumothorax @ abdominal contusion @ accident caused by other specified machinery
+hemopneumothorax @ abdominal contusion @ accident caused by other not unspecified machinery
 electrolyte imbalance @ nausea @ anorexia @ gastroparesis
 abdominal pain left lower quadrant @ diabetes mellitus non insulin dependent @ hyperglycemia nos
 pain in foot joint
@@ -14703,7 +14703,7 @@ toe pain
 low back syndrome
 head pain
 viral infection
-od medicinal substance with alcohol @ respiratory arrest @ suicide by drug od specified drugs
+od medicinal substance with alcohol @ respiratory arrest @ suicide by drug od not unspecified drugs
 gouty arthritis
 chest pain @ cardiomyopathy
 cough @ pneumonia bacterial
@@ -15191,7 +15191,7 @@ chest pain
 neuralgia acute @ chest wall pain
 urinary tract infection
 urinary retention @ phymosis
-periodontal disease specified
+periodontal disease not unspecified
 pneumonia bacterial
 facial contusion @ assault
 nail puncture wound to right foot
@@ -15294,7 +15294,7 @@ alcohol abuse episodic @ head injury superficial
 back pain
 laceration hand @ assault @ homeless
 opioid abuse @ polysubstance abuse
-sepsis @ pneumonia due to other specified bacteria @ renal insufficiency acute @ dehydration
+sepsis @ pneumonia due to other not unspecified bacteria @ renal insufficiency acute @ dehydration
 cough @ fever @ hiv
 wrist strain
 back pain
@@ -15423,7 +15423,7 @@ corneal abrasion @ subconjunctival hemorrhage @ mva
 femur fracture open @ fractured c7 closed @ hypotension @ hip fracture
 cellulitis knee @ post op infection
 dental pain
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 otitis media
 ureteral colic
 tenosynovitis finger non infectious
@@ -15451,7 +15451,7 @@ knee pain
 overwear of contact lenses
 pharyngitis acute @ uvulitis
 laceration scalp
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 mva @ syncope
 concussion
 fever @ headache
@@ -15494,7 +15494,7 @@ hypoglycemia
 altered mental status @ hypertension
 viral uri @ fever
 forearm foreign body superficial subcutaneous
-seizure grand mal @ acute otitis media nonsuppurative @ pneumonia bacterial @ uti
+seizure grand mal @ acute otitis media non suppurative @ pneumonia bacterial @ uti
 nausea and vomiting
 visual loss @ endophthalmitis acute
 asthma with acute exacerbation
@@ -15506,7 +15506,7 @@ fever @ myalgia @ influenza
 hypoglycemia @ mental status change
 chf @ dehydration
 central line placement
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 abscess buttock
 grief reaction @ headache
 fever @ dehydration mild
@@ -15565,7 +15565,7 @@ ataxia @ speech disturbance
 bruising @ mva
 abdominal pain left lower quadrant
 mva @ facial laceration multiple sites @ tibia and fibula fracture closed @ distal radius fracture closed
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 otitis media
 wheezing @ viral uri
 asthma with acute exacerbation @ respiratory distress acute improved
@@ -15577,7 +15577,7 @@ conjunctivitis acute @ fever
 tibia and fibula fracture closed
 fever
 otitis externa acute
-otitis media nonsuppurative acute @ leukocytosis @ fever
+otitis media non suppurative acute @ leukocytosis @ fever
 chest pain
 hip cellulitis
 unspecified
@@ -15664,7 +15664,7 @@ hip pain @ fall accidental
 fever
 radiation pneumonitis
 constipation
-fever @ otitis media suppurative acute without eardrum rupt
+fever @ otitis media suppurative acute without eardrum rupture
 neck abrasion @ fall down stairs or steps
 insect bite
 diarrhea
@@ -15691,7 +15691,7 @@ neck pain @ mva
 knee pain
 cellulitis leg
 foreign body digestive system
-fatigue @ shortness of breath @ lymphomas other
+fatigue @ shortness of breath @ lymphoma other
 sepsis @ ascites @ fever
 septic shock @ cirrhosis of liver @ leg open wound @ dehydration
 lower extremity ulcers
@@ -15885,7 +15885,7 @@ spinal cord injury @ head injury unspecified consciousness state @ laceration ba
 gastrostomy tube insertion
 shortness of breath
 halo removal @ cervical spine fracture closed unspecified level @ paraplegia @ asthma
-bite nonvenomous arthropod
+bite non venomous arthropod
 gastrostomy tube insertion
 shoulder pain
 pain chronic
@@ -16195,7 +16195,7 @@ hearing loss
 dermatitis unspecified cause
 constipation
 stye internal
-fever @ otitis media suppurative acute without eardrum rupt
+fever @ otitis media suppurative acute without eardrum rupture
 nausea and vomiting @ constipation
 abscess
 wound check follow up exam
@@ -16363,7 +16363,7 @@ weakness @ failure to thrive
 scrotal pain acute transient
 fever @ brain cancer
 febrile seizure
-febrile seizure @ otitis media suppurative acute without eardrum rupt @ viral syndrome
+febrile seizure @ otitis media suppurative acute without eardrum rupture @ viral syndrome
 migraine
 near syncope
 hypertension @ skin disorder
@@ -16604,7 +16604,7 @@ pain rib
 laceration scalp
 behavioral problems
 ingestion toxic effect
-epilepsy unspecified @ otitis media nonsuppurative
+epilepsy unspecified @ otitis media non suppurative
 viral uri
 tibia fracture closed @ overdose analgesic accidental
 balanoposthitis
@@ -16672,7 +16672,7 @@ cough
 hiv @ seborrheic dermatitis @ candidiasis groin @ abscess buttock leg
 abdominal pain suspect proctitis @ diarrhea @ aids
 ureteral obstruction suspected @ cystitis @ urosepsis @ rectal cancer
-fever @ viral infection @ bite nonvenomous arthropod
+fever @ viral infection @ bite non venomous arthropod
 stye external
 corneal abrasion
 strep pharyngitis
@@ -16681,7 +16681,7 @@ fractured orbit closed
 si joint inflammation
 coccyodynia
 retention of urine @ abdominal pain
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 headache @ cystitis
 fever @ viral syndrome
 asthma @ viral uri
@@ -16726,7 +16726,7 @@ rash
 bronchitis acute
 tia
 fever @ pneumonia bacterial
-drug od accidental specified drugs @ intoxicated alcohol
+drug od accidental not unspecified drugs @ intoxicated alcohol
 syncope
 pneumonia organism unspecified @ hyponatremia
 chest pain musculoskeletal
@@ -16746,7 +16746,7 @@ flank injury @ contusion
 musculoskeletal back pain @ cellulitis foot
 cervical strain @ contusion back
 otitis media
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 cough
 respiratory distress @ hypoxia
 post op complication
@@ -16790,7 +16790,7 @@ ascites @ anemia associated with nutritional deficiency @ dehydration
 hypoxemia @ pneumonia aspiration
 chest pain @ osteomyelitis @ back pain
 wheezing @ reactive airway disease
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 bipolar affective disorder @ uti @ hyperglycemia nos
 cocaine abuse @ hyperglycemia nos @ diabetes mellitus insulin dependent
 bipolar affective disorder @ urinary tract infection @ hypertension @ diabetes mellitus insulin dependent
@@ -16798,7 +16798,7 @@ pain chronic
 fever
 gastroenteritis
 lip swelling
-otitis media nonsuppurative
+otitis media non suppurative
 laceration face
 suture removal
 viral pneumonia
@@ -16937,7 +16937,7 @@ viral syndrome
 toe open wound @ toe fracture healing
 trauma complications early
 headache
-subdural hemorrhage traumatic unspec consciousness
+subdural hemorrhage traumatic unspecified consciousness
 acute otitis media bilateral
 abscess buttock
 abscess leg
@@ -16964,14 +16964,14 @@ closed head trauma
 headache @ sinusitis acute
 bursitis prepatellar @ knee sprain medial collateral ligament
 gi bleed
-postconcussion syndrome @ foreign body scalp superficial subcutaneous
+post concussion syndrome @ foreign body scalp superficial subcutaneous
 seizure grand mal @ hypoxia @ pneumonia bacterial
 eczema atopic
 fever @ influenza like illness
 rash
 nosebleed
 epistaxis
-ingestion nonmedicinal substance toxic effect
+ingestion non medicinal substance toxic effect
 abdominal pain chronic
 asthma with acute exacerbation
 dysfunctional uterine bleed @ urinary tract infection
@@ -16983,7 +16983,7 @@ subarachnoid hemorrhage @ seizure grand mal
 headache
 vomitinga and diarrhea suspect gastroenteritis
 dehydration @ hypernatremia
-otitis media suppurative acute without eardrum rupt @ viral syndrome
+otitis media suppurative acute without eardrum rupture @ viral syndrome
 conjunctivitis viral
 croup
 renal cyst @ transplant
@@ -17003,7 +17003,7 @@ chf @ uri acute @ cough
 back pain
 femur fracture closed
 gastroenteritis
-itch not specified otherwise
+itch not not unspecified otherwise
 wound infection posttraumatic
 hypersensitivity
 knee strain @ knee pain
@@ -17130,7 +17130,7 @@ pharyngitis acute
 adjustment reaction with mixed emotional features
 threatened abortion @ abdominal pain
 hypoglycemia @ uti
-abdominal pain @ uti @ pregnancy complication other specified
+abdominal pain @ uti @ pregnancy complication other not unspecified
 foreign body nose
 viral conjunctivitis @ viral uri @ thrush oral
 otitis media
@@ -17180,7 +17180,7 @@ gastroenteritis
 reactive airway disease
 reactive airway disease @ difficulty breathing improved
 foreign body nose
-viral uri @ otitis media nonsuppurative possible
+viral uri @ otitis media non suppurative possible
 fistula skin
 croup
 bronchitis acute @ sinusitis acute
@@ -17240,7 +17240,7 @@ uri acute
 acute otitis media
 viral gastroenteritis
 fever @ viral infection
-rickettsioses other specified
+rickettsioses other not unspecified
 muscle strain
 fracture closed
 diarrhea infectious @ dehydration mild @ stomatitis
@@ -17269,7 +17269,7 @@ abscess buttock
 abscess buttock
 uri acute
 fever @ cough
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 bell s palsy
 viral syndrome @ fever
 shoulder strain
@@ -17287,7 +17287,7 @@ fever
 vaginitis
 abscess abdominal wall
 allergic reaction
-thrombocytopenia secondary chronic itp @ constipation @ otitis media suppurative acute without eardrum rupt
+thrombocytopenia secondary chronic itp @ constipation @ otitis media suppurative acute without eardrum rupture
 abdominal pain @ motor vehicle accident passenger
 viral uri @ fever @ constipation
 croup
@@ -17328,7 +17328,7 @@ hypokalemia @ palpitations @ hypophosphatasia
 svt recurrent
 vomiting @ dehydration
 mva
-fever @ otitis media suppurative acute without eardrum rupt
+fever @ otitis media suppurative acute without eardrum rupture
 back pain recurrent
 altered mental status
 abdominal pain @ viral syndrome @ nausea and vomiting
@@ -17358,7 +17358,7 @@ otitis media
 constipation @ cough
 constipation
 shortness of breath
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 arm sprain
 mva traffic with other vehicle passenger
 otitis media serous acute @ possible pneumonia bacterial
@@ -17521,7 +17521,7 @@ epigastric pain @ gallbladder disease
 fever @ cat scratch fever @ gastroenteritis @ dehydration
 epilepsy @ hypoxemia
 miscarriage spontaneous
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 abscess buttock
 contusion
 abdominal pain generalized @ mesenteric lymphadenitis @ fever
@@ -17540,7 +17540,7 @@ patellar tendon rupture
 missed abortion @ fetal demise with retention before [num] weeks
 back pain
 tick bite
-ingestion nonmedicinal substance toxic effect
+ingestion non medicinal substance toxic effect
 earache @ cough @ suspect viral syndrome
 rib sprain @ hypertension
 rib strain
@@ -17632,7 +17632,7 @@ viral uri
 conjunctivitis
 migraine
 seizure breakthrough @ elevated temperature @ leukocytosis
-otalgia (not otherwise specified: now resolved)
+otalgia (not otherwise not unspecified: now resolved)
 svt @ renal failure acute @ urinary retention @ larynx cancer
 dysphagia
 odynophagia pain in throat
@@ -17667,8 +17667,8 @@ laceration forehead
 fever @ vomiting
 asthma pediatric @ upper respiratory infection acute
 asthma flare @ uri acute
-otitis media nonsuppurative acute @ fever by history
-asthma with acute exacerbation @ otitis media suppurative acute without eardrum rupt
+otitis media non suppurative acute @ fever by history
+asthma with acute exacerbation @ otitis media suppurative acute without eardrum rupture
 cough @ fever
 acute otitis media @ conjunctivitis
 cellulitis @ hiv
@@ -17735,7 +17735,7 @@ toothache
 muscle strain
 head injury superficial
 head injury unspecified consciousness state
-appendicitis unqualified
+appendicitis not qualified
 pain acute
 sexual assualt
 vaginitis @ uti
@@ -17825,7 +17825,7 @@ vaginal bleeding miscarriage
 diabetes w ketoacidosis type i uncontrolled
 fever @ pharyngitis acute
 preseptal cellulitis od
-otitis media suppurative acute without eardrum rupt @ fever
+otitis media suppurative acute without eardrum rupture @ fever
 pneumonia bacterial @ wheezing
 myalgia
 pneumonia bacterial @ delirium acute
@@ -17888,10 +17888,10 @@ chest pain
 pharyngitis acute
 chest wall pain @ urinary system symptoms
 pericarditis acute
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 abrasion leg @ fall accidental
 sexual assualt @ vaginitis
-viral uri @ otitis media nonsuppurative
+viral uri @ otitis media non suppurative
 foreign body foot superficial subcutaneous
 uti
 gastroenteritis in infants and children @ dehydration
@@ -17899,7 +17899,7 @@ vomiting
 leg pain
 dental disorder
 back pain @ radiculitis
-fever @ otitis media suppurative wspontaneous eardrum rup
+fever @ otitis media suppurative with spontaneous eardrum rupture
 colitis large intestine
 leg pain
 nausea and vomiting @ constipation
@@ -17969,7 +17969,7 @@ atopic dermatitis
 uti
 pneumonia bacterial
 pneumonitis due to fumes and vapor
-sepsis @ lymphomas other @ thrombocytopenia
+sepsis @ lymphoma other @ thrombocytopenia
 intussusception @ abdominal pain
 fever @ gu pain
 hydrocele
@@ -18002,7 +18002,7 @@ alcoholism chronic
 cellulitis face
 nursemaid s elbow
 foreign body nose
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 bronchiolitis acute @ vomiting resolved
 acute bronchospasm @ viral syndrome
 pain in leg
@@ -18049,7 +18049,7 @@ acute otitis media
 shoulder strain @ fall accidental
 headache
 abdominal pain  testicular pain
-otitis media nonsuppurative
+otitis media non suppurative
 suspect viral uri
 anemia of other chronic illness @ dyspnea
 shortness of breath
@@ -18065,14 +18065,14 @@ arm pain
 wrist injury
 cardiac arrest
 diarrhea chronic non specific of childhood
-suspected otitis media nonsuppurative acute @ fever
+suspected otitis media non suppurative acute @ fever
 viral syndrome @ otitis media
 uri acute
 hepatitis
 fever @ cutaneous t cell lymphoma
 uti @ kidney carcinoma
 facial swelling @ edema @ nephrotic syndrome
-appendicitis unqualified
+appendicitis not qualified
 croup suspected @ viral syndrome
 burn fingers [num] degree [num] or more digits ex thumb @ burn [num] degree (unspecified site: finger)
 thrush
@@ -18081,7 +18081,7 @@ epistaxis resolved
 stomatitis
 ear infection middle ear
 acetaminophen overdose @ uri acute
-otitis media nonsuppurative acute @ viral infection
+otitis media non suppurative acute @ viral infection
 otitis media
 gastroenteritis in infants and children
 impetigo
@@ -18092,7 +18092,7 @@ abscess arm
 chest pain
 febrile seizure
 seizure grand mal
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 uri acute
 viral syndrome @ fever
 urticaria
@@ -18175,7 +18175,7 @@ gallstones
 gastroenteritis @ fever
 fever @ throat abrasion
 arm pain
-febrile seizure simple @ otitis media suppurative acute without eardrum rupt
+febrile seizure simple @ otitis media suppurative acute without eardrum rupture
 viral bronchitis acute @ uti
 uri acute
 peritonsillar abscess @ sore throat
@@ -18185,7 +18185,7 @@ viral syndrome @ fever
 gastroenteritis
 depression
 mva non collision @ leg contusion @ shoulder strain
-ingestion nonmedicinal substance toxic effect
+ingestion non medicinal substance toxic effect
 pneumonia bacterial
 asthma without status asthmaticus
 asthma with acute exacerbation
@@ -18254,7 +18254,7 @@ strep pharyngitis
 vomiting @ diarrhea
 asthma with acute exacerbation
 intestinal obstruction
-pericarditis acute @ lupus erythematosis systemic @ fever
+pericarditis acute @ lupus erythematosus systemic @ fever
 laceration chin
 etoh abuse @ delirium drug induced
 intoxicated alcohol
@@ -18290,8 +18290,8 @@ asthma @ sinusitis acute
 miscarriage spontaneous
 asthma @ uri acute @ anxiety
 vomiting @ dehydration @ hypoglycemia @ medulloblastoma malignant
-laceration eyelid @ otitis media suppurative acute without eardrum rupt
-otitis media suppurative wspontaneous eardrum rup @ strep pharyngitis
+laceration eyelid @ otitis media suppurative acute without eardrum rupture
+otitis media suppurative with spontaneous eardrum rupture @ strep pharyngitis
 pain in hand @ warts verruca vulgaris
 uri acute
 gastroenteritis
@@ -18356,7 +18356,7 @@ svt
 heat exhaustion
 cervical strain @ knee contusion @ mva traffic with other vehicle passenger
 uri acute @ pharyngitis acute
-fever @ otitis media suppurative acute without eardrum rupt
+fever @ otitis media suppurative acute without eardrum rupture
 abscess leg @ cellulitis leg
 abscess leg @ cellulitis leg
 abscess leg
@@ -18399,7 +18399,7 @@ viral infection
 seizure grand mal
 chest pain
 knee pain @ skin disorder
-ingestion nonmedicinal substance toxic effect
+ingestion non medicinal substance toxic effect
 sexual assualt
 abdominal pain transient @ pregnancy
 posterior jaw dislocation bilateral
@@ -18414,7 +18414,7 @@ migraine
 no diagnosis made feared complaint @ viral uri
 fever @ epistaxis
 viral syndrome @ fever @ muscle spasm of back
-otitis media suppurative acute without eardrum rupt @ conjunctivitis infectious
+otitis media suppurative acute without eardrum rupture @ conjunctivitis infectious
 fever
 adjustment disorder with depressed mood
 viral syndrome
@@ -18490,7 +18490,7 @@ gastroenteritis @ diarrhea
 fever @ pharyngitis acute
 seizure generalized
 asthma
-biliary tract disorder specified @ pancreas cancer unspecified
+biliary tract disorder not unspecified @ pancreas cancer unspecified
 altered mental status @ hypotension
 hemorrhage @ epistaxis
 pneumonia bacterial @ cancer @ atrial fibrillation with rapid ventricular rate
@@ -18543,13 +18543,13 @@ abortion incomplete spontan without complication
 anemia cause unknown
 hip contusion
 sacral pain
-subdural hemorrhage traumatic unspec consciousness @ fractured skull closed
+subdural hemorrhage traumatic unspecified consciousness @ fractured skull closed
 uri acute
 viral syndrome @ fever @ heat rash
 chest pain
 shoulder pain
 otitis media serous acute @ dehydration
-fever @ otitis media suppurative acute without eardrum rupt
+fever @ otitis media suppurative acute without eardrum rupture
 cellulitis face @ periorbital cellulitis
 abrasion finger
 insect bite @ eczema atopic
@@ -18625,7 +18625,7 @@ vomiting @ seizure grand mal
 febrile seizure
 febrile seizure simple @ influenza like illness
 ringworm
-otitis media suppurative acute without eardrum rupt @ uri acute
+otitis media suppurative acute without eardrum rupture @ uri acute
 uri acute @ epistaxis
 viral syndrome
 chest pain
@@ -18658,7 +18658,7 @@ flank abscess @ etoh abuse
 back pain
 alcohol dependence @ back pain
 alcohol intoxication @ cocaine abuse @ substance induced mood disorder
-etoh abuse @ ingestion nonmedicinal substance toxic effect
+etoh abuse @ ingestion non medicinal substance toxic effect
 abdominal pain @ nausea @ hypokalemia
 low back pain
 post op wound disruption external
@@ -18772,8 +18772,8 @@ fever @ nausea and vomiting
 copd @ dyspnea
 abdominal pain @ uti
 nephrolithiasis
-otitis media nonsuppurative acute
-otitis media suppurative wspontaneous eardrum rup
+otitis media non suppurative acute
+otitis media suppurative with spontaneous eardrum rupture
 cough @ bronchitis acute
 chest pain
 uti
@@ -18785,7 +18785,7 @@ vaginitis
 nausea and vomiting @ diarrhea
 allergic reaction
 asthma @ cough
-fever @ otitis media suppurative acute without eardrum rupt @ conjunctivitis acute
+fever @ otitis media suppurative acute without eardrum rupture @ conjunctivitis acute
 viral syndrome
 uri acute @ cough @ asthma
 vasovagal syncope
@@ -18854,10 +18854,10 @@ mva exam no follow up care needed @ buccal mucosa abrasion
 seizure grand mal
 vomiting @ neurofibromatosis
 seizure
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 possible rocky mountain spotted fever @ suspect viral syndrome
 wrist fracture closed
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 exposure to communicable diseases
 fever @ pneumonia bacterial
 chest pain @ hypertension
@@ -18925,10 +18925,10 @@ intoxicated alcohol severe @ alcohol abuse episodic @ laceration chin
 suture removal
 otitis media
 abscess skin @ cellulitis
-uri acute @ wheezing @ viral exanthem @ otitis media nonsuppurative
+uri acute @ wheezing @ viral exanthem @ otitis media non suppurative
 shortness of breath
 abdominal pain @ nausea
-drug overdose accidental specified drugs @ depression @ suicide attempt by drug od unspecified drug
+drug overdose accidental not unspecified drugs @ depression @ suicide attempt by drug od unspecified drug
 neuromyelitis optica @ uti
 constipation @ abdominal pain
 gastroenteritis
@@ -18956,13 +18956,13 @@ neck strain
 cervical strain @ mva
 cervical strain
 neuropathy @ myalgia
-subdural hemorrhage traumatic unspec consciousness @ paresthesia
+subdural hemorrhage traumatic unspecified consciousness @ paresthesia
 nasal fb removed
 forearm fracture lower end closed
 overdose amphetamine accidental
 fever
 chest pain
-febrile seizure @ otitis media suppurative acute without eardrum rupt
+febrile seizure @ otitis media suppurative acute without eardrum rupture
 phlebitis leg superficial
 laceration hand
 skull fracture closed
@@ -19008,7 +19008,7 @@ pericarditis acute
 cough
 laceration finger
 biliary colic @ elevated transaminases
-otitis media suppurative acute without eardrum rupt @ uri acute
+otitis media suppurative acute without eardrum rupture @ uri acute
 fever
 respiratory distress acute @ pneumonia bacterial
 fever @ infantile spasms
@@ -19042,7 +19042,7 @@ abdominal pain generalized @ nausea and vomiting
 fever @ abdominal pain
 anxiety
 dehydration @ headache @ cough
-cerebral contusion unspec state of consciousness @ subdural hemorrhage traumatic unspec consciousness
+cerebral contusion unspecified state of consciousness @ subdural hemorrhage traumatic unspecified consciousness
 fever @ influenza like illness
 laceration leg
 depression
@@ -19084,7 +19084,7 @@ bacteremia @ fever
 fever
 viral uri @ fever
 fever
-fever @ otitis media suppurative acute without eardrum rupt @ adrenal insufficiency
+fever @ otitis media suppurative acute without eardrum rupture @ adrenal insufficiency
 depression @ conjunctivitis viral
 uri acute
 motor vehicle accident @ concern for condition not found
@@ -19097,7 +19097,7 @@ fever
 otitis media
 fever @ respiratory distress acute @ clonidine poisoning @ tracheitis acute
 laceration eyebrow
-otitis media nonsuppurative acute
+otitis media non suppurative acute
 pneumonia lobar
 pneumonia bacterial
 gastroenteritis in infants and children
@@ -19108,7 +19108,7 @@ uri acute @ vomiting
 viral exanthem
 uri acute
 pneumonia bacterial
-otitis media suppurative acute without eardrum rupt @ fever @ rash
+otitis media suppurative acute without eardrum rupture @ fever @ rash
 bacteremia
 migraine
 seizure
@@ -19238,19 +19238,19 @@ viral syndrome
 fever
 vomiting @ diarrhea @ dehydration
 arm pain
-otitis media nonsuppurative acute
+otitis media non suppurative acute
 cough @ viral uri
 pyelonephritis
 viral infection
 chest pain
 otitis media @ viral uri @ diaper rash
-otitis media suppurative acute without eardrum rupt
-otitis media suppurative acute without eardrum rupt @ fever @ asthma
+otitis media suppurative acute without eardrum rupture
+otitis media suppurative acute without eardrum rupture @ fever @ asthma
 bronchitis
 cough
 tinea capitis
-febrile seizure @ otitis media suppurative acute without eardrum rupt
-fever @ otitis media suppurative acute without eardrum rupt @ vomiting in children over five months of age
+febrile seizure @ otitis media suppurative acute without eardrum rupture
+fever @ otitis media suppurative acute without eardrum rupture @ vomiting in children over five months of age
 fever
 anemia cause unknown
 fever
@@ -19270,7 +19270,7 @@ tooth decay
 nephrostomy tube replacement @ anemia cause unknown @ renal failure chronic
 viral gastroenteritis
 diarrhea
-altered mental status @ ingestion nonmedicinal substance toxic effect
+altered mental status @ ingestion non medicinal substance toxic effect
 dehydration @ post op complication
 hypotension @ hypoglycemia @ stress reaction acute
 abdominal pain improving
@@ -19279,7 +19279,7 @@ fever @ viral syndrome
 radial head fracture closed
 otitis media
 viral uri @ fever @ fever blister herpes
-lymphomas other @ fever
+lymphoma other @ fever
 laceration finger
 etoh intoxication
 groin pain unclear cause @ hematuria unclear cause
@@ -19293,7 +19293,7 @@ back pain
 hernia inguinal unilateral unspecified
 hernia inguinal
 pyelonephritis acute
-appendicitis unqualified
+appendicitis not qualified
 palpitations recurrent
 dog bite @ contusion
 pneumonia bacterial @ respiratory distress acute @ asthma with acute exacerbation
@@ -19313,7 +19313,7 @@ abdominal pain @ ileus of bowel
 headache
 appendicitis acute with peritonitis
 abdominal pain @ nausea and vomiting
-otitis media suppurative acute without eardrum rupt @ cough
+otitis media suppurative acute without eardrum rupture @ cough
 transient global amnesia
 asthma with acute exacerbation @ hypoxemia resolved
 gastritis
@@ -19342,7 +19342,7 @@ laceration finger
 wound check follow up exam
 wound check follow up exam
 wheezing
-otitis media nonsuppurative @ asthma pediatric
+otitis media non suppurative @ asthma pediatric
 febrile seizure @ viral uri
 abscess buttock
 viral infection @ fever
@@ -19398,7 +19398,7 @@ foreign body throat
 viral syndrome @ fever
 visual disturbance @ htn
 closed head injury @ strain cervical
-vena cava syndrome @ thrombosis of other specified veins @ lung cancer
+vena cava syndrome @ thrombosis of other not unspecified veins @ lung cancer
 abdominal pain @ nausea and vomiting
 leg pain
 chest pain
@@ -19408,7 +19408,7 @@ headache migraine
 asthma
 obstruction intestinal
 abdominal pain generalized
-abdominal pain other specified site
+abdominal pain other not unspecified site
 abdominal pain
 constipation
 obstruction intestinal
@@ -19661,7 +19661,7 @@ etoh abuse @ cocaine abuse
 alcohol abuse episodic
 neck pain @ back pain
 pain postoperative chronic sp radiation swelling @ hypokalemia @ odynophagia
-drug od accidental specified drugs
+drug od accidental not unspecified drugs
 gi bleed @ hypotension
 mva @ contusion knee
 chest pain
@@ -19855,7 +19855,7 @@ head injury superficial
 stroke
 dermatitis due to sun
 acute ureteral colic @ hematuria
-thrombosis of other specified veins
+thrombosis of other not unspecified veins
 thrombosis of lower extremity @ end stage renal disease
 headache recurrent @ external hemorrhoids bleeding recurrent
 dizziness
@@ -19921,7 +19921,7 @@ unspecified
 schizophrenia @ ataxia
 suture removal
 heart block @ vomiting @ bradycardia
-mva @ scapula fracture r side @ cerebral contusion unspec state of consciousness
+mva @ scapula fracture r side @ cerebral contusion unspecified state of consciousness
 sprained ankle
 allergic reaction
 chf @ htn
@@ -19964,7 +19964,7 @@ chest pain musculoskeletal
 urinary tract infection
 fibroids uterine @ vomiting
 headache @ diarrhea
-insect bite multiple sites nonvenomous
+insect bite multiple sites non venomous
 chest pain
 chest pain
 sore throat
@@ -20117,7 +20117,7 @@ vertigo @ dizziness @ nystagmus
 vaginal pain
 epistaxis
 vomiting @ weakness
-arthralgia multiple sites @ abdominal pain @ lupus erythematosis systemic
+arthralgia multiple sites @ abdominal pain @ lupus erythematosus systemic
 knee pain @ hypertension
 gastroenteritis
 lupus @ pharyngitis acute @ malaise and fatigue
@@ -20125,10 +20125,10 @@ hyperglycemia nos @ renal failure acute @ hyperkalemia @ uti
 pain syndrome
 leg pain @ leukocytosis
 uri acute
-back pain @ lupus erythematosis systemic
+back pain @ lupus erythematosus systemic
 apical periodontitis acute
 apical periodonitis
-lupus erythematosis systemic @ depression
+lupus erythematosus systemic @ depression
 headache @ leg pain
 abdominal pain acute transient @ uti
 abdominal pain generalized
@@ -20326,7 +20326,7 @@ cocaine abuse @ alcohol dependence @ opioid abuse
 renal failure chronic @ hypertension
 acute mi
 uti @ vomiting
-postconcussion syndrome
+post concussion syndrome
 headache
 abscess face
 left upper extremity avg bleed
@@ -20429,7 +20429,7 @@ pulmonary edema acute @ end stage renal disease
 wound infection surgical
 abdominal pain @ abdominal or pelvic swelling mass epigastric general
 hemoptysis @ pneumonia bacterial
-lupus erythematosis systemic @ lupus nephritis @ acute respiratory failure
+lupus erythematosus systemic @ lupus nephritis @ acute respiratory failure
 pancreatitis acute @ hyperkalemia
 chronic pain @ lupus
 kidney stone
@@ -20477,7 +20477,7 @@ gait ataxia
 adjustment disorder wmixed emotionalconduct dis
 headache tension
 back pain
-syncope @ concussion with consciousness loss unspec duration
+syncope @ concussion with consciousness loss unspecified duration
 cellulitis thigh @ diabetes mellitus non insulin dependent
 nausea and vomiting
 dehydration @ dizziness
@@ -20646,7 +20646,7 @@ shortness of breath transient @ pancreatic cancer
 gastroenteritis
 incarcerated hernia @ intestinal obstruction
 anxiety @ medication refill
-otitis media nonsuppurative acute
+otitis media non suppurative acute
 fever @ uri acute
 uri acute
 viral syndrome
@@ -20663,7 +20663,7 @@ ring removal @ swelling finger
 suspect gastroenteritis in infants and children
 pregnancy uncomplicated @ abdominal pain @ crohn s disease
 knee pain
-fever @ otitis media suppurative acute without eardrum rupt
+fever @ otitis media suppurative acute without eardrum rupture
 viral syndrome
 reactive airway disease exacerbation @ viral infection
 ventricular shunt complication @ vomiting @ seizure grand mal
@@ -20682,9 +20682,9 @@ uti @ dysuria @ flank pain
 laceration arm
 uri acute
 atopic dermatitis @ impetigo
-fever @ acute otitis media nonsuppurative
+fever @ acute otitis media non suppurative
 head injury superficial
-subdural hemorrhage traumatic unspec consciousness
+subdural hemorrhage traumatic unspecified consciousness
 stye external
 stye external
 stye external
@@ -20731,11 +20731,11 @@ depression @ suicidal ideations
 kidney stone
 unstable angina @ hypotension @ bradycardia
 laceration pharynx
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 agitation @ antisocial behavior
 ingestion antidepressant accidental
 head injury superficial
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 ear pain
 dehydration @ anemia cause unknown
 fever @ altered mental status
@@ -20821,7 +20821,7 @@ strep throat
 chest discomfort
 pneumonia bacterial
 fever @ viral syndrome
-fever @ otitis media suppurative acute without eardrum rupt @ leukocytosis
+fever @ otitis media suppurative acute without eardrum rupture @ leukocytosis
 fever
 fever
 cervical strain @ chest wall contusion @ back strain @ mvc
@@ -20845,7 +20845,7 @@ apparent life threatening event @ febrile seizure
 fever @ diarrhea
 finger laceration
 unstable angina
-right otitis media nonsuppurative acute @ fever @ bronchiolitis acute
+right otitis media non suppurative acute @ fever @ bronchiolitis acute
 drug dependence
 contusion abdominal wall @ pregnancy complication antepartum
 conjunctivitis infectious
@@ -20879,14 +20879,14 @@ laceration finger
 back pain @ vomiting
 laboratory exam
 chest pain @ shortness of breath @ headache @ lupus
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 diarrhea @ gi bleed
 finger injury
 abdominal pain left lower quadrant
 abdominal pain
 upper respiratory infection acute
 constipation
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 seizure grand mal
 hypertension
 laceration mouth
@@ -20904,7 +20904,7 @@ upper respiratory infection acute @ asthma pediatric
 fractured phalanx distal hand closed @ laceration chin
 bronchiolitis acute
 shortness of breath
-respiratory distress acute @ hypoxemia @ fever @ otitis media suppurative acute without eardrum rupt
+respiratory distress acute @ hypoxemia @ fever @ otitis media suppurative acute without eardrum rupture
 fall accidental @ pregnancy incidental @ contusion
 croup @ acute otitis media @ fever
 seizure grand mal @ fever @ uri acute
@@ -20937,7 +20937,7 @@ abdominal pain
 asthma pediatric @ upper respiratory infection acute @ conjunctivitis viral
 abscess groin
 dehydration
-otitis media nonsuppurative acute
+otitis media non suppurative acute
 fever @ influenza like illness
 tachycardia
 palpitations @ shortness of breath
@@ -20952,7 +20952,7 @@ chest wall injury
 infection due to an internal device implant graft  @ hypokalemia
 breath holding spells @ syncope
 pain generalized
-otalgia @ otitis media nonsuppurative
+otalgia @ otitis media non suppurative
 viral syndrome @ asthma
 pharyngitis acute
 viral uri
@@ -21000,7 +21000,7 @@ abdominal pain @ ibs
 abdominal pain @ endometriosis
 abdominal pain @ medication refill @ hyperglycemia nos
 vaginal bleeding
-itch not specified otherwise
+itch not not unspecified otherwise
 mental status change
 altered mental status
 fall accidental @ depressive type psychosis @ anxiety
@@ -21024,9 +21024,9 @@ scalp laceration @ scalp hematoma @ radius fracture closed @ fall from roof
 dizziness chronic @ htn @ diabetes mellitus insulin dependent
 hip fracture
 abdominal pain suprapubic cramps resolved
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 allergic reaction @ wheezing
-fever @ otitis media suppurative acute without eardrum rupt
+fever @ otitis media suppurative acute without eardrum rupture
 alcohol intoxication @ abrasion
 asthma @ viral uri
 fever @ cough @ serous otitis media acute
@@ -21042,7 +21042,7 @@ cellulitis toe
 viral syndrome @ dehydration
 pelvic pain female @ ovarian cyst
 fever @ pharyngitis acute
-fever @ otitis media suppurative acute without eardrum rupt
+fever @ otitis media suppurative acute without eardrum rupture
 back pain
 fever @ viral uri
 cough @ fever
@@ -21052,7 +21052,7 @@ vomiting
 g tube replacement @ congenital heart disease
 uri acute
 congenital heart disease @ fever @ cough @ hypoxemia
-gastrostomy tube insertion @ otitis media suppurative acute without eardrum rupt
+gastrostomy tube insertion @ otitis media suppurative acute without eardrum rupture
 cold common @ eczema atopic
 cellulitis face @ abscess face @ eczema atopic
 tibia fracture closed
@@ -21078,10 +21078,10 @@ altered mental status @ brain tumor
 delirium acute
 elevated creatine kinase @ upper arm swelling
 mva @ ankle contusion
-otitis media suppurative acute without eardrum rupt @ cough @ diarrhea
+otitis media suppurative acute without eardrum rupture @ cough @ diarrhea
 hypertension @ headache
 arm pain soft tissue injury
-otitis media suppurative acute without eardrum rupt @ uri acute
+otitis media suppurative acute without eardrum rupture @ uri acute
 uri acute @ nausea
 ear pain
 otitis media @ failure to thrive
@@ -21090,7 +21090,7 @@ seizure grand mal
 foreign body nose
 chest pain @ shortness of breath @ cellulitis leg
 bilateral otitis media @ viral gastroenteritis
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 otitis media
 minor head trauma @ fall accidental
 fever
@@ -21113,7 +21113,7 @@ wound check follow up exam
 suprapubic pain
 vomiting @ diarrhea
 viral uri @ asthma
-fever @ otitis media suppurative acute without eardrum rupt @ pharyngitis acute
+fever @ otitis media suppurative acute without eardrum rupture @ pharyngitis acute
 febrile seizure @ fever
 lymph gland adenitis acute
 cervical strain
@@ -21174,11 +21174,11 @@ dehydration @ hypoglycemia @ viral infection
 chest pain @ icd firing @ sob
 nursemaid s elbow reduced @ eczema atopic
 nursemaid s elbow reduced
-fever @ otitis media suppurative acute without eardrum rupt
-fever @ otitis media suppurative acute without eardrum rupt
-otitis media suppurative acute without eardrum rupt
+fever @ otitis media suppurative acute without eardrum rupture
+fever @ otitis media suppurative acute without eardrum rupture
+otitis media suppurative acute without eardrum rupture
 fever @ uri acute
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 rash @ allergic reaction
 gastroenteritis in infants and children
 bronchiolitis acute
@@ -21200,10 +21200,10 @@ etoh abuse @ pancreatitis chronic
 ingestion cigarettes toxic effect
 fever @ uri acute
 seizure grand mal @ viral uri
-otitis media nonsuppurative acute
+otitis media non suppurative acute
 post operative complication @ laceration vagina complicated
 viral uri
-otitis media suppurative acute without eardrum rupt @ fever
+otitis media suppurative acute without eardrum rupture @ fever
 viral gastroenteritis
 tylenol overdose
 palpitations
@@ -21225,7 +21225,7 @@ uri acute
 vomiting in children over five months of age
 chest contusion
 respiratory distress @ pulmonary hypertension primary
-pneumonia due to other specified bacteria
+pneumonia due to other not unspecified bacteria
 sepsis @ fever @ hypoxemia
 fever
 otitis media serous acute
@@ -21251,9 +21251,9 @@ allergic reaction @ medication reaction
 vomiting @ diarrhea
 herpes gingivostomatitis
 suspect viral gastroenteritis
-otitis media suppurative acute without eardrum rupt @ conjunctivitis infectious
+otitis media suppurative acute without eardrum rupture @ conjunctivitis infectious
 fever @ dehydration @ bronchiolitis acute due to respiratory syncytial virus @ scarlet fever
-fever @ otitis media suppurative acute without eardrum rupt @ ho rad
+fever @ otitis media suppurative acute without eardrum rupture @ ho rad
 uri acute
 uti @ abdominal pain
 finger contusion
@@ -21300,12 +21300,12 @@ viral uri
 cough @ sinusitis acute @ otitis media
 constipation @ anal fistula
 laceration face
-otitis media nonsuppurative
+otitis media non suppurative
 febrile seizure
 uri acute
 pneumonia bacterial @ fever @ dehydration
 postpartum depression
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 cyanosis
 assault by blunt or thrown object
 allergic reaction @ hand swelling
@@ -21315,18 +21315,18 @@ back pain @ ankle sprain
 back pain
 concussion
 altered mental status @ fever @ renal failure acute @ nausea and vomiting
-otitis media nonsuppurative acute
+otitis media non suppurative acute
 eye pain
-otitis media suppurative wspontaneous eardrum rup @ conjunctivitis infectious
+otitis media suppurative with spontaneous eardrum rupture @ conjunctivitis infectious
 urinary tract infection
 viral uri @ wheezing
 stroke @ leg weakness
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 mastoiditis acute
 diarrhea
 gastroenteritis
 fever unknown etiology in children @ cough
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 viral infection @ vomiting
 otitis media
 insect bite
@@ -21342,7 +21342,7 @@ appendicitis acute without peritonitis
 sprained knee
 mass chest
 meniscus injury lt knee
-fever @ otitis media suppurative acute without eardrum rupt
+fever @ otitis media suppurative acute without eardrum rupture
 viral gastroenteritis @ diaper rash
 infection skin @ otitis media
 croup
@@ -21359,7 +21359,7 @@ hand contusion
 respiratory syncytial virus infection
 bronchiolitis acute due to respiratory syncytial virus @ dehydration
 conjunctivitis acute @ uri acute
-otitis media suppurative acute without eardrum rupt @ antibiotic failure
+otitis media suppurative acute without eardrum rupture @ antibiotic failure
 febrile seizure @ otitis media
 otitis media
 otitis media serous acute @ uri acute @ wheezing
@@ -21442,7 +21442,7 @@ croup
 respiratory distress acute @ croup
 decreased appetite @ uri acute
 laceration finger
-ingestion nonmedicinal substance non toxic effect
+ingestion non medicinal substance non toxic effect
 nausea and vomiting @ sore throat @ shortness of breath
 unspecified
 headache @ chest pain
@@ -21495,7 +21495,7 @@ otitis media serous acute
 laceration finger
 finger laceration with tendon involvement
 infection arm @ melanoma malignant
-otitis media suppurative acute without eardrum rupt @ vomiting
+otitis media suppurative acute without eardrum rupture @ vomiting
 viral uri
 otitis media
 viral gastroenteritis @ vomiting
@@ -21526,7 +21526,7 @@ vomiting @ diarrhea
 viral exanthem
 pneumonia bacterial @ pleural effusion
 gastroenteritis
-fever @ otitis media suppurative acute without eardrum rupt @ herpangina
+fever @ otitis media suppurative acute without eardrum rupture @ herpangina
 uri acute @ conjunctivitis viral
 upper respiratory infection acute
 contusion forearm
@@ -21545,7 +21545,7 @@ od acetaminophen
 vomiting
 conjunctivitis acute @ foreign body eyelid superficial subcutaneous
 fever @ viral syndrome
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 seizure grand mal
 ear pain @ diaper rash
 hemorrhage brain traumatic without open wound @ hemothorax closed traumatic @ mva
@@ -21598,10 +21598,10 @@ intestinal vascular insufficiency acute @ intestinal obstruction
 intestinal obstruction
 dehydration
 muscle strain @ anxiety
-seizure febrile simple @ otitis media suppurative acute without eardrum rupt
+seizure febrile simple @ otitis media suppurative acute without eardrum rupture
 cat bite @ cellulitis foot
 headache
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 concussion with loss consciousness [num] minutes or less @ nausea
 diarrhea @ vomiting
 cellulitis
@@ -21643,7 +21643,7 @@ otitis media @ conjunctivitis infectious
 fever @ uri acute @ hx of recent acute otitis media
 laceration face
 pneumonia organism unspecified
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 seizure febrile
 abdominal pain
 chest pain
@@ -21676,7 +21676,7 @@ toothache
 toothache
 dental disorder
 edema @ lung cancer
-febrile seizure @ otitis media suppurative acute without eardrum rupt
+febrile seizure @ otitis media suppurative acute without eardrum rupture
 seizure febrile
 acute asthma flare
 viral uri @ viral pharyngitis
@@ -21758,7 +21758,7 @@ pneumonia bacterial
 respiratory distress
 pneumonia bacterial
 anxiety @ violent behavior
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 influenza like illness
 abscess buttock @ fever @ leukocytosis
 uri acute
@@ -21862,7 +21862,7 @@ overdose motrin accidental @ behavioral problems @ depression
 viral uri
 abdominal pain
 viral uri
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 fever
 fever
 pregnancy examination pregnancy unconfirmed @ nausea and vomiting resolved
@@ -21875,11 +21875,11 @@ neuropathy leg
 back pain @ hip pain
 sciatica
 foreign body stomach
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 foreign body nose
 diarrhea @ vomiting
 assault
-fever @ otitis media suppurative acute without eardrum rupt
+fever @ otitis media suppurative acute without eardrum rupture
 allergic reaction bee sting
 urticaria
 diabetes mellitus non insulin dependent
@@ -21890,7 +21890,7 @@ shoulder pain
 chest pain
 diabetic ketoacidosis non insulin
 bronchiolitis acute due to respiratory syncytial virus
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 priapism
 uri acute @ fever
 chest pain
@@ -21958,7 +21958,7 @@ nausea and vomiting @ renal failure acute @ hyperglycemia nos
 suspected viral infection
 fever
 fever
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 shoulder contusion hand contusion @ pregnancy incidental @ mva
 viral uri
 diarrhea @ dehydration mild
@@ -21998,7 +21998,7 @@ toe fx closed
 contusionfracture coccyx
 hernia inguinal @ sinusitis chronic @ cardiac failure
 laceration finger
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 cough
 upper respiratory infection acute
 peripheral vascular disease @ chf @ copd
@@ -22027,7 +22027,7 @@ leg contusion lower @ mva
 fever @ viral uri
 contusion face
 skull fracture closed @ fall accidental @ child abuse
-otitis media nonsuppurative acute @ cerumen impaction
+otitis media non suppurative acute @ cerumen impaction
 vomiting
 gastroenteritis in infants and children @ uti
 uti
@@ -22063,7 +22063,7 @@ visual disturbance
 nosebleed
 cough @ viral infection
 sepsis @ skin infection @ lupus
-lupus erythematosis systemic @ dehydration
+lupus erythematosus systemic @ dehydration
 testiclular pain
 herpes zoster @ neuralgia acute @ ovarian cancer
 mechanical complication vascular device implant & graft
@@ -22184,7 +22184,7 @@ sinusitis acute @ asthma
 abdominal pain generalized @ leiomyosarcoma
 pregnancy incidental @ abdominal pain
 laceration face
-pregnancy complication other specified @ uti during pregnancy
+pregnancy complication other not unspecified @ uti during pregnancy
 concussion
 adjustment disorder with depressed mood
 gastrostomy tube check
@@ -22218,11 +22218,11 @@ right arm pain
 otitis externa acute
 asthma with acute exacerbation
 fever @ viral uri
-wheezing @ otitis media suppurative acute without eardrum rupt
+wheezing @ otitis media suppurative acute without eardrum rupture
 laceration eyelid
 fever
 diabetes w ketoacidosis type i uncontrolled
-ingestion nonmedicinal substance toxic effect
+ingestion non medicinal substance toxic effect
 fever
 gastroenteritis
 ankle sprain
@@ -22360,7 +22360,7 @@ viral syndrome
 nosebleed
 hemoptysis @ epistaxis @ pneumonia bacterial
 overdose acetaminophen @ alcohol intoxication acute @ suicide attempt by sedatives or hypnotics
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 nephrolithiasis
 pneumonia bacterial @ pain in chest @ post op complication
 vomiting @ diarrhea
@@ -22390,7 +22390,7 @@ diarrhea
 acute otitis media
 asthma
 otitis media
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 upper respiratory infection acute @ boil
 abscess buttock @ asthma
 viral syndrome
@@ -22414,7 +22414,7 @@ febrile seizure @ cough
 laceration face
 cluster headache @ dysarthria @ rue weakness @ urinary retention
 foreign body nose
-ingestion nonmedicinal substance no toxic effect
+ingestion non medicinal substance no toxic effect
 viral syndrome
 eczema atopic
 back strain
@@ -22451,7 +22451,7 @@ nephrotic syndrome @ abdominal distention @ respiratory distress
 nephrotic syndrome @ pleural effusion
 headache
 knee contusion
-tremor (essential & other specified)
+tremor (essential & other not unspecified)
 upper respiratory infection acute
 gastroenteritis @ dehydration
 laceration chin @ mva
@@ -22465,7 +22465,7 @@ gunshot wound
 hematoma scalp
 allergic reaction @ eczema atopic
 acute otitis media @ fever
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 seizure grand mal @ hyponatremia @ brain tumor
 copd
 chest pain @ dyspnea @ hypertension
@@ -22510,7 +22510,7 @@ posterior vitreous detachment
 pneumonia bacterial post obstructive pna @ failure to thrive
 foot injury
 head injury superficial @ scalp hematoma
-drug od other specified drug unsp accid intent @ sleepiness
+drug od other not unspecified drug unsp accid intent @ sleepiness
 croup
 musculoskeletal back pain @ musculoskeletal neck pain
 viral syndrome @ possible meningitis viral
@@ -22571,12 +22571,12 @@ stabbed assault
 viral syndrome @ cough @ bronchospasm acute @ pharyngitis acute
 fall accidental @ neck strain @ low back pain
 hypoxemia @ fall accidental @ fever
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 closed head trauma
 pleural effusion malignant @ dyspnea @ cancer esophagus
 contact dermatitis unspecified cause
 fever @ viral uri
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 fever @ otitis media serous acute
 diarrhea
 chest pain
@@ -22641,14 +22641,14 @@ wheezing
 otitis media serous acute @ uri acute
 cough
 fever @ acute otitis media
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 hypertension benign @ chf
 febrile seizure
 cough @ fever @ uri acute
 otitis media
 seizure grand mal
 seizure grand mal @ cerebral palsy @ vomiting in children over five months of age
-tremor (essential & other specified)
+tremor (essential & other not unspecified)
 abdominal pain @ cancer liver metastatic @ syncope
 cancer @ fall accidental @ orthostatic hypotension @ renal failure chronic
 cancer cervical metastatic to bone
@@ -22664,7 +22664,7 @@ back pain @ headache
 headache
 depression @ suicidal ideations
 sexually transmitted disease @ uti @ vaginal bleeding
-fever @ otitis media nonsuppurative
+fever @ otitis media non suppurative
 viral syndrome
 overdose @ alcohol intoxication acute @ suicidal ideations
 vomiting @ diarrhea
@@ -22751,9 +22751,9 @@ knee pain
 chronic pain knee
 knee pain
 uri acute
-otitis media suppurative acute without eardrum rupt
-influenza @ fever @ otitis media suppurative acute without eardrum rupt
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
+influenza @ fever @ otitis media suppurative acute without eardrum rupture
+otitis media suppurative acute without eardrum rupture
 cough
 uri acute @ vomiting
 concern for blood in stool not found
@@ -22782,7 +22782,7 @@ gastroenteritis @ dehydration mild
 vomiting
 foreign body ingestion in children
 urticaria
-bite nonvenomous arthropod
+bite non venomous arthropod
 fever
 ovarian cyst @ pelvic pain female
 abdominal pain
@@ -22893,20 +22893,20 @@ migraine
 otitis media
 chest pain acute @ headache
 fever
-drug rash @ otitis media suppurative wspontaneous eardrum rup
+drug rash @ otitis media suppurative with spontaneous eardrum rupture
 abscess
 wound check follow up exam
 febrile seizure
 viral syndrome @ cough
-otitis media nonsuppurative @ cough
+otitis media non suppurative @ cough
 foot open wound
 viral uri
 acute om
 wheezing @ sob
-viral pharyngitis @ otalgia @ otitis media suppurative acute without eardrum rupt
+viral pharyngitis @ otalgia @ otitis media suppurative acute without eardrum rupture
 headache unclear cause
 abscess axilla
-fever @ measles inoculation rash secondary to @ otitis media suppurative acute without eardrum rupt
+fever @ measles inoculation rash secondary to @ otitis media suppurative acute without eardrum rupture
 suicide attempt by drug od unspecified drug @ depressive state @ etoh intoxication
 facial abrasion @ domestic violence
 pneumonia bacterial @ otitis media
@@ -22972,13 +22972,13 @@ alcohol abuse episodic
 epistaxis @ nasal trauma @ arm pain
 ankle contusion
 diarrhea
-otitis media suppurative acute without eardrum rupt @ conjunctivitis infectious
+otitis media suppurative acute without eardrum rupture @ conjunctivitis infectious
 reactive upper airway syndrome vs bronchiolitis
 viral uri
 impetigo
 burn fingers [num] or more including thumb
 upper respiratory infection acute
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 abdominal pain @ constipation
 hyperemesis gravidarum @ uti
 threatened abortion
@@ -23025,7 +23025,7 @@ rsv
 diffuse fibrillary astrycytoma @ fever @ urinary tract infection
 motor vehicle accident @ contusion leg @ contusion arm
 otitis media
-otitis media nonsuppurative acute @ uri acute
+otitis media non suppurative acute @ uri acute
 fever @ suspect viral syndrome
 head injury unspecified
 rhinitis acute
@@ -23090,7 +23090,7 @@ gastroenteritis
 corneal abrasion
 viral uri
 concern for sexual abuse @ scratch labia majora
-bite nonvenomous arthropod @ impetigo
+bite non venomous arthropod @ impetigo
 shoulder pain
 conjunctivitis chemical
 closed head injury @ pilonidal cyst with abscess
@@ -23187,7 +23187,7 @@ fever @ short gut syndrome
 intoxicated alcohol
 chest pain
 primary sclerosing cholangitis @ pain chronic @ nausea
-viral syndrome @ otitis media nonsuppurative
+viral syndrome @ otitis media non suppurative
 surgical wound infection
 unspecified
 gastroenteritis
@@ -23316,7 +23316,7 @@ fever
 chest pain
 pyelonephritis @ abdominal pain @ fever
 chest pain @ uti
-otitis media nonsuppurative acute
+otitis media non suppurative acute
 contusion finger @ pedestrian hit by car
 laceration forehead @ abrasions face
 intoxicated alcohol @ fall accidental
@@ -23393,10 +23393,10 @@ viral uri
 bronchiolitis acute
 burn fingers [num] or more including thumb @ burn hand [num] degree
 viral uri
-otitis media nonsuppurative @ eczema atopic
+otitis media non suppurative @ eczema atopic
 fb mouth
 burn [num] degree
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 kidney stone
 renal colic
 nephrolithiasis flank pain
@@ -23409,7 +23409,7 @@ otitis media @ rash
 uti
 abdominal pain
 viral syndrome
-insect bite hand nonvenomous not infected
+insect bite hand non venomous not infected
 epistaxis @ fatigue @ dizziness
 abdominal pain @ celiac artery compression syndrome
 syncope @ nasal bones closed fracture @ laceration nose
@@ -23432,7 +23432,7 @@ leg pain
 brain tumor
 abdominal pain resolved
 cervical strain @ contusion chest wall
-postconcussion syndrome @ nausea and vomiting
+post concussion syndrome @ nausea and vomiting
 concussion
 back pain
 clogged j tube
@@ -23452,7 +23452,7 @@ intoxicated alcohol @ marijuana use
 schizophrenia
 alcohol abuse episodic @ alcohol intoxication acute
 ankle sprain
-postconcussion syndrome
+post concussion syndrome
 suicidal ideations @ mva @ altered mental status
 abdominal pain right lower quadrant @ mittelschmerz
 shortness of breath @ edema leg
@@ -23466,7 +23466,7 @@ nausea and vomiting @ dehydration
 near syncope @ gi bleed
 fever @ viral syndrome
 fever
-fever @ seizure @ pneumonia bacterial @ otitis media suppurative acute without eardrum rupt
+fever @ seizure @ pneumonia bacterial @ otitis media suppurative acute without eardrum rupture
 ascites
 febrile convulsion complex
 headache @ sinusitis acute
@@ -23486,7 +23486,7 @@ pharyngitis acute @ fever @ cough
 ankle sprain deltoid ligament @ diabetes mellitus non insulin dependent poorly controlled
 uri acute
 uri acute
-otitis media nonsuppurative
+otitis media non suppurative
 viral syndrome suspected
 vaginal bleeding early pregnancy etiology unknown @ incomplete abortion spontaneous with hemorrhage
 croup @ respiratory distress
@@ -23496,8 +23496,8 @@ respiratory distress
 anxiety
 cholecystitis
 febrile seizure @ urinary tract infection @ uri acute
-acute otitis media nonsuppurative
-otitis media suppurative wspontaneous eardrum rup
+acute otitis media non suppurative
+otitis media suppurative with spontaneous eardrum rupture
 head injury superficial @ forehead hematoma
 contusion hip @ head injury with brief loss of consciousness
 abdominal pain right lower quadrant @ pregnancy uncomplicated
@@ -23639,7 +23639,7 @@ wound infection surgical @ urinary tract infection
 pancreatitis acute
 syncope @ fall accidental
 head injury with brief loss of consciousness
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 fever @ pharyngitis acute @ otitis media serous acute @ vomiting in children over five months of age
 candidiasis skin @ perianal erythema
 bronchiolitis acute
@@ -23663,7 +23663,7 @@ pneumonia bacterial
 otitis media @ pneumonia bacterial
 pneumonia bacterial
 laceration leg
-ingestion nonmedicinal substance toxic effect
+ingestion non medicinal substance toxic effect
 viral uri @ ear open wound
 fever
 fever @ vomiting @ dehydration mild
@@ -23699,7 +23699,7 @@ vomiting @ diarrhea
 fever @ viral infection
 viral uri
 uri acute
-fever @ otitis media suppurative acute without eardrum rupt @ uri acute
+fever @ otitis media suppurative acute without eardrum rupture @ uri acute
 renal colic
 cellulitis @ ascites
 abdominal pain
@@ -23717,7 +23717,7 @@ intoxicated alcohol
 fever @ headache @ uti
 fever @ post op complication @ abdominal pain
 head injury superficial
-uri acute @ otitis media nonsuppurative acute
+uri acute @ otitis media non suppurative acute
 neck pain @ mva
 dental caries
 raised fontanelle
@@ -23726,7 +23726,7 @@ gastroenteritis @ otitis media likely viral
 viral uri
 ataxia
 fever
-insect bite leg nonvenomous
+insect bite leg non venomous
 concussion
 slurred speech @ weakness @ facial droop
 muscular pain
@@ -23805,8 +23805,8 @@ pneumothorax spontaneous acute nontraumatic
 shunt failure
 diarrhea
 lumbago
-pneumonia due to specified organism
-fever @ otitis media suppurative acute without eardrum rupt
+pneumonia due to not unspecified organism
+fever @ otitis media suppurative acute without eardrum rupture
 fever unknown etiology in children
 crying spell
 head injury superficial
@@ -23823,7 +23823,7 @@ cellulitis ankle
 shoulder pain @ prostate cancer with diffuse osseus metastases
 fever @ uri acute
 chest pain
-asthma with acute exacerbation @ uri acute @ otitis media suppurative acute without eardrum rupt @ yeast infection vagina
+asthma with acute exacerbation @ uri acute @ otitis media suppurative acute without eardrum rupture @ yeast infection vagina
 palpitations @ chest discomfort
 atrial fibrillation with rapid ventricular rate
 bronchospasm acute
@@ -23912,7 +23912,7 @@ uveitis traumatic
 hand injury
 threatened abortion
 mva exam no follow up care needed @ abrasion neck
-otitis media suppurative acute without eardrum rupt @ conjunctivitis mucopurulent @ lymph node enlargement
+otitis media suppurative acute without eardrum rupture @ conjunctivitis mucopurulent @ lymph node enlargement
 sinus infection acute
 corneal burn other
 vomiting in children over five months of age resolved @ lethargy resolved
@@ -23990,7 +23990,7 @@ multiple sclerosis
 pregnancy complication
 wound dehisence abdominal @ pedal edema @ mesothelioma
 ear injury
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 fever @ viral infection
 pneumonia bacterial @ urinary tract infection @ fever
 epilepsy unspecified @ uri acute
@@ -24012,7 +24012,7 @@ otitis media @ viral syndrome
 fever
 abscess neck
 hernia inguinal unilateral unspecified
-viral uri @ otitis media suppurative acute without eardrum rupt
+viral uri @ otitis media suppurative acute without eardrum rupture
 uri acute
 cervical strain
 reactive airway disease viral upper respiratory infection
@@ -24074,7 +24074,7 @@ uti
 shortness of breath @ fever
 uti
 pneumonia bacterial @ uti
-insect bite hand nonvenomous not infected @ allergic reaction
+insect bite hand non venomous not infected @ allergic reaction
 abnormal eye movements @ concern for seizure disorder
 hematoma finger @ subungual hematoma fingernail
 head injury superficial @ concussion
@@ -24118,7 +24118,7 @@ appendicitis acute wo perforation peritonitis rupture
 anxiety @ viral uri
 rash
 asthma pediatric @ viral uri
-otitis media nonsuppurative acute @ leukocytosis
+otitis media non suppurative acute @ leukocytosis
 otitis media
 otalgia @ possible otitis media
 rash viral
@@ -24207,8 +24207,8 @@ renal failure @ hyperkalemia @ cancer bladder
 hyperkalemia @ abdominal pain
 uti @ wound check follow up exam
 failure to thrive
-otitis media suppurative acute without eardrum rupt
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
+otitis media suppurative acute without eardrum rupture
 fever @ rhinorrhea
 fever @ rhinorrhea
 otitis media serous acute
@@ -24350,7 +24350,7 @@ bipolar affective disorder
 numbness right thigh @ ligamental injury
 respiratory distress acute
 wound complication vaginal
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 allergic reaction
 umbilical hernia
 urinary tract infection
@@ -24386,7 +24386,7 @@ chest pain
 sprained wrist
 copd @ pulmonary edema
 ankle sprain
-lymphadenopathy @ fever @ concern for lymphomas other
+lymphadenopathy @ fever @ concern for lymphoma other
 myalgia @ upper respiratory infection acute
 dental abscess
 benign paroxysmal vertigo
@@ -24407,7 +24407,7 @@ chronic pain @ testicular abrasion
 wrist sprain
 cough
 hyperkalemia
-rash @ itch not specified otherwise
+rash @ itch not not unspecified otherwise
 hives recurrent
 uri acute @ cough
 headache
@@ -24429,11 +24429,11 @@ gastroenteritis in infants and children
 chest tightness @ atopic dermatitis
 central retinal artery occlusion
 abdominal pain
-renal insufficiency acute @ dehydration @ lymphomas other
+renal insufficiency acute @ dehydration @ lymphoma other
 assault @ nasal abrasion @ facial contusion
 facial laceration
 fever @ bronchiolitis acute @ otitis media
-otitis media suppurative acute without eardrum rupt @ viral syndrome
+otitis media suppurative acute without eardrum rupture @ viral syndrome
 fever
 otitis media @ osteogenesis imperfecta
 fever @ otitis media
@@ -24662,7 +24662,7 @@ tooth displacement
 abrasion face
 uri acute @ sore throat
 gi bleed
-fever @ otitis media suppurative acute without eardrum rupt
+fever @ otitis media suppurative acute without eardrum rupture
 fever @ heart murmurs @ pharyngitis acute
 radial fracture shaft closed @ ulna fracture closed @ playground injury
 myalgia @ shoulder pain
@@ -24681,12 +24681,12 @@ fever
 cough
 otitis media
 cough
-lymphomas other @ shortness of breath
+lymphoma other @ shortness of breath
 testicualr pain
 pain in pelvic region
 visual loss transient @ numbness
 periodic breathing @ cough
-contusion brain with unspec state of consciousness @ rhabdomyolysis @ seizure
+contusion brain with unspecified state of consciousness @ rhabdomyolysis @ seizure
 surgical wound complication bleeding no longer
 numbness @ shoulder pain @ low back pain
 syncope
@@ -24720,7 +24720,7 @@ chest pain @ epigastric pain
 bradycardia
 gastroenteritis
 otitis media @ viral syndrome
-uri acute @ otitis media nonsuppurative
+uri acute @ otitis media non suppurative
 viral syndrome
 chest pain
 fever @ viral syndrome
@@ -24828,7 +24828,7 @@ flu @ congenital heart disease
 hematuria @ urinary tract infection
 constipation @ abdominal pain generalized
 fever @ vomiting
-fever @ otitis media suppurative acute without eardrum rupt
+fever @ otitis media suppurative acute without eardrum rupture
 respiratory condition fetusnewborn
 respiratory distress
 pneumonia organism unspecified
@@ -24849,8 +24849,8 @@ mva @ cervical strain
 vomiting @ possible gastroesophageal reflux
 reflux esophagitis
 gerd
-otitis media nonsuppurative acute
-fever @ otitis media suppurative acute without eardrum rupt @ viral exanthem
+otitis media non suppurative acute
+fever @ otitis media suppurative acute without eardrum rupture @ viral exanthem
 leg injury concern for not found @ fever @ viral infection @ fall from chair or bed
 fever @ viral infection
 headache type unknown @ brain tumor
@@ -24888,7 +24888,7 @@ abdominal pain @ chronic renal failure @ hyperkalemia
 chronic pain syndrome @ acute coronary insufficiency
 abdominal pain @ syncope
 cardiac arrest @ end stage renal disease @ abdominal pain
-bronchiolitis acute due to respiratory syncytial virus @ otitis media suppurative acute without eardrum rupt
+bronchiolitis acute due to respiratory syncytial virus @ otitis media suppurative acute without eardrum rupture
 blood in stool
 hypoglycemia @ altered mental status @ dementia senile
 urinary tract infection
@@ -24902,7 +24902,7 @@ flank pain @ urinary system symptoms
 acute chest pain transient unclear cause
 suicidal ideations @ mood disorder nos @ prolonged qtc resolved @ ectopic atrial rhythm
 tylenol overdose @ antidepressant poisoning @ overdose antiallergic drug
-otitis media nonsuppurative acute @ bronchiolitis acute due to respiratory syncytial virus
+otitis media non suppurative acute @ bronchiolitis acute due to respiratory syncytial virus
 abdominal pain epigastric
 abdominal pain @ urinary tract infection
 pneumonia bacterial
@@ -24922,7 +24922,7 @@ bronchiolitis acute
 fever @ vomiting @ cough @ fussiness
 viral uri
 ingrown toenail
-otitis media suppurative acute without eardrum rupt @ bronchiolitis acute
+otitis media suppurative acute without eardrum rupture @ bronchiolitis acute
 cough
 brain cancer
 headache
@@ -24933,7 +24933,7 @@ viral gastroenteritis
 mva traffic with other vehicle passenger
 viral gastroenteritis @ abdominal pain
 bronchiolitis acute
-uri acute @ otitis media suppurative acute without eardrum rupt @ conjunctivitis infectious
+uri acute @ otitis media suppurative acute without eardrum rupture @ conjunctivitis infectious
 diarrhea @ uri acute @ conjunctivitis acute
 laceration arm
 fever
@@ -25051,10 +25051,10 @@ upper respiratory infection acute @ viral gastroenteritis
 laceration foot
 hematoma leg @ post op hematoma @ dvt leg
 sprained hip
-otitis media suppurative wspontaneous eardrum rup @ facial nerve disorder @ leukocytosis
+otitis media suppurative with spontaneous eardrum rupture @ facial nerve disorder @ leukocytosis
 nausea and vomiting @ diarrhea @ chest pain
 epigastric pain
-acute otitis media nonsuppurative
+acute otitis media non suppurative
 humerus fracture closed
 diabetes w ophtha effects type ii uncontrolled
 none
@@ -25144,7 +25144,7 @@ altered mental status
 panic attack
 breast pain @ sore throat @ copd
 shortness of breath
-postconcussion syndrome
+post concussion syndrome
 bradycardia @ syncope
 periodic paralysis @ hypokalemia
 periodic paralysis
@@ -26118,7 +26118,7 @@ headache @ concussion
 back strain @ mvc
 facial contusion @ dental procedure pain @ fall accidental
 abdominal pain acute @ abnormal liver tests
-pancreatitis chronic @ nausea and vomiting @ thrombosis of other specified veins
+pancreatitis chronic @ nausea and vomiting @ thrombosis of other not unspecified veins
 pleural effusion @ pancreatitis acute @ dyspnea @ pneumonia bacterial
 dyspnea @ pleural effusion
 abdominal pain
@@ -26345,7 +26345,7 @@ overdose @ respiratory failure acute @ altered mental status
 chest pain @ chronic pain
 cocaine abuse
 chest pain
-insect bite abdomen nonvenomous not infected
+insect bite abdomen non venomous not infected
 contusion leg @ muscle strain @ fall accidental
 migraine
 chest pain acute @ diabetes mellitus non insulin dependent poorly controlled @ hyperglycemia nos @ hypertension
@@ -26401,7 +26401,7 @@ syncope @ heart block @ scalp laceration
 atopic dermatitis
 back strain @ cervicalgia
 unspecified
-abdominal pain other specified site upper abdomen
+abdominal pain other not unspecified site upper abdomen
 pancreatitis chronic @ abdominal pain
 abdominal pain @ pancreatitis chronic
 acute pancreatitis
@@ -26905,7 +26905,7 @@ rabies vaccine
 behavioral problems @ mental retardation @ uti
 behavioral problems @ mental retardation
 behavioral problems @ bipolar affective disorder
-insect bite multiple sites nonvenomous
+insect bite multiple sites non venomous
 cellulitis @ myalgia
 migraine
 back pain @ leg pain
@@ -27067,7 +27067,7 @@ abdominal pain @ hepatitis
 headache @ vomiting @ fatigue
 allergic reaction
 chest pain
-insect bite leg nonvenomous
+insect bite leg non venomous
 wound check follow up exam
 facial abscess
 hip contusion @ fall accidental
@@ -27211,7 +27211,7 @@ abscess
 cellulitis arm
 neck pain
 ankle sprain @ alzheimer s disease
-dementia disease related with behavioral disturbance @ emesis @ diarrhea @ ingestion nonmedicinal substance toxic effect
+dementia disease related with behavioral disturbance @ emesis @ diarrhea @ ingestion non medicinal substance toxic effect
 abscess neck
 wound check follow up exam
 leg pain @ edema leg
@@ -27289,7 +27289,7 @@ cva acute
 ankle sprain
 rib fracture [num] rib closed @ fall accidental
 chest wall pain @ pleural effusion @ rib fracture closed
-abdominal pain other specified site @ asthma
+abdominal pain other not unspecified site @ asthma
 etoh abuse
 etoh abuse @ drug addiction @ alcohol dependence acute
 rib fracture closed @ pneumothorax closed traumatic @ motor vehicle accident driver @ concussion
@@ -27312,7 +27312,7 @@ hyperkalemia @ renal failure acute @ cirrhosis of liver @ chest pain
 infection due to internal joint prosthesis
 respiratory distress @ asthma with acute exacerbation
 chest wall pain @ knee contusion @ abrasion leg @ mva
-ingestion nonmedicinal substance toxic effect @ borderline personality @ suicidal ideations
+ingestion non medicinal substance toxic effect @ borderline personality @ suicidal ideations
 abdominal pain epigastric @ nausea @ diarrhea
 concussion @ muscle spasm @ muscle strain
 fever @ hyponatremia
@@ -27389,7 +27389,7 @@ pilonidal cyst with abscess
 abscess
 psych exam @ abscess axilla
 wound check follow up exam
-dyspnea @ lymphomas other
+dyspnea @ lymphoma other
 thyroid tumor @ chest pain
 back pain @ ankle pain
 nasal contusion @ fall accidental
@@ -27860,7 +27860,7 @@ hypertension
 viral syndrome
 gunshot wound @ facial injury
 fall accidental @ suicidal ideations
-appendicitis unqualified
+appendicitis not qualified
 biliary tract disorder @ transplant
 presumed sepsis @ transplant liver @ fever
 nephrolithiasis
@@ -27913,7 +27913,7 @@ sexual assault evaluation
 fever @ flu
 vertigo
 seasonal allergies
-ingestion nonmedicinal substance toxic effect
+ingestion non medicinal substance toxic effect
 laceration hand with tendon involvement
 chest pain
 mva @ laceration leg
@@ -27993,7 +27993,7 @@ constipation
 wound infection surgical
 wound check follow up exam
 burn [num] degree
-fever @ otitis media suppurative acute without eardrum rupt
+fever @ otitis media suppurative acute without eardrum rupture
 unstable angina @ chest pain
 dyspnea
 back injury
@@ -28340,7 +28340,7 @@ ear cerumen
 uri acute @ fever
 aggresive behavior @ mental retardation
 humerus fracture shaft closed
-dermatomycoses other specified @ abrasion arm upper with superficial bacterial infection
+dermatomycoses other not unspecified @ abrasion arm upper with superficial bacterial infection
 radial blood vessel injury
 breast engorgement postpartum
 herpangina
@@ -28473,7 +28473,7 @@ agitation
 allergic rhinitis unspecified cause @ cough
 shoulder contusion @ pubis fx closed @ brain hemorrhage traumatic without open wound @ orbital fracture closed
 bronchiolitis acute
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 arthritis hand @ pain syndrome
 uri acute
 vomiting
@@ -28659,7 +28659,7 @@ nausea @ laboratory exam @ cough
 suicidal ideations @ psychosis @ polysubstance abuse @ uti
 overdose @ urinary tract infection
 mva @ headache
-postconcussion syndrome
+post concussion syndrome
 abscess vulva @ pregnancy
 sepsis @ dehydration @ tachycardia
 fistula skin @ fever @ abdominal pain
@@ -28823,7 +28823,7 @@ post operative complication
 subconjunctival hemorrhage @ hypertension
 sle @ ear infection middle ear
 stevens johnson syndrome @ rash
-lupus erythematosis systemic @ exanthem @ epidermolysis bullosa
+lupus erythematosus systemic @ exanthem @ epidermolysis bullosa
 anemia @ hyperkalemia @ fever
 supraventricular tachycardia
 svt
@@ -28896,7 +28896,7 @@ toothache @ dental caries
 nausea and vomiting @ diarrhea
 gastroenteritis
 cervical strain
-subdural hemorrhage traumatic unspec consciousness
+subdural hemorrhage traumatic unspecified consciousness
 mi @ sepsis
 peritonitis @ abdominal pain @ renal failure chronic
 peritonitis acute
@@ -28943,7 +28943,7 @@ std
 dysuria
 cellulitis toe
 bite by unspecified animal @ stye external
-infected insect bite cheek nonvenomous
+infected insect bite cheek non venomous
 abscess face
 abscess face
 sickle cell crisis
@@ -29186,7 +29186,7 @@ lupus
 seizure
 seizure disorder
 seizure grand mal
-seizure grand mal @ tongue other specified conditions
+seizure grand mal @ tongue other not unspecified conditions
 seizure grand mal
 seizure activity
 seizure grand mal
@@ -29197,7 +29197,7 @@ dysphagia @ chest discomfort
 nausea and vomiting
 lumbar region disc disorder
 head injury unspecified
-drug od other specified drug unsp accid intent @ ataxia
+drug od other not unspecified drug unsp accid intent @ ataxia
 seizure grand mal @ mva
 back pain
 arthralgia knee
@@ -29310,7 +29310,7 @@ chest wall pain
 contusion hip
 contusion abdominal wall
 back pain @ shortness of breath
-abdominal pain other specified site
+abdominal pain other not unspecified site
 abdominal pain
 dyspnea @ chf @ copd
 fever @ chills @ headache @ hypertension
@@ -29386,7 +29386,7 @@ nosebleed
 mva
 nausea and vomiting @ malaise and fatigue
 urinary retention
-migraine complicated @ lupus erythematosis systemic
+migraine complicated @ lupus erythematosus systemic
 recurent migraine @ nausea
 sinusitis acute @ cough
 pregnancy incidental @ influenza @ urinary tract infection
@@ -29703,12 +29703,12 @@ hiccups
 paraphrenia
 nephrolithiasis @ uti @ renal colic
 hypoglycemia @ near syncope
-subdural hemorrhage traumatic unspec consciousness @ diabetes w ketoacidosis type i uncontrolled @ end stage renal disease
+subdural hemorrhage traumatic unspecified consciousness @ diabetes w ketoacidosis type i uncontrolled @ end stage renal disease
 hyperkalemia @ chest pain
 graft dysfunction
 tachycardia @ end stage renal disease
 infection due to dialysis catheter @ sepsis
-intracerebral hemorrhage @ concussion with consciousness loss unspec duration
+intracerebral hemorrhage @ concussion with consciousness loss unspecified duration
 fractured hand open @ nerve injury digital
 anemia iron deficiency @ anxiety
 shortness of breath @ panic attack
@@ -29753,7 +29753,7 @@ chest pain
 kidney stone
 nephrolithiasis
 uti @ viral syndrome
-viral uri @ otitis media nonsuppurative acute
+viral uri @ otitis media non suppurative acute
 viral uri suspected
 mandible fracture closed @ laceration scalp
 viral syndrome
@@ -29806,7 +29806,7 @@ respiratory arrest @ tachycardia
 clavicle fracture closed
 gouty arthropathy
 fractured femur closed @ mva @ laceration knee complicated
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 otitis media serous acute @ viral syndrome
 cluster headache @ pterygium
 facial cellulitis @ dental abscess
@@ -29883,10 +29883,10 @@ ear pain @ groin pain
 new onset diabetic
 urinary obstruction
 croup
-drug overdose accidental specified drugs
+drug overdose accidental not unspecified drugs
 suicidal ideations @ hypokalemia @ uti
 abdominal pain @ neutropenia @ nausea and vomiting
-dehydration @ vomiting @ lymphomas other
+dehydration @ vomiting @ lymphoma other
 arm strain @ nursemaid s elbow
 humerus fracture upper end closed
 eye contusion @ concussion
@@ -30019,7 +30019,7 @@ seizure grand mal @ post operative complication
 subarachnoid hemorrhage
 laceration face
 laceration buttock complicated @ hematuria
-insect bite multiple sites nonvenomous
+insect bite multiple sites non venomous
 viral uri @ fever
 ankle sprain @ mva
 laceration face
@@ -30138,7 +30138,7 @@ scrotal abscess
 hemorrhoids external without complications @ scrotal ulcer
 medication refill
 abdominal pain @ pyelonephritis
-arm fracture closed ill defined @ fractured facial bones closed @ fall accidental @ subdural hemorrhage traumatic unspec consciousness
+arm fracture closed ill defined @ fractured facial bones closed @ fall accidental @ subdural hemorrhage traumatic unspecified consciousness
 cast check
 viral syndrome
 syncope @ dehydration
@@ -30306,7 +30306,7 @@ penile bleeding
 urethritis in men
 bronchiolitis acute @ dehydration mild
 fever @ neutropenia
-fever @ neuropenia @ otitis media suppurative acute without eardrum rupt @ leukemia acute
+fever @ neuropenia @ otitis media suppurative acute without eardrum rupture @ leukemia acute
 fever @ neutropenia @ leukemia
 neutropenia @ fever
 intussusception
@@ -30316,7 +30316,7 @@ vomiting
 vomiting @ leukocytosis
 abdominal pain transient @ suspect viral syndrome
 viral syndrome
-abdominal pain other specified site @ nausea and vomiting
+abdominal pain other not unspecified site @ nausea and vomiting
 cholelithiasis @ nausea and vomiting
 croup
 shoulder pain
@@ -30783,7 +30783,7 @@ headache @ cervical strain
 bronchitis @ cough @ dysphagia
 headache
 chest pain @ palpitations
-appendicitis unqualified suspected
+appendicitis not qualified suspected
 abdominal pain
 knee pain
 bipolar affective disorder
@@ -30854,7 +30854,7 @@ malaise and fatigue @ presyncope
 sciatica
 paresthesia @ chest pain
 post op complication
-thrombosis of other specified veins @ abscess hepatic @ coumadin poisoning
+thrombosis of other not unspecified veins @ abscess hepatic @ coumadin poisoning
 medication administration
 gastrointestinal hemorrhage
 uti
@@ -31171,7 +31171,7 @@ headache associated with increased opening pressure
 post operative complication
 toothache
 influenza
-itch not specified otherwise
+itch not not unspecified otherwise
 knee contusion @ knee sprain
 back pain
 head contusion @ low back pain
@@ -31393,7 +31393,7 @@ hepatitis
 head injury unspecified @ facial contusion @ cervical strain @ mvc
 palpitations
 chest pain
-hip joint pain leg weakness and atrophy @ hiv @ lymphomas
+hip joint pain leg weakness and atrophy @ hiv @ lymphoma
 muscular pain
 vaginal bleeding
 dub
@@ -31466,7 +31466,7 @@ abdominal pain
 pneumonia bacterial
 pelvic inflammatory disease
 od esctacy @ od cocaine
-vomiting @ renal failure @ diabetes w other specified manifestations
+vomiting @ renal failure @ diabetes w other not unspecified manifestations
 gout
 abdominal pain @ uti
 laceration neck @ laceration arm multiple sites @ suicide attempt by knife @ cocaine abuse
@@ -31564,7 +31564,7 @@ cellulitis
 lab error
 broken nose closed @ laceration face multiple sites
 abscess hip @ cellulitis hip
-fever @ otitis media suppurative acute without eardrum rupt
+fever @ otitis media suppurative acute without eardrum rupture
 uri acute
 hepatomegaly @ hyperkalemia @ dehydration
 uti
@@ -31586,7 +31586,7 @@ otitis media serous acute
 fever
 allergic reaction
 bacteremia @ kidney failure chronic @ syncope
-appendicitis unqualified
+appendicitis not qualified
 guillain barre syndrome @ respiratory insufficiency
 migraine
 tubo ovarian adhesions @ pelvic inflammatory disease
@@ -31766,7 +31766,7 @@ hemoptysis @ throat pain
 overdose zantac accidental
 laceration face
 fever
-pain in other specified site
+pain in other not unspecified site
 leukemia
 dehydration @ neutropenia
 neuropathy @ thrombocytopenia
@@ -32213,7 +32213,7 @@ headaches
 medication refill
 depression
 chest pain @ pregnancy incidental
-fever @ otitis media nonsuppurative acute
+fever @ otitis media non suppurative acute
 burn [num] degree
 nasal contusion @ mva
 syncope
@@ -32282,7 +32282,7 @@ granuloma pyogenic @ skin disorder
 bandage change
 toothache
 altered mental status
-insect bite arm upper nonvenomous not infected @ hyperglycemia nos
+insect bite arm upper non venomous not infected @ hyperglycemia nos
 abdominal pain left lower quadrant
 bipolar affective disorder
 rectal inflammation
@@ -32438,7 +32438,7 @@ chest pain @ dyspnea @ shortness of breath @ uti
 dizziness @ nausea and vomiting @ weakness
 palpitations
 bronchitis
-pneumonia bacterial @ anemia of other chronic illness @ systemic lupus erythematosis
+pneumonia bacterial @ anemia of other chronic illness @ systemic lupus erythematosus
 allergies
 sickle cell crisis
 sickle cell crisis @ gout
@@ -32681,7 +32681,7 @@ gi bleed
 dvt
 nausea and vomiting @ urinary tract infection
 chest pain
-suicidal ideations @ hallucinations @ od drug other specified drug unsp accid intent
+suicidal ideations @ hallucinations @ od drug other not unspecified drug unsp accid intent
 knee strain
 chest pain
 back pain @ radicular syndrome of legs
@@ -32749,7 +32749,7 @@ uti
 chest pain
 kidney stone
 gi bleed
-dizziness @ accidental drug overdose specified drugs oxycodone
+dizziness @ accidental drug overdose not unspecified drugs oxycodone
 knee pain
 numbness @ neuropathy arm @ neuropathy leg
 abdominal pain @ hepatoma
@@ -32837,7 +32837,7 @@ seizure grand mal @ chest pain @ cough
 behavioral problems @ schizophrenia
 medication refill
 unspecified
-tremor (essential & other specified) @ medically clear for psychiatric evaluation
+tremor (essential & other not unspecified) @ medically clear for psychiatric evaluation
 dystonic reaction @ schizophrenia
 seizure grand mal
 alcohol abuse episodic @ substance induced mood disorder
@@ -32972,7 +32972,7 @@ cellulitis leg
 fall accidental @ etoh intoxication
 chills @ nausea @ headache
 musculoskeletal neck pain @ mva
-itch not specified otherwise @ erythema migrans
+itch not not unspecified otherwise @ erythema migrans
 mi @ wrist fracture closed @ renal failure acute
 unstable angina ro mi @ chf @ vomiting @ diaphoresis
 acute pneumonia suspect aspiration @ altered mental status @ hypoxemia @ post op complication
@@ -33100,7 +33100,7 @@ abdominal pain @ nausea
 hematoma leg @ ecchymosis @ contusion @ assault
 chest pain
 thoracic spine fractures closed @ mva
-motor vehicle accident driver @ concussion with consciousness loss unspec duration @ scalp abrasion
+motor vehicle accident driver @ concussion with consciousness loss unspecified duration @ scalp abrasion
 uti @ bacterial vaginosis
 foot fracture closed
 weakness
@@ -33213,7 +33213,7 @@ dental caries
 constipation
 headache @ fever @ nausea @ bacteremia
 contusion @ motor vehicle accident
-pneumonia due to other specified bacteria
+pneumonia due to other not unspecified bacteria
 radial nerve palsy acute
 back pain
 rash
@@ -33226,7 +33226,7 @@ abdominal pain
 abdominal pain
 dental abscess
 abdominal pain left lower quadrant @ suicidal ideations
-abdominal pain @ lymphomas other
+abdominal pain @ lymphoma other
 abdominal cramps
 cervical radiculopathy
 ankle sprain
@@ -33371,7 +33371,7 @@ early buttock abscess
 post op infection @ stroke @ history of dvt leg
 alcohol abuse episodic
 vomiting @ epigastric pain @ dehydration
-spider bite venomous @ insect bites unspecified site nonvenomous @ nausea and vomiting @ uti
+spider bite venomous @ insect bites unspecified site non venomous @ nausea and vomiting @ uti
 bartholin s gland abscess
 bartholin s gland abscess
 unspecified
@@ -33409,7 +33409,7 @@ sore throat
 aortic dissection @ back pain
 knee contusion
 seizure grand mal @ post op complication
-appendicitis unqualified
+appendicitis not qualified
 fever @ drug rash @ heart murmurs
 skull fx closed
 acute croup
@@ -33477,7 +33477,7 @@ peritonsillar cellulitis
 viral uri
 conjunctivitis mucopurulent @ otitis media
 finger amputation partial @ finger laceration complicated
-pulmonary contusion @ mva traffic with other vehicle passenger @ brain contusion with unspec state of consciousness @ abrasion arm upper
+pulmonary contusion @ mva traffic with other vehicle passenger @ brain contusion with unspecified state of consciousness @ abrasion arm upper
 ingrown toenail
 appendicitis acute wo perforation peritonitis rupture
 abdominal pain left lower quadrant
@@ -33841,7 +33841,7 @@ wound check follow up exam
 urinary retention
 vomiting
 sprained arm upper
-pain acute @ lymphomas other
+pain acute @ lymphoma other
 mva traffic with other vehicle driver
 excessive crying of the newborn
 obstruction intestinal
@@ -33853,7 +33853,7 @@ depression @ suicidal ideations
 abdominal pain @ ovarian cancer
 atrial fibrillation with rapid ventricular rate
 difficulty breathing
-mva @ skull fracture closed @ laceration forehead complicated @ concussion with consciousness loss unspec duration
+mva @ skull fracture closed @ laceration forehead complicated @ concussion with consciousness loss unspecified duration
 alcohol intoxication acute
 chest pain
 abdominal pain
@@ -33896,7 +33896,7 @@ laceration leg complicated @ contusions multiple
 pain chronic
 sleepiness
 conjunctivitis acute
-otitis media suppurative acute without eardrum rupt @ cough
+otitis media suppurative acute without eardrum rupture @ cough
 viral uri @ fever in children
 foreign body nose
 influenza like illness
@@ -34197,13 +34197,13 @@ leg pain
 foot fracture closed
 pharyngitis acute
 urinary tract infection @ menstrual cycle regular
-head injury superficial @ subdural hemorrhage traumatic unspec consciousness
+head injury superficial @ subdural hemorrhage traumatic unspecified consciousness
 hip fracture @ tibia fracture open @ lung contusion closed @ rib fracture [num] ribs closed
 nerve disorder
 abscess leg @ cellulitis leg
 cellulitis leg @ insect bite
 chest pain @ bacteriuria
-abdominal pain other specified site
+abdominal pain other not unspecified site
 leg pain @ hypokalemia
 abdominal pain
 avulsion laceration finger
@@ -34258,7 +34258,7 @@ schizophrenia
 depression
 vaginal bleeding
 toothache
-pneumonia due to other specified bacteria @ dyspnea @ hypoxemia @ pleural effusion
+pneumonia due to other not unspecified bacteria @ dyspnea @ hypoxemia @ pleural effusion
 heart failure @ shortness of breath
 gi bleed @ anemia cause unknown
 seizure @ hypertension essential
@@ -34383,7 +34383,7 @@ chest pain
 copd
 copd
 epididymitis
-insect bite hip nonvenomous
+insect bite hip non venomous
 lumbago
 temporomandibular joint disorders
 syncope
@@ -34399,7 +34399,7 @@ abdominal pain epigastric @ nausea and vomiting @ diarrhea
 ascites @ hepatitis @ thrombocytopenia
 hemoptysis
 bell s palsy
-postconcussion syndrome @ cerebral contusion unspec state of consciousness
+post concussion syndrome @ cerebral contusion unspecified state of consciousness
 headache
 hallucinations @ psychosis
 eustachian tube blockage
@@ -34527,7 +34527,7 @@ eye pain @ pituitary tumor
 headache @ uti
 nausea and vomiting @ pregnancy uncomplicated
 head injury superficial
-postconcussion syndrome @ hyperemesis gravidarum
+post concussion syndrome @ hyperemesis gravidarum
 abdominal pain left lower quadrant @ constipation @ trichomonas infection
 pituitary tumor @ headache
 vaginal bleeding threatened abortion
@@ -34867,7 +34867,7 @@ chest wall pain @ breast cancer in situ @ pain acute
 adverse effect of other drug medicinal @ breast cancer in situ
 alcohol intoxication acute episodic
 strep pharyngitis
-appendicitis unqualified
+appendicitis not qualified
 abortion incomplete spontan without complication
 dvt leg
 abdominal pain @ enteritis
@@ -35567,7 +35567,7 @@ syncope
 leg pain @ status post cardiac catheterization
 femur fx closed @ mva
 palpitations @ sinus tachycardia
-appendicitis unqualified
+appendicitis not qualified
 altered mental status @ etoh abuse
 fever
 uti
@@ -35760,7 +35760,7 @@ laceration scalp
 laceration forehead
 wound check follow up exam
 wound check follow up exam @ infected laceration head
-ingestion nonmedicinal substance toxic effect
+ingestion non medicinal substance toxic effect
 fever
 dysphagia @ esophageal obstruction
 abdominal pain @ constipation
@@ -35794,7 +35794,7 @@ otitis media
 abdominal pain left lower quadrant
 cough @ congestion
 cheek numbness unclear cause @ neck tightness unclear cause @ arm tingling unclear cause
-gait abnormality @ postconcussion syndrome
+gait abnormality @ post concussion syndrome
 reflux esophagitis @ choking due to food regurgitated
 vomiting @ diarrhea
 croup
@@ -35825,7 +35825,7 @@ svt
 svt
 tia
 headache
-fever @ uri acute @ otitis media nonsuppurative
+fever @ uri acute @ otitis media non suppurative
 non febrile seizure @ secondary nocturnal enuresis
 hand injury @ personality disorder @ adjustment disorder with depressed mood
 hand pain @ tendon laceration @ post op complication
@@ -36026,7 +36026,7 @@ syncope
 migraine
 seizure grand mal @ shoulder strain
 chest pain
-ingestion nonmedicinal substance toxic effect @ uti
+ingestion non medicinal substance toxic effect @ uti
 vomiting
 choking due to food regurgitated
 abdominal pain @ drainage tube check
@@ -36369,7 +36369,7 @@ fall accidental
 foot fracture closed
 fall accidental @ brain tumor @ knee contusion
 fractured lumbar spine closed @ fall accidental @ back pain
-subdural hemorrhage traumatic unspec consciousness @ brain cancer @ fall accidental
+subdural hemorrhage traumatic unspecified consciousness @ brain cancer @ fall accidental
 psychosis
 schizo affective type
 unspecified
@@ -36381,7 +36381,7 @@ chest pain
 abdominal pain
 myalgia @ arthralgia
 spinal cord anomaly
-lymphomas other @ obstruction urinary @ abdominal pain
+lymphoma other @ obstruction urinary @ abdominal pain
 fever
 near syncope @ arrhythmia
 chest pain
@@ -36652,7 +36652,7 @@ mva @ contusion
 mva
 gallstones impacted
 dehydration
-pneumonia due to specified organism
+pneumonia due to not unspecified organism
 contusion chest wall
 headache acute recurrent @ heroin dependence
 dental caries
@@ -36740,7 +36740,7 @@ chest pain
 prepatellar bursitis @ artifical heart valve
 shoulder pain
 uti @ renal transplant
-lupus erythematosis systemic
+lupus erythematosus systemic
 abdominal pain @ diarrhea @ lupus
 alcohol withdrawal
 hyperglycemia nos
@@ -36850,7 +36850,7 @@ abdominal pain @ low back pain
 headache
 headache
 headache
-fall accidental @ subdural hemorrhage traumatic unspec consciousness
+fall accidental @ subdural hemorrhage traumatic unspecified consciousness
 back pain @ shoulder pain
 back pain
 folliculitis @ back pain
@@ -37234,7 +37234,7 @@ neck pain chronic
 nausea @ dizziness @ fatigue
 abscess buttock
 wound check follow up exam
-appendicitis unqualified @ umbilical hernia
+appendicitis not qualified @ umbilical hernia
 asthma
 medication refill
 upper respiratory infection acute @ pharyngitis acute
@@ -37419,7 +37419,7 @@ chest pain @ cough
 altered mental status @ hydrocephalus acquired
 syncope
 chest pain
-medication side effect @ otitis media without eardrum rupt resolving
+medication side effect @ otitis media without eardrum rupture resolving
 chf
 umbilical discharge
 uri acute
@@ -38067,7 +38067,7 @@ dysphagia @ lymphadenopathy
 laceration forehead @ head injury superficial
 blood in stool @ anal fissure
 contusion hip @ muscle strain
-otitis media nonsuppurative @ upper respiratory infection acute
+otitis media non suppurative @ upper respiratory infection acute
 pneumonia organism unspecified @ muscular dystrophy
 pneumonia bacterial
 concussion without loss of consciousness @ abrasion face @ hand pain
@@ -38370,7 +38370,7 @@ overdose @ suicide attempt by drug od unspecified drug
 thumb sprain
 sickle cell crisis @ back pain
 sleeplessness @ depression @ depression
-overdose suicide attempt specified drugs @ sedative poisoning
+overdose suicide attempt not unspecified drugs @ sedative poisoning
 ear pain @ neck pain
 viral syndrome @ headache
 syncope @ weakness
@@ -38552,7 +38552,7 @@ chest pain
 headache @ viral menigitis  suspected
 nausea and vomiting
 ear pain @ altered mental status
-drug od other specified drug unsp accid intent
+drug od other not unspecified drug unsp accid intent
 mass pelvis
 rectal cancer @ anemia deficiency @ toothache
 yeast infection
@@ -38742,7 +38742,7 @@ cellulitis abdominal wall
 mi @ diaphoresis
 cellulitis knee @ abrasion shoulder @ clavicle fracture closed
 mi
-tibia and fibula fracture closed @ laceration leg complicated @ subdural hemorrhage traumatic unspec consciousness
+tibia and fibula fracture closed @ laceration leg complicated @ subdural hemorrhage traumatic unspecified consciousness
 abdominal pain @ ovarian cyst
 concussion
 polyuria @ back pain @ abdominal pain
@@ -38882,7 +38882,7 @@ tachycardia @ dehydration
 wound infection surgical @ htn
 back pain
 low back pain
-insect bite hand nonvenomous not infected @ elevated blood pressure
+insect bite hand non venomous not infected @ elevated blood pressure
 neck strain @ back strain
 abdominal pain epigastric
 ankle sprain @ malleolus fracture closed avulsion @ talar coalition
@@ -39043,7 +39043,7 @@ abdominal pain @ inguinal hernia
 tia
 rash
 foot laceration
-neck strain @ headache @ mva @ pregnancy complication other specified
+neck strain @ headache @ mva @ pregnancy complication other not unspecified
 threatened abortion
 facial bone fracture closed @ assault by blunt or thrown object
 chest pain @ hypertension
@@ -39091,7 +39091,7 @@ situational disturbance @ bipolar affective disorder @ uti
 corneal abrasion
 vomiting @ diarrhea
 upper respiratory infection acute @ possible influenza
-headache @ postconcussion syndrome
+headache @ post concussion syndrome
 laceration leg
 mvc @ lumbar strain
 metrorrhagia
@@ -39325,7 +39325,7 @@ gallbladder disease @ abdominal pain
 strain lumbar region
 cough @ fever @ thrombocytopenia primary
 fever @ rash
-postconcussion syndrome @ rib fracture [num] ribs closed @ mva with stationary vehicle driver
+post concussion syndrome @ rib fracture [num] ribs closed @ mva with stationary vehicle driver
 bacteriuria @ threatened abortion
 infantile colic
 abdominal pain @ nausea and vomiting
@@ -39445,7 +39445,7 @@ influenza
 sprained wrist
 abdominal pain @ pelvic pain female
 pharyngitis acute
-fever @ otitis media suppurative acute without eardrum rupt
+fever @ otitis media suppurative acute without eardrum rupture
 chest pain
 neck pain @ low back pain chronic
 intussusception
@@ -39494,7 +39494,7 @@ chest pain
 labia hematoma major or minor
 thumb amputation partial @ fibula fracture closed
 avulsion laceration
-pain in other specified site right flank
+pain in other not unspecified site right flank
 threatened abortion
 shingles @ fever
 otitis media
@@ -39549,8 +39549,8 @@ dysfunctional uterine bleed
 fever @ cough
 hyperglycemia nos @ bipolar affective disorder @ blurred vision
 fussiness
-fever @ otitis media suppurative acute without eardrum rupt
-otitis media suppurative acute without eardrum rupt
+fever @ otitis media suppurative acute without eardrum rupture
+otitis media suppurative acute without eardrum rupture
 viral exanthem
 liver failure acute
 drug abuse mixed
@@ -39609,7 +39609,7 @@ bell s palsy
 fever @ rhinorrhea
 cholecystitis
 chest pain @ shortness of breath
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 renal calculus
 concussion @ fall accidental @ ankle sprain
 subdural hematoma traumatic open skull fx @ mva
@@ -39662,8 +39662,8 @@ syncope @ hypertension @ drug abuse mixed
 migraine
 abdominal pain unclear cause @ uti
 dehydration
-lupus erythematosis systemic @ migraine @ arthritis rheumatoid @ urinary tract infection
-systemic lupus erythematosis
+lupus erythematosus systemic @ migraine @ arthritis rheumatoid @ urinary tract infection
+systemic lupus erythematosus
 fall from chair or bed
 uri acute @ pustular rash
 fever @ leukocytosis
@@ -39735,7 +39735,7 @@ hemorrhage @ amputation leg complicated bilateral
 laceration forearm
 cancer esophagus
 hyperkalemia @ dehydration
-bite nonvenomous arthropod
+bite non venomous arthropod
 abdominal pain @ metastatic bladder cancer
 dementia disease related with behavioral disturbance @ violence
 viral gastroenteritis @ vomiting
@@ -39808,7 +39808,7 @@ hallucinations
 laceration arm multiple complicated @ contusion scalp
 postoperative infection
 sprained foot
-subdural hemorrhage traumatic unspec consciousness @ fall accidental
+subdural hemorrhage traumatic unspecified consciousness @ fall accidental
 concussion with loss consciousness @ sacral fracture closed @ neck injury @ motor vehicle accident
 mva
 foley catheter malfunction @ anemia
@@ -39822,7 +39822,7 @@ pyelonephritis @ hypokalemia
 mva @ cervical strain @ back strain
 spontaneous abortion uncomplicated
 crush injury finger
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 urinary tract infection
 anemia hemolytic
 contusion hand @ strain hand
@@ -39837,12 +39837,12 @@ corneal ulcer
 laceration wrist @ neck contusion @ motor vehicle accident passenger
 gsw face @ gsw hand
 laceration finger
-subdural hemorrhage traumatic unspec consciousness @ fractured skull closed
+subdural hemorrhage traumatic unspecified consciousness @ fractured skull closed
 constipation @ abdominal pain
 viral syndrome @ diaper rash
 respiratory abnormality
 cervical fracture c6 closed @ mva @ pregnancy uncomplicated
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 cellulitis leg @ bronchitis
 vomiting resolved
 laceration lip
@@ -39973,7 +39973,7 @@ cough @ viral syndrome suspected
 mva @ neck strain
 cervical strain @ lumbar strain
 muscle strain
-assault @ subdural hemorrhage traumatic unspec consciousness @ avulsion laceration hand
+assault @ subdural hemorrhage traumatic unspecified consciousness @ avulsion laceration hand
 fall down stairs or steps
 mva @ back strain
 knee strain
@@ -40577,7 +40577,7 @@ myalgia @ cough
 cellulitis
 venous insufficiency chronic @ lymphedema
 anaphylactic reaction
-drug od other specified drug unsp accid intent
+drug od other not unspecified drug unsp accid intent
 vaginal discharge @ preterm labour
 numbness
 cerebral edema
@@ -40621,7 +40621,7 @@ chest pain
 asthma with acute exacerbation @ chest pain
 respiratory failure acute @ cardiopulmonary arrest @ drowning undetermined @ coagulation defects
 pain in knee
-snake bite nonvenomous
+snake bite non venomous
 cervical strain
 mva
 vaginal bleeding early pregnancy etiology unknown
@@ -40633,7 +40633,7 @@ confusional state acute @ abdominal pain
 chest pain @ chf
 cough
 depression
-constipation @ volvulus @ lymphomas other
+constipation @ volvulus @ lymphoma other
 abdominal pain unclear cause
 pediculosis pubis
 uti @ constipation
@@ -40773,7 +40773,7 @@ rib fracture closed
 cough @ fever
 hypoxemia @ decubitus ulcer @ multiple sclerosis
 suicidal ideations @ alcohol intoxication acute @ cocaine abuse
-appendicitis unqualified
+appendicitis not qualified
 alcohol dependence @ self inflicted injury
 abdominal pain @ ovarian cyst
 abdominal pain @ pelvic pain female @ nausea and vomiting
@@ -40803,7 +40803,7 @@ ovarian cyst @ abdominal pain
 abdominal pain @ threatened abortion @ pregnancy incidental
 hyperemesis gravidarum @ abdominal pain @ diarrhea
 nausea and vomiting
-pregnancy complication other specified @ vomiting @ ovarian cyst
+pregnancy complication other not unspecified @ vomiting @ ovarian cyst
 chest pain @ shortness of breath
 chest discomfort @ abdominal pain generalized
 bacteriuria @ pregnancy uncomplicated @ nausea and vomiting
@@ -41367,7 +41367,7 @@ leg pain
 muscular pain @ fibromyalgia @ musculoneuralgia
 myalgia
 external ear infection @ epigastric pain
-otitis media nonsuppurative
+otitis media non suppurative
 back pain @ chronic pain @ myalgia
 back pain
 abdominal pain
@@ -41432,7 +41432,7 @@ sickle cell crisis
 wound dehiscence @ gangrene
 boil of buttock
 ankle sprain
-lupus erythematosis systemic @ back pain
+lupus erythematosus systemic @ back pain
 joint and back pain lupus flare
 gunshot wound
 pain in hip region
@@ -41484,7 +41484,7 @@ chest pain @ hypokalemia @ syncope @ memory disturbance
 abscess groin
 abscess
 mva @ neck pain
-postconcussion syndrome @ assault @ jaw sprain
+post concussion syndrome @ assault @ jaw sprain
 lymphadenopathy
 uti
 uti @ pregnancy complication
@@ -41586,7 +41586,7 @@ neck mass @ neck pain
 schizo affective type
 schizo affective type
 schizoaffective disorder @ personality disorder
-appendicitis unqualified @ liver abscess
+appendicitis not qualified @ liver abscess
 mva @ contusion chest wall
 ventricular fibrillation @ cardiac arrest @ fractured humerus closed
 heart failure @ cough
@@ -41706,7 +41706,7 @@ laceration chin
 pyelonephritis
 chest pain @ renal colic
 abdominal pain @ yeast infection vagina
-rash @ bite nonvenomous arthropod @ pruritic disorder
+rash @ bite non venomous arthropod @ pruritic disorder
 pregnancy uncomplicated @ uti
 pneumonia bacterial @ cough @ asthma
 gastroenteritis in infants and children
@@ -41745,7 +41745,7 @@ fever @ uri acute
 sprained knee lateral collateral ligament
 fever @ aneurysm unspecified site @ post op complication
 ruptured achilles tendon
-febrile seizure simple @ otitis media suppurative acute without eardrum rupt
+febrile seizure simple @ otitis media suppurative acute without eardrum rupture
 pharyngitis acute
 jaundice fetal or neonatal
 vaginal bleeding dysfunctional uterine @ abdominal pain
@@ -41858,7 +41858,7 @@ laceration leg
 suture removal
 crush injury finger @ avulsion laceration finger
 paresthesia
-otitis media suppurative wspontaneous eardrum rup @ sinus infection acute @ mastoiditis acute
+otitis media suppurative with spontaneous eardrum rupture @ sinus infection acute @ mastoiditis acute
 colitis large intestine
 alcohol intoxication acute @ laceration knee @ altered mental status
 chf @ anasarca
@@ -41867,7 +41867,7 @@ constipation @ abdominal pain
 uri acute @ otitis media
 fever @ mouth pain
 post op complication
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 conjunctivitis
 mva
 pyloric stenosis hypertrophic congenital
@@ -41940,7 +41940,7 @@ viral syndrome @ headache
 fever
 intestinal obstruction partial
 allergic rhinitis unspecified cause
-subdural hemorrhage traumatic unspec consciousness @ clavicle fracture closed @ ear avulsion laceration
+subdural hemorrhage traumatic unspecified consciousness @ clavicle fracture closed @ ear avulsion laceration
 asthma @ cough @ fever
 altered mental status resolved
 viral uri @ fever
@@ -42069,9 +42069,9 @@ uri acute
 pharyngitis acute
 abdominal pain
 colitis large intestine @ nausea and vomiting
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 respiratory distress
-bilat otitis media suppurative acute without eardrum rupt @ fever
+bilat otitis media suppurative acute without eardrum rupture @ fever
 pseudocyst pancreas @ post op complication @ complication catheter device percutaneous pancreatic drain
 urticaria allergic
 cardiac arrest unclear cause
@@ -42099,7 +42099,7 @@ subarachnoid hemorrhage
 gallstone pancreatitis
 vasovagal syncope
 alcohol intoxication
-subdural hemorrhage traumatic unspec consciousness
+subdural hemorrhage traumatic unspecified consciousness
 dementia disease related with behavioral disturbance @ lithium toxicity suspected
 abscess
 shingles
@@ -42510,7 +42510,7 @@ pulmonary edema acute @ cough @ lethargy @ leaking peg tube
 failure to thrive
 renal failure
 viral bronchitis acute
-appendicitis unqualified
+appendicitis not qualified
 hypertension @ hernia
 vaginal bleeding miscarriage suspected
 hyperkalemia @ renal failure
@@ -42525,7 +42525,7 @@ bipolar affective disorder manic
 lithium toxicity @ renal insufficiency acute
 bipolar affective disorder @ hypertension @ cocaine abuse
 borderline personality
-vaginal discharge @ abdominal pain other specified site @ pregnancy uncomplicated
+vaginal discharge @ abdominal pain other not unspecified site @ pregnancy uncomplicated
 optic neuropathy
 fall accidental
 cellulitis ankle
@@ -42956,7 +42956,7 @@ bradycardia @ renal failure @ hyperkalemia
 pneumonia organism unspecified
 chest pain
 urinary retention
-concussion with consciousness loss unspec duration @ headache @ uti @ head injury with brief loss of consciousness
+concussion with consciousness loss unspecified duration @ headache @ uti @ head injury with brief loss of consciousness
 foot injury
 urticaria
 ankle sprain
@@ -43137,7 +43137,7 @@ overdose @ depression
 bipolar disorder @ conduct disorder
 wound infection surgical
 bacterial vaginosis
-condylomata acuminata @ pain in other specified site
+condylomata acuminata @ pain in other not unspecified site
 heroin od @ altered mental status
 ingestion unspecified substance
 neck strain
@@ -43485,7 +43485,7 @@ numbness
 motor vehicle accident @ headache @ knee pain @ back strain
 assault @ forehead laceration @ nasal contusion
 chlamydia infection
-jaundice unspecified not of newborn @ lymphomas other
+jaundice unspecified not of newborn @ lymphoma other
 nausea @ fever
 foreign body leg superficial subcutaneous @ cellulitis
 abdominal pain generalized unclear cause
@@ -43569,7 +43569,7 @@ folliculitis
 scleral abrasion @ back strain @ motor vehicle accident
 upper respiratory infection acute
 migraine headache
-bite nonvenomous arthropod
+bite non venomous arthropod
 facial bone fractures closed @ c7 fracture closed @ fall accidental
 peripheral vascular disease
 urinary tract infection
@@ -43602,7 +43602,7 @@ gastroenteritis
 clavicle fracture closed @ fall from chair or bed
 orbital fracture closed @ fibula and tibia fracture closed @ epidural hematoma traumatic @ zygoma fracture closed
 otitis media
-concussion with consciousness loss unspec duration @ laceration forehead complicated @ facial bone fracture closed @ fall from ladder
+concussion with consciousness loss unspecified duration @ laceration forehead complicated @ facial bone fracture closed @ fall from ladder
 laceration lip complicated
 fever @ uri acute
 pneumonia bacterial
@@ -43712,7 +43712,7 @@ urinary tract infection @ fever
 peritoneal adenocarcinoma @ post operative complication @ fever
 back pain @ weakness
 abdominal pain epigastric
-abdominal pain other specified site
+abdominal pain other not unspecified site
 cholecystitis acute
 etoh intoxication
 assault by blunt or thrown object @ laceration face complicated @ abrasion
@@ -43813,7 +43813,7 @@ subarachnoid hemorrhage @ gunshot wound @ laceration scalp complicated
 wound check follow up exam @ staple removal
 laceration leg
 appendicitis acute wo perforation peritonitis rupture
-conjunctivitis infectious @ otitis media suppurative acute without eardrum rupt
+conjunctivitis infectious @ otitis media suppurative acute without eardrum rupture
 head injury superficial @ neck pain
 epigastric pain @ pancreatitis acute
 abdominal pain @ hyperventilation @ panic attack
@@ -43887,7 +43887,7 @@ chest wall pain @ contusion ribs
 chest pain
 gastritis
 seizure petit mal @ intracranial mass
-pneumonia due to specified organism @ fever
+pneumonia due to not unspecified organism @ fever
 acute otitis media
 chest pain @ cocaine abuse @ suicidal ideations
 heartburn resolved
@@ -43932,7 +43932,7 @@ fall accidental @ head banging
 abdominal pain @ vomiting @ constipation @ transaminitis
 assault @ abdominal pain
 conjunctivitis acute
-appendicitis unqualified
+appendicitis not qualified
 uri acute @ cough
 nasal congestion @ difficulty breathing resolved @ vomiting
 anal fissure @ blood in stool
@@ -44074,7 +44074,7 @@ rash unclear cause @ asthma
 prescription refill
 alcohol intoxication acute @ fall accidental
 asthma flare
-subdural hemorrhage traumatic unspec consciousness
+subdural hemorrhage traumatic unspecified consciousness
 radius fracture distal closed
 foreign body colon
 dental caries
@@ -44082,7 +44082,7 @@ tibia and fibula fracture closed @ foreign body forearm superficial subcutaneous
 surgical wound infection
 asthma with status asthmaticus
 lupus @ fever @ pleural effusions chest pain unclear cause @ uti
-ulcer vaginal @ lupus erythematosis systemic @ uti
+ulcer vaginal @ lupus erythematosus systemic @ uti
 allergic reaction
 abdominal pain
 chest pain
@@ -44134,14 +44134,14 @@ prepatellar bursitis
 headache
 laceration finger
 allergic reaction
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 emesis @ abdominal pain @ diabetes mellitus insulin dependent
 syncope near @ bradycardia
 uti @ vasovagal syncope
 perceived fever
 epididymitis
 dental pain from wisdom tooth erruption
-otitis media suppurative acute without eardrum rupt @ asthma
+otitis media suppurative acute without eardrum rupture @ asthma
 headache
 bronchiolitis acute
 fever @ bulging fontanelle
@@ -44281,7 +44281,7 @@ headache @ chiari malformation
 overdose opiate accidental
 vomiting acute resolved
 ovarian cyst @ abdominal pain
-concussion with consciousness loss unspec duration @ abrasions multiple sites @ motorcycle vs tree
+concussion with consciousness loss unspecified duration @ abrasions multiple sites @ motorcycle vs tree
 spleen injury without open wound @ knee pain @ hyperglycemia nos
 cramps
 opiate dependence
@@ -44518,7 +44518,7 @@ psychosis
 diabetic ketoacidosis insulin dependent
 hypertension @ transplant heart
 fall down stairs or steps
-subdural hemorrhage traumatic unspec consciousness @ gunshot wound
+subdural hemorrhage traumatic unspecified consciousness @ gunshot wound
 dizziness
 tia
 svt @ breast cancer in situ @ palpitations
@@ -44551,7 +44551,7 @@ hypertensive encephalopathy
 urinary hesitancy
 vaginal bleeding dysfunctional uterine @ syncope @ hypokalemia
 diabetic foot infection
-dizziness @ hypotension other specified
+dizziness @ hypotension other not unspecified
 cellulitis @ diarrhea infectious
 sickle cell crisis
 sickle cell crisis
@@ -44756,7 +44756,7 @@ otitis externa acute
 wrist pain
 cellulitis @ cellulitis
 mechanical complication of implantinternal device
-tylenol overdose @ suicide by drug od specified drugs
+tylenol overdose @ suicide by drug od not unspecified drugs
 altered mental status @ palpitations
 shoulder contusion @ ankle contusion @ fight or brawl unarmed @ ankle sprain
 rib fracture [num] ribs closed @ clavicle fracture closed @ shoulder fracture closed
@@ -45053,7 +45053,7 @@ thrombosed dialysis av fistula
 thrombosed graft @ esrd
 gi bleed @ chest pain
 gi bleed
-abdominal pain other specified site periumbilical @ fever @ urinary tract infection
+abdominal pain other not unspecified site periumbilical @ fever @ urinary tract infection
 peripheral neuropathy @ light headedness @ hypokalemia @ anemia cause unknown
 ovarian cyst
 thrush @ toothache @ dermatitis unspecified cause @ hiv
@@ -45070,7 +45070,7 @@ hip injury @ glycosuria
 bicycle accident with a motor vehicle @ concussion with loss consciousness
 foreign body foot superficial subcutaneous @ allergic rhinitis unspecified cause
 penile post op prostheteses complication
-insect bite thigh nonvenomous
+insect bite thigh non venomous
 shoulder strain
 abdominal pain
 abdominal pain
@@ -45318,7 +45318,7 @@ syncope @ headache @ bradycardia
 seizure grand mal @ syncope @ scalp hematoma
 periorbital edema @ ecchymosis
 uti @ hematuria
-headache recurrent @ numbness @ postconcussion syndrome
+headache recurrent @ numbness @ post concussion syndrome
 mandible fracture closed
 pharyngitis acute
 hip pain
@@ -45347,7 +45347,7 @@ laceration foot
 suture removal
 low back pain @ gerd @ gastritis
 headache @ hydrocephalus obstructive
-postconcussion syndrome @ headache
+post concussion syndrome @ headache
 ac separation closed @ shoulder and arm contusions
 abdominal pain
 herpangina
@@ -45634,7 +45634,7 @@ pharyngitis acute @ vomiting @ diarrhea
 uri acute @ otitis media @ otalgia
 sciatica acute
 dysmenorrhea
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 abdominal pain
 visual disturbance
 migraine
@@ -45781,8 +45781,8 @@ major depressive reaction single episode
 foot fracture closed
 viral syndrome
 overdose @ suicidal ideations
-otitis media suppurative acute without eardrum rupt
-uri acute @ otitis media nonsuppurative acute
+otitis media suppurative acute without eardrum rupture
+uri acute @ otitis media non suppurative acute
 anxiety @ depression
 hyperglycemia nos
 hyperglycemia nos
@@ -45807,7 +45807,7 @@ contusion knee
 wound check follow up exam
 laceration arm
 knee pain @ patella pain
-subdural hemorrhage traumatic unspec consciousness @ subarachnoid hemorrhage @ assault
+subdural hemorrhage traumatic unspecified consciousness @ subarachnoid hemorrhage @ assault
 appendicitis acute wo perforation peritonitis rupture
 mva @ head injury superficial
 gunshot wound abdominal wall
@@ -45837,7 +45837,7 @@ chest pain @ lung cancer
 allergic reaction
 brain cancer metastasis @ headache @ seizure grand mal
 vomiting @ labial
-swelling joint @ itch not specified otherwise
+swelling joint @ itch not not unspecified otherwise
 vomiting @ diarrhea
 mva
 subarachnoid hemorrhage
@@ -45875,7 +45875,7 @@ fever @ diarrhea @ diaper rash
 motor vehicle accident driver @ laceration forehead
 laceration forehead @ contusion forehead @ fall accidental
 pelvic pain female
-otitis media suppurative acute without eardrum rupt @ tinea capitis
+otitis media suppurative acute without eardrum rupture @ tinea capitis
 nosebleed
 chest pain
 fever in newborn
@@ -45947,7 +45947,7 @@ abdominal pain generalized @ kidney stone
 vaginal bleeding dysfunctional uterine
 headache
 crying
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 pregnancy with history of miscarrage @ pregnancy hemorrhage <22 weeks gestation specif
 vaginal discharge
 facial injury
@@ -46075,7 +46075,7 @@ fever
 headache
 vomiting @ fever
 fever @ uti @ dehydration improved
-appendicitis unqualified
+appendicitis not qualified
 allergic rhinitis unspecified cause
 alcohol hallucinosis @ altered mental status
 osteoarthritis @ osteopenia
@@ -46122,7 +46122,7 @@ vaginal bleeding early pregnancy etiology unknown @ pregnant state incidental
 threatened abortion
 threatened abortion
 spontaneous abortion uncomplicated
-subdural hemorrhage traumatic unspec consciousness @ syncope
+subdural hemorrhage traumatic unspecified consciousness @ syncope
 dvt leg @ aspiration risk @ lung cancer
 nausea
 bipolar affective disorder
@@ -46208,7 +46208,7 @@ bleeding tongue
 shortness of breath @ leg swelling
 asthma with acute exacerbation
 subdural hematoma traumatic without open wound @ epidural hematoma traumatic @ subarachnoid hemorrhage trauma @ motor vehicle accident
-subdural hemorrhage with concussion @ contusion brain with unspec state of consciousness
+subdural hemorrhage with concussion @ contusion brain with unspecified state of consciousness
 skull fracture closed @ wound check follow up exam
 headache
 edema leg
@@ -46219,7 +46219,7 @@ patella fracture closed @ knee pain @ fall accidental
 hand laceration with tendon involvement @ metacarpal fx closed @ assault by knife @ lip laceration
 wound check follow up exam
 fever @ uri acute @ eczema atopic
-fever @ otitis media suppurative wspontaneous eardrum rup
+fever @ otitis media suppurative with spontaneous eardrum rupture
 inguinal hernia
 tendon disorder shoulder region @ avulsion laceration hand
 hand pain @ insomnia organic
@@ -46359,7 +46359,7 @@ ankle strain @ elevated blood pressure
 influenza
 allergic reaction
 nausea and vomiting @ abdominal pain
-insect bite neck nonvenomous not infected
+insect bite neck non venomous not infected
 abdominal rigidity epigastricright upper quadrant @ gastritis
 upper respiratory infection acute @ myalgia
 sepsis
@@ -46368,7 +46368,7 @@ chf
 mva @ laceration face
 pregnancy complication @ abdominal pain
 constipation @ nausea and vomiting @ urinary tract infection
-arm pain @ snake bite nonvenomous
+arm pain @ snake bite non venomous
 hand contusion @ wrist injury
 thoracic spine pain @ mva
 overdose cns depressant @ chest pain
@@ -46482,7 +46482,7 @@ back pain @ scoliosis
 wound infection surgical
 post op complication
 dental caries
-contusion face @ postconcussion syndrome
+contusion face @ post concussion syndrome
 syncope @ hypertension
 bronchitis acute
 sprained medial collateral ligament knee
@@ -46753,7 +46753,7 @@ hemoptysis @ bronchitis acute
 gastritis
 radial head fracture closed
 fever
-otitis media suppurative acute without eardrum rupt
+otitis media suppurative acute without eardrum rupture
 musculoskeletal back pain @ headache @ motor vehicle accident driver
 abscess axilla
 knee contusion @ soft tissue density distal thigh
@@ -47111,7 +47111,7 @@ chest pain @ pancreatitis acute
 low back pain
 wrist sprain
 numbness @ leg pain
-postconcussion syndrome
+post concussion syndrome
 chest pain
 abdominal pain left lower quadrant
 cholangitis acute @ altered mental status @ hypotension
@@ -47223,7 +47223,7 @@ tooth decay
 missed abortion @ vaginal bleeding miscarriage
 contusion knee
 chest pain musculoskeletal
-accidental antidepressant overdose @ accidental drug overdose specified drugs
+accidental antidepressant overdose @ accidental drug overdose not unspecified drugs
 gunshot wounds chest buttock forearm and finger @ hematuria gross
 dizziness @ elevated blood pressure
 unspecified
@@ -47232,7 +47232,7 @@ contusion scalp
 failure to thrive @ dehydration
 tibia fx open
 pyelonephritis acute
-tick borne rickettsioses other specified @ erythema migrans @ stari
+tick borne rickettsioses other not unspecified @ erythema migrans @ stari
 neck pain
 pelvic mass @ abdominal pain
 chest pain @ unstable angina @ kidney failure
@@ -47258,7 +47258,7 @@ lupus @ cellulitis axilla @ chronic pain @ diarrhea
 dizziness
 gi bleed upper
 abdominal pain
-heart failure @ hypoxemia @ systemic lupus erythematosis
+heart failure @ hypoxemia @ systemic lupus erythematosus
 dyspnea
 chest pain
 laceration face @ mva
@@ -47332,7 +47332,7 @@ chest pain @ shortness of breath
 hip contusion @ leg contusion @ arm abrasion upper @ atv accident
 abdominal pain @ diarrhea
 mental status change @ hyperkalemia @ hyperammonemia
-abdominal pain other specified site
+abdominal pain other not unspecified site
 concussion
 urinary retention @ foley catheter insertion
 hallucinations
@@ -47503,7 +47503,7 @@ metacarpal base fracture closed @ mva traffic with other vehicle passenger
 subarachnoid hemorrhage trauma @ fractured cervical spine closed unspecified level @ arm fracture upper closed
 cough @ uri acute
 diarrhea of presumed infectious origin @ vomiting
-subarachnoid hemorrhage trauma @ subdural hemorrhage traumatic unspec consciousness @ femur fracture closed @ multiple trauma closed
+subarachnoid hemorrhage trauma @ subdural hemorrhage traumatic unspecified consciousness @ femur fracture closed @ multiple trauma closed
 post traumatic rectal bleeding @ constipation
 postoperative infection @ leukocytosis @ hypernatremia
 chest pain musculoskeletal
@@ -47537,7 +47537,7 @@ liver abscess
 asthma with acute exacerbation
 vaginal bleeding @ abdominal pain
 toothache @ tooth cracked
-pregnancy uncomplicated @ abdominal pain other specified site
+pregnancy uncomplicated @ abdominal pain other not unspecified site
 knee sprain @ back strain
 abdominal pain @ nausea and vomiting
 left facial pain
@@ -47550,7 +47550,7 @@ diverticular disease
 allergic reaction
 nausea and vomiting
 foreign body removal from under left ring finger
-ingestion nonmedicinal substance toxic effect
+ingestion non medicinal substance toxic effect
 pharyngitis acute
 contusion elbow @ contusion chest wall @ motor vehicle accident passenger
 rib fx closed
@@ -47759,7 +47759,7 @@ meniere s disease
 sickle cell crisis
 urinary tract infection @ edema leg
 pneumonia bacterial
-influenza @ otitis media suppurative acute without eardrum rupt @ pneumonia bacterial @ acute bronchospasm
+influenza @ otitis media suppurative acute without eardrum rupture @ pneumonia bacterial @ acute bronchospasm
 yeast infection
 fever
 neutropenia @ fever @ toothache
@@ -47932,7 +47932,7 @@ pneumonia bacterial @ confusional state subacute
 angina unstable
 unspecified
 miscarriage spontaneous
-ingestion nonmedicinal substance toxic effect
+ingestion non medicinal substance toxic effect
 pneumonia bacterial
 subarachnoid hemorrhage @ fall accidental
 stroke
@@ -48123,7 +48123,7 @@ sore throat @ viral uri
 post op complication @ eye surgery
 cellulitis
 epigastric pain @ abdominal pain right upper quadrant
-pneumonia due to specified organism
+pneumonia due to not unspecified organism
 chest pain chronic @ palpitations
 syncope @ head injury superficial
 abdominal pain
@@ -48443,7 +48443,7 @@ syncope
 unspecified
 vaginal itching
 yeast infection @ vaginitis @ urinary tract infection
-bite nonvenomous arthropod
+bite non venomous arthropod
 c1 fx closed @ fall accidental @ hematemesis
 cervical spine fx closed unspecified level
 urinary tract infection @ altered mental status @ renal failure acute
@@ -48611,7 +48611,7 @@ subdural hemorrhage traumatic @ scalp laceration @ motor vehicle accident
 mva @ back strain
 cellulitis face @ dental disorder
 gastroenteritis @ abdominal pain
-insect bite thigh nonvenomous infected
+insect bite thigh non venomous infected
 neck strain
 toothache
 apical periodonitis
@@ -48757,7 +48757,7 @@ fever @ vomiting
 spasm @ sulbuxed foot r
 appendicitis acute wo perforation peritonitis rupture
 knee contusion
-snake bite nonvenomous @ cough
+snake bite non venomous @ cough
 suicide attempt by drug od unspecified drug
 ulcerative colitis other
 psych exam @ trichinosis
@@ -48792,7 +48792,7 @@ suture removal @ pharyngitis viral
 renal colic
 renal calculus
 abdominal pain @ gerd
-insect bites suspected feet nonvenomous
+insect bites suspected feet non venomous
 back pain
 back pain
 mva @ muscle strain
@@ -49009,7 +49009,7 @@ constipation
 abscess
 hypertension @ renal insufficiency chronic @ pulmonary edema
 renal failure acute @ chest pain
-thrombosis of other specified veins
+thrombosis of other not unspecified veins
 bradycardia @ chest pain
 foreign body leg superficial subcutaneous
 gangrene @ foot infection
@@ -49249,7 +49249,7 @@ abscess @ cellulitis
 ulcer chronic
 stroke
 dialysis catheter pain @ mechanical complication of implantinternal device
-pain in other specified site @ dialysis cathetar pain in right groin
+pain in other not unspecified site @ dialysis cathetar pain in right groin
 fever @ end stage renal disease
 fever
 contusion wrist @ sprained wrist
@@ -49353,7 +49353,7 @@ rib contusion
 head injury unspecified consciousness state @ facial contusion @ chipped tooth
 chest pain
 headache @ uri acute
-insect bite foot nonvenomous
+insect bite foot non venomous
 abdominal pain epigastric
 cellulitis leg
 pharyngitis acute @ bronchitis acute
@@ -49477,13 +49477,13 @@ alcohol intoxication
 cast change @ radius with ulna fracture closed
 laceration leg
 abdominal pain
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 cough @ sore throat @ wheezing
 fractured hand closed
 bipolar @ chest pain
 possible epistaxis @ ecchymosis left wrist
 eye disorder unclear significance
-subdural hemorrhage traumatic unspec consciousness @ depressed skull fracture
+subdural hemorrhage traumatic unspecified consciousness @ depressed skull fracture
 candidal vulvovaginitis @ blood in stool @ upper respiratory infection acute
 insect bite
 fever @ influenza @ dehydration
@@ -49639,7 +49639,7 @@ pharyngitis acute
 fractured carpal bone closed lunate @ fractured distal radius closed
 intestinal obstruction @ kidney stone @ hypertension
 eye foreign body external
-suspected otitis media nonsuppurative acute @ fever
+suspected otitis media non suppurative acute @ fever
 abdominal pain @ renal mass
 chlamydia infection @ abdominal pain
 uri acute
@@ -49682,7 +49682,7 @@ gi bleed
 burn [num] degree
 foley catheter malfunction @ bladder cancer in situ @ abdominal pain
 urinary obstruction @ post operative complication
-appendicitis unqualified
+appendicitis not qualified
 fever
 nausea @ diarrhea @ abdominal pain
 abdominal pain unclear cause transient
@@ -49911,7 +49911,7 @@ intracerebral hemorrhage @ mental status change @ hypertension @ confusional sta
 nausea and vomiting @ weakness @ headache
 hyperglycemia nos @ brain tumor
 sacral contusion @ coccyodynia
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 tooth swelling
 stabbed assault @ hemothorax
 abdominal pain @ pregnancy complication
@@ -49995,7 +49995,7 @@ subarachnoid hemorrhage
 foot contusion @ mva
 vertigo
 dermatitis contact due to chemical products
-insect bite flank nonvenomous not infected
+insect bite flank non venomous not infected
 pyelonephritis acute
 abscess groin
 cellulitis leg
@@ -50019,7 +50019,7 @@ feeding problem in newborn @ hyperbilirubinemia neonatal
 hematuria @ abdominal pain
 insomnia organic @ adhd
 laceration wrist
-otitis media suppurative wspontaneous eardrum rup
+otitis media suppurative with spontaneous eardrum rupture
 hearing loss
 laceration thumb
 cellulitis leg
@@ -50069,7 +50069,7 @@ headache @ nausea and vomiting
 cough unclear cause @ ppd converter v occult disease
 tooth cracked
 tooth cracked @ toothache
-appendicitis unqualified
+appendicitis not qualified
 atrial fibrillation @ hyperthyroidism
 hernia inguinal
 mva @ loss of consciousness @ fractured hand closed
