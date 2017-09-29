@@ -80,14 +80,6 @@ def add_special_token(w2i,i2w):
     # add special token called <pad_zero> and <GO> and <EOS>
     n_words = len(i2w)
 
-    i2w[n_words] = '<GO>'
-    w2i['<GO>'] = n_words
-    n_words = n_words + 1
-
-    i2w[n_words] = '<EOS>'
-    w2i['<EOS>'] = n_words
-    n_words = n_words + 1
-
     i2w[n_words] = '<pad_zero>'
     w2i['<pad_zero>'] = n_words
     n_words = n_words + 1
@@ -95,24 +87,20 @@ def add_special_token(w2i,i2w):
     return w2i,i2w
 
 
-def diag_narrow(train,train_labels,vocab_freq,freq_lbd):
+def diag_narrow(train_labels,vocab_freq,freq_lbd):
     remain_list = [word for word in vocab_freq if vocab_freq[word] >= freq_lbd]
 
-    train_set = zip(train,train_labels)
-    new_set = []
+    new_labels = []
 
-    for i,itm in enumerate(train_set):
+    for i,itm in enumerate(train_labels):
         removed = []
-        for wd in itm[1]:
+        for wd in itm:
             if wd in remain_list:
                 removed.append(wd)
         if len(removed) != 0:
-            new_set.append((train_set[i][0],removed))
-    tp = zip(*new_set)
-    train = list(tp[0])
-    train_labels = list(tp[1])
+            new_labels.append(removed)
 
-    return train,train_labels
+    return new_labels
 
 
 def make_idx_sentences(text,word2idx):
@@ -121,55 +109,6 @@ def make_idx_sentences(text,word2idx):
         # words = sent.split()
         id_sentence.append([word2idx[word] for word in sent])
     return id_sentence
-
-
-def make_idx_data(train,train_labels,train_seman,word2idx,w2i_lb,w2i_sm):
-
-    n_lb = len(w2i_lb)
-
-    tr_id = make_idx_sentences(train,word2idx)
-    tr_id_l = make_idx_sentences(train_labels,w2i_lb)
-    tr_id_sm = make_idx_sentences(train_seman,w2i_sm)
-
-    tr_lb = []
-    # transfer labels from indice format to multi-hot format
-    for lbs in tr_id_l:
-        lb = [0] * n_lb
-        for l in lbs:
-            lb[l] = 1
-        tr_lb.append(lb)
-
-    tr = (tr_id,tr_lb,tr_id_sm)
-
-    return tr
-
-
-def split_train(train,dev_portion=0.1):
-    lz = len(train[0])
-    np.random.seed(123)
-    idx_dev = np.random.permutation(lz)
-    n_train = int(np.round(lz * (1 - dev_portion)))
-    
-    train_sent = [train[0][s] for s in idx_dev[:n_train]]
-    train_label = [train[1][s] for s in idx_dev[:n_train]]
-    train_seman = [train[2][s] for s in idx_dev[:n_train]]
-    
-    dev_sent = [train[0][s] for s in idx_dev[n_train:]]
-    dev_label = [train[1][s] for s in idx_dev[n_train:]]
-    dev_seman = [train[2][s] for s in idx_dev[n_train:]]
-
-    return (train_sent,train_label,train_seman), (dev_sent,dev_label,dev_seman)
-
-
-def label_frequency(data,i2w):
-    lb_freq_list = {}
-    for lb_oh in data:
-        lb = np.argmax(lb_oh)
-        if i2w[lb] in lb_freq_list:
-            lb_freq_list[i2w[lb]] += 1
-        else:
-            lb_freq_list[i2w[lb]] = 1
-    return lb_freq_list
 
 
 def load_bin_vec(fname,  vocab):
@@ -216,7 +155,7 @@ def add_unknown_words(word_vecs,word2idx,k=300):
     for word in word2idx:
         if word not in word_vecs:
             word_vecs[word] = np.random.uniform(-0.25,0.25,k)
-	    unk_words.append(word)
+            unk_words.append(word)
     return unk_words
 
 
@@ -238,26 +177,23 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     loc = './data/'
-    
+
     w2v_file_m = 'GoogleNews-vectors-negative300.bin'
     w2v_file_g = 'vectors_my.txt'
     affx = ''  # about the saved adat filename affix
 
     if args.data == 'clean':
-        notes_path = 'tok_hpi_clean'
         dx_path = 'tok_dx_clean'
         affx = '_new'
     else:
-        notes_path = 'tok_hpi_rpl'
         dx_path = 'tok_dx_rpl'
 
     freq_lbd_idx = args.label_freq
 
     print "preparing data...",  
-    notestext, labeltext = load_data(loc,(notes_path,dx_path))
-    notestext = preprocess(notestext)
+    notestext,labeltext = load_data(loc,(dx_path,dx_path))
 
-    train_notes, train_labels = prepare_data(notestext,labeltext)
+    _,train_labels = prepare_data(notestext,labeltext)
     del notestext, labeltext
 
     # build the dictionary for labels
@@ -267,15 +203,10 @@ if __name__ == "__main__":
 
     # get rid of those single cases
     sc_lb = [wd for wd in lb_freq if lb_freq[wd] == 1]
-    train_set = zip(train_notes,train_labels)
-    for i,itm in enumerate(train_set):
-        if len(set(sc_lb + itm[1])) != len(sc_lb + itm[1]):
-            train_set.remove(itm)
-    tp = zip(*train_set)
+    for i,itm in enumerate(train_labels):
+        if len(set(sc_lb + itm)) != len(sc_lb + itm):
+            train_labels.remove(itm)
 
-    train_notes = list(tp[0])
-    train_labels = list(tp[1])
-    
     # only remian the first diagnosis for each patient
     train_labels = [[labels[0]] for labels in train_labels]  
 
@@ -284,82 +215,68 @@ if __name__ == "__main__":
     lb_vb = OrderedDict(sorted(lb_freq.items(), key = lambda t:t[1], reverse = True))
     lb_lst = [(wd,lb_vb[wd]) for wd in lb_vb]
 
-    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/pre_clipped_lstm.p',"wb"))
-
     # only use the notes and diagnoses more than certain amount
     freq_lbd = lb_lst[freq_lbd_idx - 1][1]
-    train_notes,train_labels = diag_narrow(train_notes,train_labels,lb_freq,freq_lbd)
-    cPickle.dump([train_notes,train_labels,lb_lst],open('./data/clipped_data_lstm_' + str(freq_lbd_idx) + '.p',"wb"))
+    train_labels = diag_narrow(train_labels,lb_freq,freq_lbd)
 
     # make labels natural language
-    train_seman = []
-    for labels in train_labels:
-        seman = ' '.join(labels)
-        seman = seman.split()
-        train_seman.append(seman)
+    def expand_labels(train_labels):
+        train_seman = []
+        for labels in train_labels:
+            seman = ' '.join(labels)
+            seman = seman.split()
+            train_seman.append(seman)
+        return train_seman
 
 
-    # the corpus of both text and semantic space 
-    text_and_seman = train_notes + train_seman   
-
+    train_seman = expand_labels(train_labels)
     # build dictionary for semantic along and the whole
-    word2idx, idx2word, _ = build_vocab(text_and_seman)
+
     w2i_lb, i2w_lb, _ = build_vocab(train_labels)
     w2i_sm, i2w_sm, _ = build_vocab(train_seman)
 
+    # transform sentences into indices sequence
+    train = make_idx_sentences(train_seman,w2i_sm)
+    all_labels = [[lb] for lb in w2i_lb]
+    test_seman = expand_labels(all_labels)
+    all_labels_idx = make_idx_sentences(test_seman,w2i_sm)
 
-    train = make_idx_data(train_notes, train_labels,train_seman, word2idx, w2i_lb,w2i_sm)
-    train,test = split_train(train)
-    train,dev = split_train(train)
-    lb_freq_train = label_frequency(train[1],i2w_lb)
-    lb_freq_test = label_frequency(test[1],i2w_lb)
 
     # build the word embedding for dataset
     print "loading word2vec vectors...",
 
-    w2v_g = load_text_vec(loc + w2v_file_g, word2idx)
-    w2v_m = load_bin_vec(loc + w2v_file_m, word2idx)
+    w2v_g = load_text_vec(loc + w2v_file_g, w2i_sm)
+    w2v_m = load_bin_vec(loc + w2v_file_m, w2i_sm)
 
-    unk_g = add_unknown_words(w2v_g, word2idx)
-    unk_m = add_unknown_words(w2v_m, word2idx)
+    unk_g = add_unknown_words(w2v_g, w2i_sm)
+    unk_m = add_unknown_words(w2v_m, w2i_sm)
 
-    W_g = get_vocab_emb(w2v_g,idx2word)
-    W_m = get_vocab_emb(w2v_m,idx2word)
+    W_g = get_vocab_emb(w2v_g,i2w_sm)
+    W_m = get_vocab_emb(w2v_m,i2w_sm)
     # W_sm = get_vocab_emb(w2v_sm,i2w_sm)
 
     # words in labels set as unknown
     unk_lb_word_g = [word for word in unk_g if word in w2i_sm]
     unk_lb_word_m = [word for word in unk_m if word in w2i_sm]
-    unk_word_g = [word for word in unk_g if word in word2idx]
-    unk_word_m = [word for word in unk_m if word in word2idx]
 
     # add special token to both the notes vocabulary and the semantic vocabulary
-    word2idx,idx2word = add_special_token(word2idx,idx2word)
-    w2i_sm, i2w_sm = add_special_token(w2i_sm,i2w_sm)
 
-    vocab_size = len(word2idx)
+    w2i_sm, i2w_sm = add_special_token(w2i_sm,i2w_sm)
     vocab_size_sm = len(w2i_sm)
 
-    Wemb_g = np.random.uniform(-0.25,0.25,(vocab_size,300))
-    Wemb_m = np.random.uniform(-0.25,0.25,(vocab_size,300))
-    Wemb_g[:vocab_size-3] = W_g
-    Wemb_m[:vocab_size-3] = W_m
+    Wemb_g = np.random.uniform(-0.25,0.25,(vocab_size_sm,300))
+    Wemb_m = np.random.uniform(-0.25,0.25,(vocab_size_sm,300))
+    Wemb_g[:vocab_size_sm-1] = W_g
+    Wemb_m[:vocab_size_sm-1] = W_m
 
-    dicts_mapping = np.zeros((vocab_size_sm,1),dtype=np.int)
-    for i in range(len(i2w_sm)):
-        dicts_mapping[i] = word2idx[i2w_sm[i]]
 
     # get the hyperparameters
-    max_len = max([len(nts) for nts in train[0] + test[0] + dev[0]])
-    max_len_sm = max([len(sm) for sm in train[2] + test[2] + dev[2]]) + 1  # 'GO' or 'EOS' takes up a postition
-
+    max_len_sm = max([len(sm) for sm in train])   # 'GO' or 'EOS' takes up a postition
     ConfigInfo = {}
-    ConfigInfo['max_len'] = max_len
     ConfigInfo['max_len_sm'] = max_len_sm
-    ConfigInfo['vocab_size'] = vocab_size
+    ConfigInfo['vocab_size'] = vocab_size_sm
 
-    lb_lst = dict(lb_lst)
-    everything = [train, dev, test, Wemb_g, Wemb_m, idx2word, word2idx, i2w_lb, i2w_sm,ConfigInfo, dicts_mapping, (lb_lst,lb_freq_train,lb_freq_test)]
-    cPickle.dump(everything, open('./data/lstm_everything' + affx + str(freq_lbd_idx) + '.p', "wb"))
-    cPickle.dump(everything[5:] + [unk_lb_word_m,unk_lb_word_g,unk_word_m,unk_word_g], open('./data/lstm_no_dt' + affx + str(freq_lbd_idx) + '.p', "wb"))
-#    print "dataset created!"
+    everything = [train,all_labels_idx,Wemb_g, Wemb_m,i2w_lb,i2w_sm,ConfigInfo]
+    cPickle.dump(everything, open('./data/everything_lm' + affx + str(freq_lbd_idx) + '.p', "wb"))
+    # cPickle.dump(everything[5:] + [unk_lb_word_m,unk_lb_word_g,unk_word_m,unk_word_g], open('./data/lstm_no_dt' + affx + str(freq_lbd_idx) + '.p', "wb"))
+    # print "dataset created!"

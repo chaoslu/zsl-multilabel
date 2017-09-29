@@ -104,9 +104,6 @@ def prepare_data(batch,Config,is_seman=False):
 
 	# f_h = Config.filters[-1]
 
-
-
-
 	new_seqs = []
 	target_seqs = []
 	mask_seqs = []
