@@ -253,6 +253,7 @@ class ResCNNModel():
 
 		# import pdb;pdb.set_trace()
 		lb_emd = np.array(lb_emd)
+		lb_emd = np.transpose(lb_emd)
 
 
 		return lb_emd
