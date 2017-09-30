@@ -26,7 +26,7 @@ class Config:
 	patience = 3
 	dropout_rate = 0.5
 	beta = 2
-	max_epochs = 30
+	max_epochs = 1
 	learn_rate = 0.0002
 	batch_size = 20
 	valid_size = 10
@@ -156,6 +156,7 @@ class ResCNNModel():
 
 				curr_state = next_state
 
+			states = tf.reshape(tf.concat(states,axis=1),shape=[-1,mx_len,h_size])
 			preds_rnn = tf.reshape(tf.concat(preds_rnn,axis=1),shape=[-1,mx_len,dec_num])
 
 			return preds_rnn,states
@@ -231,11 +232,13 @@ class ResCNNModel():
 			padded_sm_ipnuts = np.array(padded_sm_ipnuts)
 			mask = np.array(mask)
 
+			# import pdb;pdb.set_trace()
+
 			rnn_encoding,_ = self.predict_on_batch(sess,padded_sm_ipnuts,mask)
 
 			rnn_encodings.append(rnn_encoding)
 			masks.append(mask)
-
+		# import pdb;pdb.set_trace()
 
 		rnn_encodings = np.concatenate(rnn_encodings,axis=0)
 		masks = np.concatenate(masks,axis=0)
@@ -244,10 +247,12 @@ class ResCNNModel():
 
 		lb_emd = []
 		for i,emb in enumerate(label_embeddings):
-			hstates = [emb[j,:] for j in range(emb.shape[0]) if mask[i,j]]
+			
+			hstates = [emb[j,:] for j in range(emb.shape[0]) if masks[i,j]]
 			lb_emd.append(hstates[-1])
 
-		lb_emd = np.concatenate(lb_emd,axis=0)
+		# import pdb;pdb.set_trace()
+		lb_emd = np.array(lb_emd)
 
 
 		return lb_emd
