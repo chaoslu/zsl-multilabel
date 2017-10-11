@@ -37,7 +37,7 @@ class Config:
 	dropout_rate = 0.5
 	beta1 = 1
 	beta2 = 1
-	max_epochs = 50
+	max_epochs = 40
 	learn_rate = 0.0002
 	batch_size = 20
 	valid_size = 10

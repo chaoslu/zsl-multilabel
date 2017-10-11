@@ -25,8 +25,6 @@ class Config:
 	rnncell = "GRU"
 	patience = 3
 	dropout_rate = 0.5
-	beta = 2
-	max_epochs = 1
 	learn_rate = 0.0002
 	batch_size = 20
 	valid_size = 10
@@ -275,6 +273,7 @@ if __name__ == "__main__":
 	parser.add_argument('-lf','--label_freq', default='500', type=str)
 	parser.add_argument('-ug','--using_glove', default=False, type=bool)
 	parser.add_argument('-dt','--data',default='clean',type=str)
+	parser.add_argument('-me','--max_epochs', default=30, type=int)
 
 	args = parser.parse_args()
 
@@ -289,6 +288,8 @@ if __name__ == "__main__":
 	fh.setFormatter(formatter)
 	ch.setFormatter(formatter)
 	logger.addHandler(fh)
+	
+	max_epochs = args.max_epochs
 
 	affx = ''
 	if args.data == 'clean':
@@ -341,9 +342,9 @@ if __name__ == "__main__":
 			session.run(init)
 
 			path = model.Config.model_path
-			for epoch in range(Config.max_epochs):
+			for epoch in range(max_epochs):
 				logger.info("running epoch %d", epoch)
-				pred_acc.append(model.run_epoch(session,train))
+				pred_acc.append(model.run_epoch(session,test))
 				# import pdb; pdb.set_trace()
 				if pred_acc[-1] < ce_min:
 					logger.info("new best AUC score: %.4f", pred_acc[-1])
@@ -355,9 +356,9 @@ if __name__ == "__main__":
 			# make description of the configuration and test result
 			with open(model.Config.output_path + "description.txt","w") as f:
 				cfg = model.Config
-				f.write("data_type: %s\nrnncel: %s\nlearn_rate: %f\nbatch_size: %d\n" % (args.data,cfg.rnncell,cfg.learn_rate,cfg.batch_size))
+				f.write("data_type: %s\nrnncel: %s\nlearn_rate: %f\nbatch_size: %d\nepochs: %d\n" % (args.data,cfg.rnncell,cfg.learn_rate,cfg.batch_size,max_epochs))
 			f.close()
 
 			# save all the results
-			cPickle.dump(label_embeddings,open(model.Config.output_path + 'lb_emd_' + str(n_classes) + '.p',"wb"))
-			
+			cPickle.dump(label_embeddings,open(model.Config.output_path + 'lb_emd_' + args.label_freq + '.p',"wb"))
+			cPickle.dump(label_embeddings,open('./data/lb_emd_' + args.label_freq + '.p',"wb"))

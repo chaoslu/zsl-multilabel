@@ -38,7 +38,7 @@ class Config:
 	dropout_rate = 0.5
 	beta1 = 1
 	beta2 = 1
-	max_epochs = 50
+	max_epochs = 40
 	learn_rate = 0.0002
 	batch_size = 20
 	valid_size = 10
@@ -469,7 +469,7 @@ if __name__ == "__main__":
 	del x
 
 	# the pretrained label embeddings
-	label_embeddings = cPickle.load(open("./data/everything" + affx + '_lm' + args.label_freq + ".p","rb"))
+	label_embeddings = cPickle.load(open("./data/lb_emd_" + args.label_freq + ".p","rb"))
 
 	# whether use the glove data
 	data_type = ''
