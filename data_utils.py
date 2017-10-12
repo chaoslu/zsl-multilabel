@@ -320,6 +320,6 @@ if __name__ == "__main__":
     # W_sm = get_vocab_emb(w2v_sm,i2w_sm)
 
     lb_lst = dict(lb_lst)
-    everything = [train, dev, test, W_g, W_m, idx2word, word2idx, w2i_lb, i2w_lb,ConfigInfo,(lb_lst,lb_freq_train,lb_freq_test)]
+    everything = [train, dev, test, nl_clss, W_g, W_m, idx2word, word2idx, w2i_lb, i2w_lb,ConfigInfo,(lb_lst,lb_freq_train,lb_freq_test)]
     cPickle.dump(everything, open('./data/everything' + affx + args.label_type + str(freq_lbd_idx) + '.p', "wb"))
 #    print "dataset created!"
