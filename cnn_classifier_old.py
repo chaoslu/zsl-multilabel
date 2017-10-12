@@ -288,6 +288,33 @@ class ResCNNModel(Model):
 		return predictions
 	'''
 
+	def eval_label(self,sess,train_examples):
+		iterator = get_minibatches_idx(len(train_examples),self.Config.batch_size,False)
+		# word_embeddings_old = sess.run(self.params['Wemb'])
+
+		cnn_encodings = []
+		for i,idx in enumerate(iterator):
+			sm = train_examples
+
+			sm_batch = [sm[j] for j in idx]
+			padded_sm_ipnuts = prepare_data(sm_batch,self.Config)
+			padded_sm_ipnuts = np.array(padded_sm_ipnuts)
+
+			# import pdb;pdb.set_trace()
+
+			_,cnn_encoding = self.predict_on_batch(sess,padded_sm_ipnuts,padded_sm_ipnuts)
+
+			cnn_encodings.append(cnn_encoding)
+		# import pdb;pdb.set_trace()
+
+		cnn_encodings = np.concatenate(cnn_encodings,axis=0)
+
+		# import pdb;pdb.set_trace()
+		lb_emd = np.array(cnn_encodings)
+		lb_emd = np.transpose(lb_emd)
+
+
+		return lb_emd
 
 
 	def evaluate(self,sess,examples,rci=None,only_encoding=False):
@@ -381,7 +408,6 @@ class ResCNNModel(Model):
 			return (k_acc,k_acc_rare),(precision_cls,recall_cls,f1_cls,pr_rcl_cls),cnn_encodeds,(zip(labels_dense,preds_dense),incorrect_classified)
 
 
-
 	def run_epoch(self,sess,train_examples,dev_set,rci=None,is_test=False):
 		iterator = get_minibatches_idx(len(train_examples[0]),self.Config.batch_size,False)
 		dispFreq = self.Config.dispFreq
@@ -452,7 +478,12 @@ if __name__ == "__main__":
 
 	logger.info('loading data...')
 	x = cPickle.load(open("./data/everything" + affx + args.label_type + args.label_freq + ".p","rb"))
-	train, dev, test, W_g, W_m, idx2word, word2idx, w2i_lb, i2w_lb, ConfigInfo, lb_freq = x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[10]
+	train, dev, test, nl_clss, W_g, W_m, idx2word, word2idx, w2i_lb, i2w_lb, ConfigInfo, lb_freq = x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[10], x[11]
+	del x
+
+	# data to generate label embeddings
+	x = cPickle.load(open("./data/everything_lm" + affx + args.label_freq + ".p","rb"))
+	label_data = x[1]
 	del x
 
 	# whether use the glove data
@@ -525,8 +556,15 @@ if __name__ == "__main__":
 			else:
 				path = args.model_path
 				saver.restore(session, path)
-			cnn_encodings_train,labels_train = model.evaluate(session,train,rci,True)
-			test_acc,precision_recall_cls,cnn_encodings,labels = model.evaluate(session,test,rci)
+			# cnn_encodings_train,labels_train = model.evaluate(session,train,rci,True)
+			# test_acc,precision_recall_cls,cnn_encodings,labels = model.evaluate(session,test,rci)
+
+			# the label embedding channel
+			cnn_encodings = model.eval_label(session,nl_clss)
+			cPickle.dump(cnn_encodings,open("./result_lm/{:%Y%m%d_%H%M%S}/".format(datetime.now()) + 'lb_emd_' + args.label_freq + '.p',"wb"))
+
+			# classification channel
+			'''
 			# make description of the configuration and test result
 			if args.label_type == 'single':
 				test_result = test_acc[0][-1]
@@ -545,3 +583,4 @@ if __name__ == "__main__":
 			# save all the results
 			cPickle.dump([pred_acc,test_acc,precision_recall_cls,(labels_train,labels),i2w_lb,lb_freq],open(model.Config.output_path_results + 'results' + str(n_classes) + '.p','wb'))
 			cPickle.dump((cnn_encodings_train,cnn_encodings),open(model.Config.output_path_results + 'encodings' + str(n_classes) + '.p','wb'))
+			'''
